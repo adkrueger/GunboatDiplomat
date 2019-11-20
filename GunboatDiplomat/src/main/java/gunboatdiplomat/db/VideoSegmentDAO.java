@@ -1,8 +1,7 @@
 package gunboatdiplomat.db;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import gunboatdiplomat.model.VidSeg;
 
@@ -56,7 +55,13 @@ public class VideoSegmentDAO {
 			ps.setString(3, vs.quote);
 			ps.setInt(4, vs.seasonNum);
 			ps.setInt(5, vs.episodeNum);
-			ps.setBoolean(6, vs.isLocal);
+			
+			// Changing a boolean to an int for DB. 
+			if(vs.isLocal == true) {ps.setInt(6, 1);}
+			else {ps.setInt(6, 0);}
+			if(vs.isMarked == true) {ps.setInt(7, 1);}
+			else {ps.setInt(7, 0);}
+			
 			ps.setBoolean(7, vs.isMarked);
 			ps.execute();
 			return true;
@@ -68,30 +73,6 @@ public class VideoSegmentDAO {
 		
 	}
 
-	public List<VidSeg> getAllVidSegs() throws Exception {
-		
-		List<VidSeg> allVidSegs = new ArrayList<>();
-		
-		try {
-			Statement statement = connection.createStatement();
-			String query = "SELECT * FROM VideoSegment";
-			ResultSet rs = statement.executeQuery(query);
-			
-			while(rs.next()) {
-				VidSeg c = generateVidSeg(rs);
-				allVidSegs.add(c);
-			}
-			rs.close();
-			statement.close();
-			
-			return allVidSegs;
-		}
-		catch(Exception e) {
-			throw new Exception("Failed to get video segments: " + e.getMessage());
-		}
-		
-	}
-	
 	private VidSeg generateVidSeg(ResultSet rs) throws Exception {
 		
 		String id = rs.getString("video_id");
