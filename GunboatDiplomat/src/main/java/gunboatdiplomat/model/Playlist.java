@@ -6,14 +6,14 @@ import java.util.List;
 public class Playlist {
 
 	public final String name;
-	public List<VidSeg> vidSegs = new ArrayList<>();
+	public List<VidSeg> contents = new ArrayList<>();
 	
 	public Playlist(String name) {
 		this.name = name;
 	}
 	
 /*	public boolean appendVidSeg(VidSeg vs) {
-		vidSegs.add(vs);
+		contents.add(vs);
 		return true;
 	}
 */	
