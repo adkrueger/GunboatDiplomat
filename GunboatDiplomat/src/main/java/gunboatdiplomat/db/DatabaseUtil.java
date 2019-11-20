@@ -18,7 +18,7 @@ public class DatabaseUtil {
 	// The above link shows how to do that.
 	public final static String rdsMySqlDatabaseUrl = "gunboatdiplomatgp.cmtfholkfx6a.us-east-2.rds.amazonaws.com";
 	public final static String dbUsername = "gunboatdiplomat";
-	public final static String dbPassword = "gunboat123";
+	public final static String dbPassword = "gunboat123" ;
 		
 	public final static String jdbcTag = "jdbc:mysql://";
 	public final static String rdsMySqlDatabasePort = "3306";
@@ -35,7 +35,7 @@ public class DatabaseUtil {
 	protected static Connection connect() throws Exception {
 		if (conn != null) { return conn; }
 		
-		try {
+		
 			System.out.println("start connecting......");
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(
@@ -44,8 +44,6 @@ public class DatabaseUtil {
 					dbPassword);
 			System.out.println("Database has been connected successfully.");
 			return conn;
-		} catch (Exception ex) {
-			throw new Exception("Failed in database connection");
-		}
+		
 	}
 }
