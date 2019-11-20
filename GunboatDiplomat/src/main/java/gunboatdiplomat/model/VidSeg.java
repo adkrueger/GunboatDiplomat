@@ -22,4 +22,13 @@ public class VidSeg {
 		
 	}
 	
+	public boolean equals(VidSeg vs) {
+		return     this.id == id 
+				&& this.character == character 
+				&& this.quote == quote 
+				&& this.seasonNum == seasonNum 
+				&& this.isLocal == isLocal 
+				&& this.isMarked == isMarked;				
+	}
+	
 }
