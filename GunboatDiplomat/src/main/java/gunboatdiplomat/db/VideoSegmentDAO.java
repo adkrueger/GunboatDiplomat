@@ -48,9 +48,7 @@ public class VideoSegmentDAO {
 		
 		try {
 			
-			PreparedStatement ps = connection.prepareStatement("SELECT * FROM VideoSegment where video_id = ?;");
-
-			ps = connection.prepareStatement("INSERT INTO VideoSegment (video_id,character_speaking,quote,season,episode,is_local,is_marked) values(?,?,?,?,?,?,?)");
+			PreparedStatement ps = connection.prepareStatement("INSERT INTO VideoSegment (video_id,character_speaking,quote,season,episode,is_local,is_marked) VALUES(?,?,?,?,?,?,?)");
 			ps.setString(1, vs.id);
 			ps.setString(2, vs.character);
 			ps.setString(3, vs.quote);
