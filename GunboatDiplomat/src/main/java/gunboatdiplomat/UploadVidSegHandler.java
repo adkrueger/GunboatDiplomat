@@ -3,7 +3,7 @@ package gunboatdiplomat;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.s3.AmazonS3;
 
-import db.VidSegDAO;
+import gunboatdiplomat.db.VideoSegmentDAO;
 
 public class UploadVidSegHandler {
 
@@ -12,9 +12,9 @@ public class UploadVidSegHandler {
 	LambdaLogger logger;
 	
 	// uploading the video segment (essentially creating a new video segment(
-	boolean uploadVidSeg(String id) {
+/*	boolean uploadVidSeg(String id) {
 		if(logger != null) { logger.log("in uploadVidSeg"); }
-		VidSegDAO dao = new VidSegDAO();
+		VideoSegmentDAO dao = new VideoSegmentDAO();
 		
 		VidSeg exist = dao.getVidSeg(id);
 		VidSeg vidSeg = new VidSeg(id);
@@ -25,5 +25,5 @@ public class UploadVidSegHandler {
 			return false;
 		}
 	}
-	
+*/
 }
