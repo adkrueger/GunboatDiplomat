@@ -20,26 +20,27 @@ public class VideoSegmentDAO {
 	}// end constructor
 
 
-	public boolean getVideoSegment(int s) {
+	public VidSeg getVidSeg(String id) throws Exception {
 
 		try {
-			PreparedStatement ps = connection.prepareStatement("SELECT * FROM VideoSegment WHERE season=?;");
-			ps.setInt(1, s);
+			VidSeg vs = null;
+			PreparedStatement ps = connection.prepareStatement("SELECT * FROM VideoSegment WHERE video_id=?;");
+			ps.setString(1, id);
 			ResultSet rs = ps.executeQuery();
 
 			while(rs.next()) {
-				System.out.println("season" + rs.getInt(1));
+//				System.out.println("video id: " + rs.getString("video_id"));
+				vs = generateVidSeg(rs);
 			}
 			rs.close();
 			ps.close();
 
-			return true;
+			return vs;
 		}
 		catch(Exception e) {
-			System.out.print("string not found!");
+			e.printStackTrace();
+			throw new Exception("Failed in getting video segment: " + e.getMessage());
 		}
-
-		return false;
 
 	}
 	
@@ -49,7 +50,7 @@ public class VideoSegmentDAO {
 			
 			PreparedStatement ps = connection.prepareStatement("SELECT * FROM VideoSegment where video_id = ?;");
 
-			ps = connection.prepareStatement("INSERT INTO VideoSegment (video_id, character_speaking, quote, season, episode, is_local, is_marked) values(?,?,?,?,?,?,?)");
+			ps = connection.prepareStatement("INSERT INTO VideoSegment (video_id,character_speaking,quote,season,episode,is_local,is_marked) values(?,?,?,?,?,?,?)");
 			ps.setString(1, vs.id);
 			ps.setString(2, vs.character);
 			ps.setString(3, vs.quote);
@@ -67,5 +68,17 @@ public class VideoSegmentDAO {
 		
 	}
 
+	private VidSeg generateVidSeg(ResultSet rs) throws Exception {
+		
+		String id = rs.getString("video_id");
+		String character = rs.getString("character_speaking");
+		String quote = rs.getString("quote");
+		int season = rs.getInt("season");
+		int episode = rs.getInt("episode");
+		boolean isLocal = rs.getBoolean("is_local");
+		boolean isMarked = rs.getBoolean("is_marked");
+		
+		return new VidSeg(id, character, quote, season, episode, isLocal, isMarked);
+	}
 
 }//end class VideoSegmentDAO
