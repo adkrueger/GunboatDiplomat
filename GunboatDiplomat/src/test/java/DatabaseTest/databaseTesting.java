@@ -33,5 +33,26 @@ public class databaseTesting {
 		assertTrue(vs1.equals(vs2));
 
 	}
+	
+	@Test
+	public void testAddVidSeg() throws Exception{
+		
+		//Creating sample entry for DB.  
+		VidSeg vs1 = new VidSeg("TestingString", "Ashwin Pai", "This is a test", 2, 12, true, false);
+		
+		//Adding sample entry to DB. 
+		vidsegDAO.addVidSeg(vs1);
+		
+		//Checking to see if the the entry was processed. 
+		VidSeg vs2 = vidsegDAO.getVidSeg("TestingString");
+		
+		//Checking to see that they are equal
+		assertTrue(vs1.equals(vs2));
+		
+		//Deleting the VidSeg that was just added. 
+		
+		
+		
+	}
 
 }
