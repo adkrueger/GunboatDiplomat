@@ -34,6 +34,14 @@ public class databaseTesting {
 
 	}
 	
+	/**
+	 * testAddVidSeg()
+	 * 
+	 * This method tests to see if you can add a video segment to the DB. 
+	 * At the end it also tests the delete function which removes a video 
+	 * from the DB. 
+	 * @throws Exception
+	 */
 	@Test
 	public void testAddVidSeg() throws Exception{
 		
