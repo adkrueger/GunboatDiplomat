@@ -1,6 +1,8 @@
 package gunboatdiplomat.db;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import gunboatdiplomat.model.VidSeg;
 
@@ -17,7 +19,7 @@ public class VideoSegmentDAO {
 			connection = null;
 			System.out.println("Connection has failed!");
 		}
-	}// end constructor
+	}
 
 
 	public VidSeg getVidSeg(String id) throws Exception {
@@ -29,7 +31,6 @@ public class VideoSegmentDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while(rs.next()) {
-//				System.out.println("video id: " + rs.getString("video_id"));
 				vs = generateVidSeg(rs);
 			}
 			rs.close();
@@ -48,16 +49,14 @@ public class VideoSegmentDAO {
 		
 		try {
 			
-			PreparedStatement ps = connection.prepareStatement("SELECT * FROM VideoSegment where video_id = ?;");
-
-			ps = connection.prepareStatement("INSERT INTO VideoSegment (video_id,character_speaking,quote,season,episode,is_local,is_marked) values(?,?,?,?,?,?,?)");
+			PreparedStatement ps = connection.prepareStatement("INSERT INTO VideoSegment (video_id,character_speaking,quote,season,episode,is_local,is_marked) VALUES(?,?,?,?,?,?,?)");
 			ps.setString(1, vs.id);
 			ps.setString(2, vs.character);
 			ps.setString(3, vs.quote);
 			ps.setInt(4, vs.seasonNum);
 			ps.setInt(5, vs.episodeNum);
-			ps.setBoolean(6, vs.isLocal);
-			ps.setBoolean(7, vs.isMarked);
+			ps.setInt(6, vs.isLocal);
+			ps.setInt(7, vs.isMarked);
 			ps.execute();
 			return true;
 			
@@ -67,7 +66,54 @@ public class VideoSegmentDAO {
 		}
 		
 	}
+	
+	public boolean deleteVidSeg(VidSeg vs) throws Exception {
+		try { 
+			
+			//Check to see if VidSeg Exists
+			if(vs.equals(getVidSeg(vs.id))) {
+				
+				//If yes, then delete. 
+				PreparedStatement ps = connection.prepareStatement("DELETE FROM VideoSegment WHERE video_id=?;");
+				ps.setString(1, vs.id);
+				ps.executeUpdate();
+				return true;
+			}
+			
+			//VidSeg does not exist.
+			else {return false;}
+			
+		}
+		catch(Exception e) {
+			System.out.println("Something went wrong!");
+			return false;
+		}
+	}
 
+	public List<VidSeg> getAllVidSegs() throws Exception {
+		
+		List<VidSeg> allVidSegs = new ArrayList<>();
+		
+		try {
+			Statement statement = connection.createStatement();
+			String query = "SELECT * FROM VideoSegment";
+			ResultSet rs = statement.executeQuery(query);
+			
+			while(rs.next()) {
+				VidSeg c = generateVidSeg(rs);
+				allVidSegs.add(c);
+			}
+			rs.close();
+			statement.close();
+			
+			return allVidSegs;
+		}
+		catch(Exception e) {
+			throw new Exception("Failed to get video segments: " + e.getMessage());
+		}
+		
+	}
+	
 	private VidSeg generateVidSeg(ResultSet rs) throws Exception {
 		
 		String id = rs.getString("video_id");
@@ -75,10 +121,10 @@ public class VideoSegmentDAO {
 		String quote = rs.getString("quote");
 		int season = rs.getInt("season");
 		int episode = rs.getInt("episode");
-		boolean isLocal = rs.getBoolean("is_local");
-		boolean isMarked = rs.getBoolean("is_marked");
+		int isLocal = rs.getInt("is_local");
+		int isMarked = rs.getInt("is_marked");
 		
 		return new VidSeg(id, character, quote, season, episode, isLocal, isMarked);
 	}
 
-}//end class VideoSegmentDAO
+}

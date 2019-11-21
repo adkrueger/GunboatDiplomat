@@ -7,10 +7,10 @@ public class VidSeg {
 	public final String quote;	
 	public final int seasonNum;
 	public final int episodeNum;
-	public boolean isLocal;
-	public boolean isMarked;
+	public int isLocal;		// 0 or 1
+	public int isMarked;	// 0 or 1
 	
-	public VidSeg(String id, String character, String quote, int seasonNum, int episodeNum, boolean isLocal, boolean isMarked) {
+	public VidSeg(String id, String character, String quote, int seasonNum, int episodeNum, int isLocal, int isMarked) {
 		
 		this.id = id;
 		this.character = character;
@@ -20,6 +20,17 @@ public class VidSeg {
 		this.isLocal = isLocal;
 		this.isMarked = isMarked;
 		
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		return     ((VidSeg)o).id.equals(id) 
+				&& ((VidSeg)o).character.equals(character) 
+				&& ((VidSeg)o).quote.equals(quote) 
+				&& ((VidSeg)o).seasonNum == seasonNum 
+				&& ((VidSeg)o).episodeNum == episodeNum
+				&& ((VidSeg)o).isLocal == isLocal
+				&& ((VidSeg)o).isMarked == isMarked;				
 	}
 	
 }
