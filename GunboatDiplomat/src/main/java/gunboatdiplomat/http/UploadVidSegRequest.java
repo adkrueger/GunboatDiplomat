@@ -6,8 +6,8 @@ public class UploadVidSegRequest {
 	public String quote;
 	public String base64EncodedSeason;
 	public String base64EncodedEpisode;
-	public boolean isLocal;
-	public boolean isMarked;
+	public int isLocal;
+	public int isMarked;
 	
 	public String getName( ) { return id; }
 	public void setName(String id) { this.id = id; }
@@ -27,15 +27,15 @@ public class UploadVidSegRequest {
 	public String getBase64EncodedEpisode() { return base64EncodedEpisode; }
 	public void setBase64EncodedEpisode(String base64EncodedEpisode) { this.base64EncodedEpisode = base64EncodedEpisode; }
 
-	public boolean isLocal() { return isLocal; }
-	public void setLocal(boolean isLocal) { this.isLocal = isLocal; }
+	public boolean isLocal() { return isLocal == 1; }
+	public void setLocal(int isLocal) { this.isLocal = isLocal; }
 	
-	public boolean isMarked() { return isMarked; }
-	public void setMarked(boolean isMarked) { this.isMarked = isMarked; }
+	public boolean isMarked() { return isMarked == 1; }
+	public void setMarked(int isMarked) { this.isMarked = isMarked; }
 	
 	public UploadVidSegRequest() { }
 	
-	public UploadVidSegRequest(String id, String character, String quote, String seasonNum, String episodeNum, boolean isLocal, boolean isMarked) {
+	public UploadVidSegRequest(String id, String character, String quote, String seasonNum, String episodeNum, int isLocal, int isMarked) {
 
 		this.id = id;
 		this.character_speaking = character;

@@ -1,7 +1,9 @@
 package gunboatdiplomat;
 
 import com.amazonaws.regions.Regions;
+import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
+import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.ListObjectsV2Request;
@@ -15,9 +17,10 @@ import java.util.List;
 import java.util.Scanner;
 
 import gunboatdiplomat.db.VideoSegmentDAO;
+import gunboatdiplomat.http.AllVidSegsResponse;
 import gunboatdiplomat.model.VidSeg;
 
-public class ListVidSegHandler {
+public class ListVidSegsHandler implements RequestHandler<Object,AllVidSegsResponse>{
 
 	private AmazonS3 s3 = null;
 	public LambdaLogger logger;
@@ -29,6 +32,7 @@ public class ListVidSegHandler {
 		return dao.getAllVidSegs();
 	}
 
+	//TODO: change name and implement
 	List<VidSeg> systemConstants() throws Exception {
 		logger.log("in systemConstants");
 		if (s3 == null) {
@@ -36,7 +40,7 @@ public class ListVidSegHandler {
 			s3 = AmazonS3ClientBuilder.standard().withRegion(Regions.US_EAST_2).build();
 			logger.log("attach to S3 succeed");
 		}
-		ArrayList<VidSeg> sysVidSegs = new ArrayList<>();
+		ArrayList<VidSeg> folderVidSegs = new ArrayList<>();
 
 		// retrieve listing of all objects in the designated bucket
 		ListObjectsV2Request listObjectsRequest = new ListObjectsV2Request()
@@ -74,11 +78,38 @@ public class ListVidSegHandler {
 				// just grab name *after* the slash. Note this is a SYSTEM constant
 				int postSlash = name.indexOf('/');
 				//Check on this later on!!!
-				//sysVidSegs.add(new VidSeg());
-			} catch (Exception e) {
+				folderVidSegs.add(new VidSeg(id, character, quote, Integer.valueOf(seasonNum), Integer.valueOf(episodeNum), Integer.valueOf(isLocal), Integer.valueOf(isMarked)));
+			} 
+			catch (Exception e) {
 				logger.log("Unable to parse contents of " + name);
 			}
 		}
-		return sysVidSegs;
+		return folderVidSegs;
 	}
+	
+	@Override
+	public AllVidSegsResponse handleRequest(Object input, Context context)  {
+		logger = context.getLogger();
+		logger.log("loading Java Lambda handler to list all video segments");
+
+		AllVidSegsResponse response;
+		
+		try {
+			// get all user defined constants AND system-defined constants.
+			// Note that user defined constants override system-defined constants.
+			List<VidSeg> list = getVidSegs();
+			for (VidSeg c : systemConstants()) {
+				if (!list.contains(c)) {
+					list.add(c);
+				}
+			}
+			response = new AllVidSegsResponse(list, 200);
+		} 
+		catch (Exception e) {
+			response = new AllVidSegsResponse(403, e.getMessage());
+		}
+		
+		return response;
+	}	
+	
 }

@@ -55,8 +55,8 @@ public class VideoSegmentDAO {
 			ps.setString(3, vs.quote);
 			ps.setInt(4, vs.seasonNum);
 			ps.setInt(5, vs.episodeNum);
-			ps.setBoolean(6, vs.isLocal);
-			ps.setBoolean(7, vs.isMarked);
+			ps.setInt(6, vs.isLocal);
+			ps.setInt(7, vs.isMarked);
 			ps.execute();
 			return true;
 			
@@ -121,8 +121,8 @@ public class VideoSegmentDAO {
 		String quote = rs.getString("quote");
 		int season = rs.getInt("season");
 		int episode = rs.getInt("episode");
-		boolean isLocal = rs.getBoolean("is_local");
-		boolean isMarked = rs.getBoolean("is_marked");
+		int isLocal = rs.getInt("is_local");
+		int isMarked = rs.getInt("is_marked");
 		
 		return new VidSeg(id, character, quote, season, episode, isLocal, isMarked);
 	}
