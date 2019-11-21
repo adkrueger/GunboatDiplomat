@@ -24,9 +24,9 @@ public class VidSeg {
 	
 	@Override
 	public boolean equals(Object o) {
-		return     ((VidSeg)o).id == id 
-				&& ((VidSeg)o).character == character 
-				&& ((VidSeg)o).quote == quote 
+		return     ((VidSeg)o).id.equals(id) 
+				&& ((VidSeg)o).character.equals(character) 
+				&& ((VidSeg)o).quote.equals(quote) 
 				&& ((VidSeg)o).seasonNum == seasonNum 
 				&& ((VidSeg)o).isLocal == isLocal 
 				&& ((VidSeg)o).isMarked == isMarked;				

@@ -31,7 +31,6 @@ public class VideoSegmentDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while(rs.next()) {
-//				System.out.println("video id: " + rs.getString("video_id"));
 				vs = generateVidSeg(rs);
 			}
 			rs.close();
@@ -66,6 +65,29 @@ public class VideoSegmentDAO {
 			throw new Exception("Failed to insert video segment: " + e.getMessage());
 		}
 		
+	}
+	
+	public boolean deleteVidSeg(VidSeg vs) throws Exception {
+		try { 
+			
+			//Check to see if VidSeg Exists
+			if(vs.equals(getVidSeg(vs.id))) {
+				
+				//If yes, then delete. 
+				PreparedStatement ps = connection.prepareStatement("DELETE FROM VideoSegment WHERE video_id=?;");
+				ps.setString(1, vs.id);
+				ps.executeUpdate();
+				return true;
+			}
+			
+			//VidSeg does not exist.
+			else {return false;}
+			
+		}
+		catch(Exception e) {
+			System.out.println("Something went wrong!");
+			return false;
+		}
 	}
 
 	public List<VidSeg> getAllVidSegs() throws Exception {
