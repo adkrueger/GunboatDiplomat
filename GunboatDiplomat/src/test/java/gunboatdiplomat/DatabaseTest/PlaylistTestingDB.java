@@ -1,4 +1,4 @@
-package DatabaseTest;
+package gunboatdiplomat.DatabaseTest;
 
 public class PlaylistTestingDB {
 

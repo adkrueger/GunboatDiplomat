@@ -1,4 +1,4 @@
-package DatabaseTest;
+package gunboatdiplomat.DatabaseTest;
 
 import static org.junit.Assert.*;
 
