@@ -10,7 +10,6 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.amazonaws.services.s3.model.PutObjectResult;
 
 import gunboatdiplomat.db.VideoSegmentDAO;
 import gunboatdiplomat.http.UploadVidSegRequest;
@@ -67,19 +66,17 @@ public class UploadVidSegHandler implements RequestHandler<UploadVidSegRequest, 
 		logger.log(req.toString());
 
 		UploadVidSegResponse response;
-/*
+
 		try {
-			byte[] encodedSeason = java.util.Base64.getDecoder().decode(req.base64EncodedSeason);
-			byte[] encodedEpisode = java.util.Base64.getDecoder().decode(req.base64EncodedEpisode);
-			if (uploadVidSegToS3(req.id, encodedSeason)) {
+			byte[] encodedFile = java.util.Base64.getDecoder().decode(req.base64EncodedContents);
+
+			if (uploadVidSegToS3(req.id, encodedFile)) {
 				response = new UploadVidSegResponse(req.id);
 			} else {
 				response = new UploadVidSegResponse(req.id, 422);
 			}
-			String contents = new String(encoded);
-			double value = Double.valueOf(contents);
 
-			if (uploadVidSegToRDS(req.id, req.character_speaking, req.quote, Integer.valueOf(req.base64EncodedSeason), Integer.valueOf(req.base64EncodedEpisode), req.isLocal, req.isMarked)) {
+			if (uploadVidSegToRDS(req.id, req.character_speaking, req.quote, req.seasonNum, req.episodeNum, req.isLocal, req.isMarked)) {
 				response = new UploadVidSegResponse(req.id);
 			} else {
 				response = new UploadVidSegResponse(req.id, 422);
@@ -87,10 +84,8 @@ public class UploadVidSegHandler implements RequestHandler<UploadVidSegRequest, 
 		} catch (Exception e) {
 			response = new UploadVidSegResponse("Unable to create constant: " + req.id + "(" + e.getMessage() + ")", 400);
 		}
-*/
-		//TODO: aaron fix this
-		return null;	//TODO: Fix this, used to avoid errors
-		//TODO: note to self: fix
+
+		return response;
 	}
 
 }
