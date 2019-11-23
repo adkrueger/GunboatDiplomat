@@ -46,7 +46,7 @@ public class UploadVidSegHandler implements RequestHandler<UploadVidSegRequest, 
 		if(s3 == null) {
 			logger.log("attach to S3 request");
 			s3 = AmazonS3ClientBuilder.standard().withRegion(Regions.US_EAST_2).build();
-			logger.log("attach to s3 successful");
+			logger.log("attach to S3 successful");
 		}
 
 		ByteArrayInputStream bais = new ByteArrayInputStream(contents);
