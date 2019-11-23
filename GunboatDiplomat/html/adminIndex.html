@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<title>Client Webapp</title>
+  <style>
+    html {
+      font-family: Calibri, sans-serif;
+    }
+    p, span {
+      font-size: 16px;
+    }
+    
+    .header {
+      text-align: center; 
+    }
+    .divider {
+      width: 5px;
+      display: inline-block;
+      height: auto;
+    }
+/*    .playlist {
+      margin: 0 auto;
+      width: 70%;
+      padding-left: 10%;
+    }
+add this back if we want to center buttons */
+    .button {
+      background-color: #D3D3D3;
+      border: none;
+      color: black;
+      padding: 5px 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      transition: .2s;
+      border-radius: 8px;
+    }
+    .button:hover {
+      background-color: #909090;
+      transition: .2s;
+      cursor: pointer;
+    }
+    .button:active {
+      background-color: #606060;
+      border-radius: 10px;
+      transition: .2s;
+      cursor: pointer;
+    }
+    .textInput {
+      font-size: 16px;
+      height: 20px;
+      width: 200px;
+    }
+    .vertSpace {
+      width: auto;
+      height: 5px;
+    }
+    .vidSegID {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .vidSegQuote {
+      font-size: 14px;
+    }
+    .itemList {
+      list-style: none;
+      padding-left: 0;
+    }
+  </style>
+</head>
+
+<body>
+	<div class="playlists">
+		<h1 class="header">PLAYLISTS</h1>
+    <input class="button" type="button" value="New Playlist"/>
+    <div class="divider"></div>
+    <div id="playlistList">
+      <ul class="itemList">
+        <li>
+          <div class="playlist">
+            <p class="playlistName"></p>
+            <input class="button" type="button" value="Play"/>
+            <div class="divider"></div>
+            <input class="button" type="button" value="Append VS"/>
+            <div class="divider"></div>
+            <input class="button" type="button" value="Remove VS"/>
+            <div class="divider"></div>
+            <input class="button" type="button" value="Delete"/>
+            <div class="divider"></div>
+            <input class="button" type="button" value="List VS in Playlist"/>
+          </div>
+        </li>
+      </ul>
+    </div>
+	</div>
+	<hr />
+  <div class="vidSegs">
+    <h1 class="header">VIDEO SEGMENTS</h1>
+    <input class="textInput" type="text" placeholder="Search video segments..." style="display: inline-block;"/>
+    <div class="divider"></div>
+    <input class="button" type="button" value="Search"/>
+    <div class="vertSpace"></div>
+    <form name="uploadVidSeg" method="post">
+      <span>Select a video to upload: </span> <input type="file" id="vidSegFile" name="vidSegFile">
+      <br /> <input name="base64Encoding" value="" hidden/>
+      <div class="vertSpace"></div>
+      <input class="textInput" type="text" placeholder="Insert character"/>
+      <div class="divider"></div>
+      <input class="textInput" type="text" placeholder="Insert quote"/>
+      <div class="divider"></div>
+      <input class="textInput" type="text" placeholder="Insert season number"/>
+      <div class="divider"></div>
+      <input class="textInput" type="text" placeholder="Insert episode number"/>
+      <div class="divider"></div>
+      <input class="button" type="button" value="Upload Video" disabled/>
+    </form>
+    <div id="vidSegList">
+      <ul class="itemList">
+        <li>
+          <div class = "vidSeg">
+            <p class="vidSegID"></p>
+            <p class="vidSegQuote"></p>
+            <input class="button" type="button" value="Delete"/>
+            <div class="divider"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <hr />
+  <div class="admin">
+    <h1 class="header">ADMIN USAGE</h1>
+    <input class="textInput" type="text" placeholder="Add Remote URL" style="display: inline-block;"/>
+    <div class="divider"></div>
+    <input class="button" type="button" value="Add URL"/>
+    <div class="vertSpace"></div>
+    <h3>Remote URLs</h3>
+    <div id="remoteList">
+      <ul class="itemList">
+        <li>
+          <div class = "vidSeg">
+            <p class="remoteURL"></p>
+            <input class="button" type="button" value="Delete"/>
+            <div class="divider"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <h3>Local Video Segments</h3>
+    <div id="adminVidSegList">
+      <ul class="itemList">
+        <li>
+          <div class = "localVidSeg">
+            <p class="vidSegID"></p>
+            <p class="vidSegQuote"></p>
+            <input class="button" type="button" value="Delete"/>
+            <div class="divider"></div>
+            <input class="button" type="button" value="Mark"/>
+            <div class="divider"></div>
+            <input class="button" type="button" value="Unmark"/>
+          </div>
+        </li>
+        <li>
+          <div class = "localVidSeg">
+            <p class="vidSegID"></p>
+            <p class="vidSegQuote"></p>
+            <input class="button" type="button" value="Delete"/>
+            <div class="divider"></div>
+            <input class="button" type="button" value="Mark"/>
+            <div class="divider"></div>
+            <input class="button" type="button" value="Unmark"/>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
