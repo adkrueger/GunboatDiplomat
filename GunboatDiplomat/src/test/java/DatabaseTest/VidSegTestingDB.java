@@ -2,6 +2,7 @@ package DatabaseTest;
 
 import static org.junit.Assert.*;
 
+
 import org.junit.Test;
 import gunboatdiplomat.db.VideoSegmentDAO;
 import gunboatdiplomat.model.VidSeg;
@@ -80,11 +81,11 @@ public class VidSegTestingDB {
 		VidSeg vs3 = new VidSeg("6600f679-27e6-43b4-b743-50c66483b2d5", "Zefram Cochrane", "Captain, why did you build that translator with a feminine voice?", 2, 9, 1, 0);
 		VidSeg vs4 = new VidSeg("65ec514c-64f4-473d-902e-b93c4bcd9439", "Leonard McCoy", "That's a pretty far out story.", 2, 9, 1, 0);
 		VidSeg vs5 = new VidSeg("df79e576-3c06-468d-a3b2-fab974607260", "Amanda Grayson", "Well it's sort of a fat teddy bear.", 2, 10, 1, 0);
-		VidSeg vs6 = new VidSeg("30f065a0-42e2-4be3-a64f-14aac9a03252", "You touch it, her nearest male relative will have to try to kill you.", "Leonard McCoy", 2, 11, 1, 0);
-		VidSeg vs7 = new VidSeg("c44af4fd-1b23-4350-bd91-d797de7f1eca", "That should prove very interesting.", "Spock", 2, 11, 1, 0);
-		VidSeg vs8 = new VidSeg("32b1d20e-62cf-4917-bc19-33c3cbb09a7e", "Now you must want the child!", "Leonard McCoy", 2, 11, 1, 0);
-		VidSeg vs9 = new VidSeg("668260dc-cebf-44b3-89fe-c30ec4909d76", "More like love.", "James T. Kirk", 2, 9, 1, 0);
-		VidSeg vs10 = new VidSeg("4e770ca3-2961-4a38-a412-c2c60505bbc5", "A more facinating thing happened.", "Spock", 2, 9, 1, 0);
+		VidSeg vs6 = new VidSeg("30f065a0-42e2-4be3-a64f-14aac9a03252", "Leonard McCoy","You touch it, her nearest male relative will have to try to kill you.",  2, 11, 1, 0);
+		VidSeg vs7 = new VidSeg("c44af4fd-1b23-4350-bd91-d797de7f1eca", "Spock","That should prove very interesting.",  2, 11, 1, 0);
+		VidSeg vs8 = new VidSeg("32b1d20e-62cf-4917-bc19-33c3cbb09a7e", "Leonard McCoy", "Now you must want the child!", 2, 11, 1, 0);
+		VidSeg vs9 = new VidSeg("668260dc-cebf-44b3-89fe-c30ec4909d76", "James T. Kirk", "More like love.", 2, 9, 1, 0);
+		VidSeg vs10 = new VidSeg("4e770ca3-2961-4a38-a412-c2c60505bbc5", "Spock", "A more facinating thing happened.", 2, 9, 1, 0);
 		
 		List<VidSeg> listOfSegSolution  = new ArrayList<VidSeg>();
 		listOfSegSolution.add(vs1);

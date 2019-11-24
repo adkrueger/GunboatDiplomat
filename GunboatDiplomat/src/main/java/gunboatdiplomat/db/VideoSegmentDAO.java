@@ -31,7 +31,7 @@ public class VideoSegmentDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while(rs.next()) {
-				vs = generateVidSeg(rs);
+				vs = generateVidSeg(rs); 	
 			}
 			rs.close();
 			ps.close();
@@ -116,15 +116,15 @@ public class VideoSegmentDAO {
 	
 	private VidSeg generateVidSeg(ResultSet rs) throws Exception {
 		
-		String id = rs.getString("video_id");
-		String character = rs.getString("character_speaking");
-		String quote = rs.getString("quote");
-		int season = rs.getInt("season");
-		int episode = rs.getInt("episode");
-		int isLocal = rs.getInt("is_local");
-		int isMarked = rs.getInt("is_marked");
-		
-		return new VidSeg(id, character, quote, season, episode, isLocal, isMarked);
+			String id = rs.getString("video_id");
+			String character = rs.getString("character_speaking");
+			String quote = rs.getString("quote");
+			int season = rs.getInt("season");
+			int episode = rs.getInt("episode");
+			int isLocal = rs.getInt("is_local");
+			int isMarked = rs.getInt("is_marked");
+			
+			return new VidSeg(id, character, quote, season, episode, isLocal, isMarked);
 	}
 
 }
