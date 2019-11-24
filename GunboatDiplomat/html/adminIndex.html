@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 
 <html lang="en">
+<head>
+<meta charset="utf-8"/>
 <script type="text/javascript" src="../js/api.js"></script>
 <script type="text/javascript" src="../js/getAllVidSegs.js"></script>
-<head>
+
+<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function () {
+		console.log("hello!!!!");
+	});
+
+	function initialize() {
+		console.log("initializing");
+		refreshVidSegList();
+	}
+</script>
 <title>Client Webapp</title>
 <style>
 html {
 	font-family: Calibri, sans-serif;
 }
 
-p, span {
+b, p, span {
 	font-size: 16px;
 }
 

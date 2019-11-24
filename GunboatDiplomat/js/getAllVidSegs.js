@@ -1,4 +1,5 @@
 function refreshVidSegList() {
+	console.log("inside refreshvidseglist()");
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", listVidSegs_url, true);
 	xhr.send();

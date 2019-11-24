@@ -2,8 +2,22 @@
 
 <html lang="en">
 <head>
+<meta charset="utf-8"/>
 <script type="text/javascript" src="../js/api.js"></script>
 <script type="text/javascript" src="../js/getAllVidSegs.js"></script>
+
+<script type="text/javascript">
+
+	document.addEventListener('DOMContentLoaded', function() {
+		function initialize() {
+			console.log("initializing");
+			refreshVidSegList();
+		}
+		
+		initialize();
+	});
+
+</script>
 <title>Client Webapp</title>
 <style>
 html {
