@@ -6,6 +6,15 @@ import java.util.List;
 
 import gunboatdiplomat.model.VidSeg;
 
+/**TODO
+ * 11/21/19
+ * @author Shannon Truong 
+ * for deleteVidSeg method, make sure to edit and check for the isLocal
+ * attribute for a request to delete a video segment
+ * 		ie. it can only be deleted if the video segment being requested
+ * 			is local to the library and not from a remote library
+ */
+
 public class VideoSegmentDAO {
 	
 	java.sql.Connection connection;

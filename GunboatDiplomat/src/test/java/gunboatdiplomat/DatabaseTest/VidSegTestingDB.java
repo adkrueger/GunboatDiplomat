@@ -1,4 +1,4 @@
-package DatabaseTest;
+package gunboatdiplomat.DatabaseTest;
 
 import static org.junit.Assert.*;
 
@@ -6,10 +6,9 @@ import org.junit.Test;
 import gunboatdiplomat.db.VideoSegmentDAO;
 import gunboatdiplomat.model.VidSeg;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public class databaseTesting {
+public class VidSegTestingDB {
 
 
 	// Creating VidSegDAO Object

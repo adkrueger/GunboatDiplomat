@@ -4,10 +4,11 @@ public class UploadVidSegRequest {
 	public String id;
 	public String character_speaking;
 	public String quote;
-	public String base64EncodedSeason;
-	public String base64EncodedEpisode;
+	public int seasonNum;
+	public int episodeNum;
 	public int isLocal;
 	public int isMarked;
+	public String base64EncodedContents;
 	
 	public String getName( ) { return id; }
 	public void setName(String id) { this.id = id; }
@@ -20,13 +21,13 @@ public class UploadVidSegRequest {
 
 	public String getQuote() { return quote; }
 	public void setQuote(String quote) { this.quote = quote; }
+
+	public int getSeasonNum() { return seasonNum; }
+	public void setSeasonNum(int seasonNum) { this.seasonNum = seasonNum; }
 	
-	public String getBase64EncodedSeason() { return base64EncodedSeason; }
-	public void setBase64EncodedSeason(String base64EncodedSeason) { this.base64EncodedSeason = base64EncodedSeason; }
-
-	public String getBase64EncodedEpisode() { return base64EncodedEpisode; }
-	public void setBase64EncodedEpisode(String base64EncodedEpisode) { this.base64EncodedEpisode = base64EncodedEpisode; }
-
+	public int getEpisodeNum() { return episodeNum; }
+	public void setEpisodeNum(int episodeNum) { this.episodeNum = episodeNum; }
+	
 	public boolean isLocal() { return isLocal == 1; }
 	public void setLocal(int isLocal) { this.isLocal = isLocal; }
 	
@@ -35,20 +36,21 @@ public class UploadVidSegRequest {
 	
 	public UploadVidSegRequest() { }
 	
-	public UploadVidSegRequest(String id, String character, String quote, String seasonNum, String episodeNum, int isLocal, int isMarked) {
+	public UploadVidSegRequest(String id, String character, String quote, int seasonNum, int episodeNum, int isLocal, int isMarked, String base64EncodedContents) {
 
 		this.id = id;
 		this.character_speaking = character;
 		this.quote = quote;
-		this.base64EncodedSeason = seasonNum;
-		this.base64EncodedEpisode = episodeNum;
+		this.seasonNum = seasonNum;
+		this.episodeNum = episodeNum;
 		this.isLocal = isLocal;
 		this.isMarked = isMarked;
+		this.base64EncodedContents = base64EncodedContents;
 		
 	}
 	
 	public String toString() {
-		return "CreateConstant(" + id + "," + character_speaking + "," + quote + "," + base64EncodedSeason + "," + base64EncodedEpisode + "," + isLocal + "," + isMarked + ")";
+		return "CreateConstant(" + id + "," + character_speaking + "," + quote + "," + seasonNum + "," + episodeNum + "," + isLocal + "," + isMarked + ")";
 	}
 	
 }
