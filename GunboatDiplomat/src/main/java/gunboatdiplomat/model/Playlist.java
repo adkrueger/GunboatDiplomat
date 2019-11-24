@@ -12,9 +12,18 @@ public class Playlist {
 		this.name = name;
 	}
 	
-/*	public boolean appendVidSeg(VidSeg vs) {
-		contents.add(vs);
-		return true;
+	
+	/*
+	 * @Override
+	 
+	public boolean equals(Object o) {
+		return ((VidSeg)o).id.equals(id) 
+				&& ((VidSeg)o).character.equals(character) 
+				&& ((VidSeg)o).quote.equals(quote) 
+				&& ((VidSeg)o).seasonNum == seasonNum 
+				&& ((VidSeg)o).episodeNum == episodeNum
+				&& ((VidSeg)o).isLocal == isLocal
+				&& ((VidSeg)o).isMarked == isMarked;
 	}
-*/	
+	*/
 }
