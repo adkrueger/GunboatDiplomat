@@ -43,7 +43,9 @@ public class PlaylistDAO {
 			VidSeg vs = generateVidSeg(rs_playlist);
 			ls.add(vs);
 		}
+
 		ps.close();
+		rs_playlist.close();
 
 		return ls;
 
@@ -55,9 +57,8 @@ public class PlaylistDAO {
 		//Deleting all songs associated with playlist_title <playlistName>
 		PreparedStatement ps = conn.prepareStatement("DELETE FROM Playlist WHERE playlist_title = ?;");
 		ps.setString(1, playlistName);
-		ResultSet rs = ps.executeQuery();
+		ps.executeUpdate();
 
-		ps.close();
 
 		//Checking to see if the playlist still exists. 
 		PreparedStatement ps1 = conn.prepareStatement("SELECT * FROM Playlist WHERE playlist_title = ?;");
