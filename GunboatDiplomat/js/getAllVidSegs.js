@@ -1,9 +1,8 @@
 function refreshVidSegList() {
-	console.log("inside refreshvidseglist()");
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", listVidSegs_url, true);
 	xhr.send();
-	console.log("request sent");
+	console.log("sent: " + xhr);
 	
 	xhr.onloadend = function() {
 		if(xhr.readyState == XMLHttpRequest.DONE) {
@@ -11,6 +10,7 @@ function refreshVidSegList() {
 			processListResponse(xhr.responseText);
 		}
 		else {
+			console.log("in the else of getAllVidSegs");
 			processListResponse("N/A");
 		}
 	};

@@ -7,16 +7,18 @@
 <script type="text/javascript" src="../js/getAllVidSegs.js"></script>
 
 <script type="text/javascript">
-	document.addEventListener('DOMContentLoaded', function () {
-		console.log("hello!!!!");
-	});
 
-	function initialize() {
-		console.log("initializing");
-		refreshVidSegList();
-	}
+	document.addEventListener('DOMContentLoaded', function() {
+		function initialize() {
+			console.log("initializing");
+			refreshVidSegList();
+		}
+
+		initialize();
+	});
+	
 </script>
-<title>Client Webapp</title>
+<title>Admin Webapp</title>
 <style>
 html {
 	font-family: Calibri, sans-serif;
