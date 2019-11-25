@@ -64,7 +64,7 @@ public class UploadVidSegHandler implements RequestHandler<UploadVidSegRequest, 
 
 		logger = context.getLogger();
 		logger.log(req.toString());
-		logger.log("gonna try to upload now");
+
 		UploadVidSegResponse response;
 
 		try {

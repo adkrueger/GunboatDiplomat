@@ -19,7 +19,7 @@ function processListResponse(response) {
 	let js = JSON.parse(response);
 	let vidsegList = document.getElementById("vidSegList");
 	
-	let output = "";
+	let output = "<ul class=\"itemList\">";
 	for(let i = 0; i < js.vidSegs.length; i++) {
 		let vidSegJson = js.vidSegs[i];
 		console.log(vidSegJson);
@@ -35,9 +35,9 @@ function processListResponse(response) {
 		console.log("ENCODED: " + base64Contents);
 		let decodedContents = atob(base64Contents);
 		console.log("DECODED: " + decodedContents);
-		output = output + "<div id=\"vidSeg-" + id + "\"><b>" + id + "</b><br/><p>" + charSpeaking + "</p><br/><p>" + quote + 
-		"</p><br/><video width=\"350\" height=\"350\" controls><source src=\"" + decodedContents + "\" type=\"video/ogg\"></video></div>";
-		
+		output = output + "<li><div id=\"vidSeg-" + id + "\"><b>" + id + "</b><br/><span>" + charSpeaking + ": \"" + quote + 
+		"\"</span><br/><video width=\"350\" height=\"350\" controls><source src=\"" + decodedContents + "\" type=\"video/ogg\"></video>" +
+				"<br/><input class=\"button\" type=\"button\" value=\"Delete\"/></div></br></li>";
 		vidSegList.innerHTML = output;
 	}
 }

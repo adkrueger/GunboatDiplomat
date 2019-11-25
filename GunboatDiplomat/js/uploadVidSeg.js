@@ -15,17 +15,9 @@ function handleUploadClick(e) {
 	data["episodeNum"] = form.episodeNum.value;
 	data["isLocal"] = 1;
 	data["isMarked"] = 0;
-	console.log("about to log all of data")
-	console.log(data["id"]);
-	console.log(data["character"]);
-	console.log(data["quote"]);
-	console.log(data["seasonNum"]);
-	console.log(data["episodeNum"]);
-	console.log(data["isLocal"]);
-	console.log(data["isMarked"]);
+	
 	let segments = form.base64Encoding.value.split(',');
 	data["base64EncodedValue"] = segments[1];
-	console.log(data["base64EncodedValue"]);
 
 	// make a JSON object out of the input
 	let js = JSON.stringify(data);
@@ -38,7 +30,6 @@ function handleUploadClick(e) {
 	
 	xhr.onloadend = function() {
 		console.log(xhr);
-		console.log(xhr.request);
 		if(xhr.readyState == XMLHttpRequest.DONE) {
 			if(xhr.status == 200) {
 				console.log("XHR: " + xhr.responseText);
@@ -46,8 +37,8 @@ function handleUploadClick(e) {
 			}
 			else {
 				console.log("actual: " + xhr.responseText);
-				let js = JSON.parse(xhr.responseText);
-				let err = js["response"];
+				let newJS = JSON.parse(xhr.responseText);
+				let err = newJS["response"];
 				alert(err);
 			}
 		}
