@@ -1,44 +1,46 @@
 function refreshVidSegList() {
-	console.log("inside refreshvidseglist()");
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", listVidSegs_url, true);
 	xhr.send();
-	console.log("request sent");
-	
+	console.log("sent");
+
 	xhr.onloadend = function() {
 		if(xhr.readyState == XMLHttpRequest.DONE) {
-			console.log("XHR: " + xhr.responseText);
-			processListResponse(xhr.responseText);
+			processVidSegListResponse(xhr.responseText);
 		}
 		else {
-			processListResponse("N/A");
+			processVidSegListResponse("N/A");
 		}
 	};
 }
 
-function processListResponse(response) {
-	console.log("response: " + response);
-	
-	let js = JSON.parse(result);
+function processVidSegListResponse(response) {
+
+	let js = JSON.parse(response);
 	let vidsegList = document.getElementById("vidSegList");
-	
-	let output = "";
-	for(let i = 0; i < js.list.length; i++) {
-		let vidSegJson = js.list[i];
+
+	let output = "<ul class=\"itemList\">";
+	for(let i = 0; i < js.vidSegs.length; i++) {
+		let vidSegJson = js.vidSegs[i];
 		console.log(vidSegJson);
-		
-		let id = vidSegJson[""];
-		let charSpeaking = vidSegJson[""];
-		let quote = vidSegJson[""];
-		let seasonNum = vidSegJson[""];
-		let episodeNum = vidSegJson[""];
-		let isLocal = vidSegJson[""];
-		let isMarked = vidSegJson[""];
-		let base64Contents = vidSegJson[""];
-		
-		output = output + "<div id=\"vidSeg-" + id + "\"><b>" + id + "</b><br/><p>" + charSpeaking + "</p><br/><p>" + quote + 
-		"</p><br/><video width=\"350\" height=\"350\" controls><source src=\"" + base64Contents + "\" type=\"video/ogg\"></video></div>";
-		
+
+		let id = vidSegJson["id"];
+		let charSpeaking = vidSegJson["character"];
+		let quote = vidSegJson["quote"];
+		let seasonNum = vidSegJson["seasonNum"];
+		let episodeNum = vidSegJson["episodeNum"];
+		let isLocal = vidSegJson["isLocal"];
+		let isMarked = vidSegJson["isMarked"];
+		let base64Contents = vidSegJson["base64EncodedContents"];
+		console.log("ENCODED: " + base64Contents);
+		console.log("DECODED: " + atob(base64Contents));
+		output = output + "<li><div id=\"vidSeg-" + id + "\"><b>" + id + "</b><br/><span>" + charSpeaking + ": \"" + quote + 
+		"\"</span><br/><video width=\"350\" height=\"350\" controls><source src=\"" + atob(base64Contents); + "\" type=\"video/ogg\"></video>" +
+		"<br/><input class=\"button\" type=\"button\" value=\"Delete\"/></div></br></li>";
+		if(i == js.vidSegs.length-1) {
+			output = output + "</ul>";
+		}
+
 		vidSegList.innerHTML = output;
 	}
 }
