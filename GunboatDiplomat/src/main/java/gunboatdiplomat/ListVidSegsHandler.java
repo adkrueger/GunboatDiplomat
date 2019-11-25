@@ -62,14 +62,12 @@ public class ListVidSegsHandler implements RequestHandler<Object,AllVidSegsRespo
 			try (S3ObjectInputStream vidSegStream = obj.getObjectContent()) {
 				int postSlash = name.indexOf('/');
 				String id = name.substring(postSlash+1);
-				
+
 				Scanner sc = new Scanner(vidSegStream);
 				String contents = sc.nextLine();
 				sc.close();
 
-				// just grab name *after* the slash. Note this is a SYSTEM constant
-				//Check on this later on!!!
-				folderVidSegs.add(new VidSeg(id, contents));
+				folderVidSegs.add(new VidSeg(id, "https://gd3733.s3.us-east-2.amazonaws.com/" + name));
 			} 
 			catch (Exception e) {
 				logger.log("Unable to parse contents of " + name);
@@ -91,8 +89,9 @@ public class ListVidSegsHandler implements RequestHandler<Object,AllVidSegsRespo
 			List<VidSeg> list = new ArrayList<>();
 			for (VidSeg vs : getVidSegsFromS3()) {
 				VidSeg currVS = dao.getVidSeg(vs.id);
-				currVS.setContents(vs.base64EncodedContents);
+				currVS.setURL(vs.url);
 				list.add(currVS);
+				System.out.println(currVS.url);
 			}
 			response = new AllVidSegsResponse(list, 200);
 		} 
