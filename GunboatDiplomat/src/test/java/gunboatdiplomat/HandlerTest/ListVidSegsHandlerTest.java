@@ -16,6 +16,7 @@ public class ListVidSegsHandlerTest extends LambdaTest{
 	
 	@Test
 	public void testgetList() throws Exception {
+		System.out.println("running test");
 		ListVidSegsHandler handler = new ListVidSegsHandler();
 		
 		AllVidSegsResponse response = handler.handleRequest(null, createContext("list"));
@@ -23,9 +24,9 @@ public class ListVidSegsHandlerTest extends LambdaTest{
 		List<VidSeg> rdsList = handler.getVidSegsFromRDS();
 		List<VidSeg> s3List = handler.getVidSegsFromS3();
 		VideoSegmentDAO dao = new VideoSegmentDAO();
-		
+		System.out.println(dao.getVidSeg("testingVidSeg").toString());
+
 		for(VidSeg vs : s3List) {
-			System.out.println("video segment is: " + vs.toString());
 			Assert.assertTrue(rdsList.contains(dao.getVidSeg(vs.id)));
 		}
 		
