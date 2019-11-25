@@ -46,8 +46,6 @@ public class UploadVidSegHandlerTest extends LambdaTest {
 		
 		InputStream inputStream = UploadVidSegHandlerTest.class.getResourceAsStream("Segment1.ogg");
 		String testFile = null;
-
-		System.out.println(inputStream.toString());
 		
 		try {
 			testFile = new String(java.util.Base64.getEncoder().encode(IOUtils.toByteArray(inputStream)));

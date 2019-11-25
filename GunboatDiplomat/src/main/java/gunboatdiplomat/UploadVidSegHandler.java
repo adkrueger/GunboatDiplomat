@@ -23,7 +23,7 @@ public class UploadVidSegHandler implements RequestHandler<UploadVidSegRequest, 
 	LambdaLogger logger;
 
 	// uploading the video segment info to RDS (essentially creating a new video segment)
-	boolean uploadVidSegToRDS(String id, String character, String quote, int seasonNum, int episodeNum, int isLocal, int isMarked) throws Exception {
+	public boolean uploadVidSegToRDS(String id, String character, String quote, int seasonNum, int episodeNum, int isLocal, int isMarked) throws Exception {
 
 		if(logger != null) { logger.log("in uploadVidSegToRDS"); }
 		VideoSegmentDAO dao = new VideoSegmentDAO();
@@ -39,7 +39,7 @@ public class UploadVidSegHandler implements RequestHandler<UploadVidSegRequest, 
 
 	}
 
-	boolean uploadVidSegToS3(String id, byte[] contents) throws Exception {
+	public boolean uploadVidSegToS3(String id, byte[] contents) throws Exception {
 
 		if(logger != null) { logger.log("in uploadVidSegToS3"); }
 
