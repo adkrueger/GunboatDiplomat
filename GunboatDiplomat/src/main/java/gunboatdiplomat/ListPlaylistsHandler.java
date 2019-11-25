@@ -25,15 +25,15 @@ public class ListPlaylistsHandler implements RequestHandler<Object, ListPlaylist
 	private AmazonS3 s3 = null;
 	LambdaLogger logger;
 
-	List<Playlist> getPlaylists() throws Exception {
+	List<Playlist> getPlaylistsFromRDS() throws Exception {
 		logger.log("in Playlists");
 		PlaylistDAO dao = new PlaylistDAO();
 
 		return dao.getAllPlaylists();
 	}
 
-	List<Playlist> systemPlaylists() throws Exception {
-		logger.log("in systemPlaylists...");
+	List<Playlist> getPlaylistsFromS3() throws Exception {
+		logger.log("in getPlaylistsFromS3");
 
 		if(s3 == null) {
 			logger.log("attach to S3 request");
@@ -59,8 +59,11 @@ public class ListPlaylistsHandler implements RequestHandler<Object, ListPlaylist
 			S3Object obj = s3.getObject("gd3733", name);
 
 			try(S3ObjectInputStream playlistStream = obj.getObjectContent()) {
+				int postSlash = name.indexOf('/');
+				String id = name.substring(postSlash+1);
+				
 				Scanner sc = new Scanner(playlistStream);
-				String id = sc.nextLine();
+				String contents = sc.nextLine();		//TODO: this is what is in the file; need to see if we need to do stuff with this
 				sc.close();
 
 				folderPlaylists.add(new Playlist(id));
@@ -83,15 +86,8 @@ public class ListPlaylistsHandler implements RequestHandler<Object, ListPlaylist
 		ListPlaylistsResponse response;	
 		
 		try {
-			
-			List<Playlist> list = getPlaylists();
-			
-			for(Playlist p : systemPlaylists()) {
-				if(!list.contains(p)) {
-					list.add(p);
-				}
-			}
-			
+			List<Playlist> list = getPlaylistsFromS3();
+			//TODO: change this, will need to have more intricacy with video segments and RDS
 			response = new ListPlaylistsResponse(list, 200);
 		}
 		catch (Exception e) {
