@@ -6,7 +6,6 @@ function refreshVidSegList() {
 	
 	xhr.onloadend = function() {
 		if(xhr.readyState == XMLHttpRequest.DONE) {
-			console.log("XHR: " + xhr.responseText);
 			processListResponse(xhr.responseText);
 		}
 		else {
@@ -16,14 +15,13 @@ function refreshVidSegList() {
 }
 
 function processListResponse(response) {
-	console.log("response: " + response);
 	
-	let js = JSON.parse(result);
+	let js = JSON.parse(response);
 	let vidsegList = document.getElementById("vidSegList");
 	
 	let output = "";
-	for(let i = 0; i < js.list.length; i++) {
-		let vidSegJson = js.list[i];
+	for(let i = 0; i < js.vidSegs.length; i++) {
+		let vidSegJson = js.vidSegs[i];
 		console.log(vidSegJson);
 		
 		let id = vidSegJson["id"];
@@ -33,10 +31,12 @@ function processListResponse(response) {
 		let episodeNum = vidSegJson["episodeNum"];
 		let isLocal = vidSegJson["isLocal"];
 		let isMarked = vidSegJson["isMarked"];
-		let base64Contents = vidSegJson[""];
-		
+		let base64Contents = vidSegJson["base64EncodedContents"];
+		console.log("ENCODED: " + base64Contents);
+		let decodedContents = atob(base64Contents);
+		console.log("DECODED: " + decodedContents);
 		output = output + "<div id=\"vidSeg-" + id + "\"><b>" + id + "</b><br/><p>" + charSpeaking + "</p><br/><p>" + quote + 
-		"</p><br/><video width=\"350\" height=\"350\" controls><source src=\"" + base64Contents + "\" type=\"video/ogg\"></video></div>";
+		"</p><br/><video width=\"350\" height=\"350\" controls><source src=\"" + decodedContents + "\" type=\"video/ogg\"></video></div>";
 		
 		vidSegList.innerHTML = output;
 	}

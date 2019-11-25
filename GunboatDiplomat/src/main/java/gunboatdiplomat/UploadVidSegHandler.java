@@ -42,7 +42,7 @@ public class UploadVidSegHandler implements RequestHandler<UploadVidSegRequest, 
 	public boolean uploadVidSegToS3(String id, byte[] contents) throws Exception {
 
 		if(logger != null) { logger.log("in uploadVidSegToS3"); }
-
+		logger.log("attempting to attach to s3");
 		if(s3 == null) {
 			logger.log("attach to S3 request");
 			s3 = AmazonS3ClientBuilder.standard().withRegion(Regions.US_EAST_2).build();
@@ -64,25 +64,27 @@ public class UploadVidSegHandler implements RequestHandler<UploadVidSegRequest, 
 
 		logger = context.getLogger();
 		logger.log(req.toString());
-
+		logger.log("gonna try to upload now");
 		UploadVidSegResponse response;
 
 		try {
 			byte[] encodedFile = java.util.Base64.getDecoder().decode(req.base64EncodedContents);
-
+			logger.log("attempting to upload to s3");
 			if (uploadVidSegToS3(req.id, encodedFile)) {
 				response = new UploadVidSegResponse(req.id);
 			} else {
 				response = new UploadVidSegResponse(req.id, 422);
 			}
+			logger.log("attempting to upload to RDS");
 
 			if (uploadVidSegToRDS(req.id, req.character_speaking, req.quote, req.seasonNum, req.episodeNum, req.isLocal, req.isMarked)) {
 				response = new UploadVidSegResponse(req.id);
 			} else {
 				response = new UploadVidSegResponse(req.id, 422);
 			}
-		} catch (Exception e) {
-			response = new UploadVidSegResponse("Unable to create constant: " + req.id + "(" + e.getMessage() + ")", 400);
+		} 
+		catch (Exception e) {
+			response = new UploadVidSegResponse("Unable to upload video segment: " + req.id + "(" + e.getMessage() + ")", 400);
 		}
 
 		return response;
