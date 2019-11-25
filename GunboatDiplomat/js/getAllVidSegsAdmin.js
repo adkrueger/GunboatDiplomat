@@ -19,9 +19,12 @@ function processVidSegListResponseAdmin(response) {
 	let js = JSON.parse(response);
 	let vidsegList = document.getElementById("vidSegList");
 	let vidsegInfoList = document.getElementById("vidSegInfoList");
+	let localVidSegList = document.getElementById("localVidSegList");
 	
 	let output = "<h3>Videos</h3><ul class=\"itemList\">";
 	let infoOutput = "<h3>Video Segment Info</h3><ul class=\"itemList\">";
+	let localOutput = "<h3>Local Video Segments</h3><ul class=\"itemList\">";
+	
 	for(let i = 0; i < js.vidSegs.length; i++) {
 		let vidSegJson = js.vidSegs[i];
 		console.log(vidSegJson);
@@ -50,12 +53,18 @@ function processVidSegListResponseAdmin(response) {
 		"<br/><span>Marked: " + markedString + "</span>" +
 		"<br/></div></li><br/>";
 		
+		if(isLocal) {
+			localOutput = localOutput + "<li><div id=\"vidSeg-" + id + "-local\"><p>" + id + "</p></div></li>";
+		}
+		
 		if(i == js.vidSegs.length-1) {
 			output = output + "</ul>";
 			infoOutput = infoOutput + "</ul>";
+			localOutput = localOutput + "</ul>";
 		}
 
 		vidSegList.innerHTML = output;
 		vidSegInfoList.innerHTML = infoOutput;
+		localVidSegList.innerHTML = localOutput;
 	}
 }
