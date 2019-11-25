@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <script type="text/javascript" src="../js/api.js"></script>
-<script type="text/javascript" src="../js/getAllVidSegs.js"></script>
+<script type="text/javascript" src="../js/getAllVidSegsAdmin.js"></script>
 <script type="text/javascript" src="../js/uploadVidSeg.js"></script>
 <script type="text/javascript" src="../js/getAllPlaylists.js"></script>
 
@@ -12,7 +12,8 @@
 	document.addEventListener('DOMContentLoaded', function() {
 		function initialize() {
 			console.log("initializing");
-			refreshVidSegList();
+			refreshVidSegListAdmin();
+			refreshPlaylistList();
 		}
 
 		initialize();
@@ -99,7 +100,16 @@ add this back if we want to center buttons */
 <body>
 	<div class="playlists">
 		<h1 class="header">PLAYLISTS</h1>
-		<input class="button" type="button" value="New Playlist" />
+		<form name="createPlaylist" method="post">
+			<input class="textInput" name="name" type="text"
+				placeholder="Playlist Name"/>
+			<div class="divider"></div>
+			<input class="textInput" name="videoSegments" type="text"
+				placeholder="Enter Video Segments"/>
+			<div class="divider"></div>
+			<input class="button" type="button" value="New Playlist" />
+		</form>
+		
 		<div class="divider"></div>
 		<div id="playlistList">
 			<ul class="itemList">
@@ -148,7 +158,7 @@ add this back if we want to center buttons */
 			<input class="button" name="uploadButton" type="button" value="Upload Video" disabled
 				onclick="handleUploadClick(this)" />
 		</form>
-		
+
 		<script>
 			// prepares the base64-encoded string and enabled button
 			function getBase64(file) {
@@ -177,18 +187,12 @@ add this back if we want to center buttons */
 			// register
 			document.getElementById('vidSegFile').addEventListener('change', handleFileSelect, false);
 		</script>
-		
+
 		<div id="vidSegList">
-			<ul class="itemList">
-				<li>
-					<div class="vidSeg">
-						<p class="vidSegID"></p>
-						<p class="vidSegQuote"></p>
-						<input class="button" type="button" value="Delete" />
-						<div class="divider"></div>
-					</div>
-				</li>
-			</ul>
+
+		</div>
+		<div id="vidSegInfoList">
+			
 		</div>
 	</div>
 	<hr />
