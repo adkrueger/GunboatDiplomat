@@ -85,15 +85,14 @@ public class ListVidSegsHandler implements RequestHandler<Object,AllVidSegsRespo
 		logger.log("loading Java Lambda handler to list all video segments");
 
 		AllVidSegsResponse response;
+		VideoSegmentDAO dao = new VideoSegmentDAO();
 		
 		try {
-			// get all user defined constants AND system-defined constants.
-			// Note that user defined constants override system-defined constants.
-			List<VidSeg> list = getVidSegsFromRDS();
-			for (VidSeg c : getVidSegsFromS3()) {
-				if (!list.contains(c)) {
-					list.add(c);
-				}
+			List<VidSeg> list = new ArrayList<>();
+			for (VidSeg vs : getVidSegsFromS3()) {
+				VidSeg currVS = dao.getVidSeg(vs.id);
+				currVS.setContents(vs.base64EncodedContents);
+				list.add(currVS);
 			}
 			response = new AllVidSegsResponse(list, 200);
 		} 

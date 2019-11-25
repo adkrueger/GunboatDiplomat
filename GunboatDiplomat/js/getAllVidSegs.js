@@ -2,7 +2,7 @@ function refreshVidSegList() {
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", listVidSegs_url, true);
 	xhr.send();
-	console.log("sent: " + xhr);
+	console.log("sent");
 	
 	xhr.onloadend = function() {
 		if(xhr.readyState == XMLHttpRequest.DONE) {
@@ -10,7 +10,6 @@ function refreshVidSegList() {
 			processListResponse(xhr.responseText);
 		}
 		else {
-			console.log("in the else of getAllVidSegs");
 			processListResponse("N/A");
 		}
 	};
@@ -27,13 +26,13 @@ function processListResponse(response) {
 		let vidSegJson = js.list[i];
 		console.log(vidSegJson);
 		
-		let id = vidSegJson[""];
-		let charSpeaking = vidSegJson[""];
-		let quote = vidSegJson[""];
-		let seasonNum = vidSegJson[""];
-		let episodeNum = vidSegJson[""];
-		let isLocal = vidSegJson[""];
-		let isMarked = vidSegJson[""];
+		let id = vidSegJson["id"];
+		let charSpeaking = vidSegJson["character"];
+		let quote = vidSegJson["quote"];
+		let seasonNum = vidSegJson["seasonNum"];
+		let episodeNum = vidSegJson["episodeNum"];
+		let isLocal = vidSegJson["isLocal"];
+		let isMarked = vidSegJson["isMarked"];
 		let base64Contents = vidSegJson[""];
 		
 		output = output + "<div id=\"vidSeg-" + id + "\"><b>" + id + "</b><br/><p>" + charSpeaking + "</p><br/><p>" + quote + 

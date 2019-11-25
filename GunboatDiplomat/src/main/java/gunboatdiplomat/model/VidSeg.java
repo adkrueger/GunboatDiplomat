@@ -53,6 +53,11 @@ public class VidSeg {
 		this.base64EncodedContents = contents;
 		
 	}
+	
+	public boolean setContents(String contents) {
+		base64EncodedContents = contents;
+		return true;
+	}
 
 	@Override
 	public boolean equals(Object o) {
