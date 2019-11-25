@@ -25,30 +25,29 @@ public class ListVidSegsHandler implements RequestHandler<Object,AllVidSegsRespo
 	private AmazonS3 s3 = null;
 	public LambdaLogger logger;
 
-	List<VidSeg> getVidSegs() throws Exception {
+	public List<VidSeg> getVidSegsFromRDS() throws Exception {
 		logger.log("in getVideoSegments");
 		VideoSegmentDAO dao = new VideoSegmentDAO();
 
 		return dao.getAllVidSegs();
 	}
 
-	//TODO: change name and implement
-	List<VidSeg> systemConstants() throws Exception {
-		logger.log("in systemConstants");
+	public List<VidSeg> getVidSegsFromS3() throws Exception {
+		logger.log("in getVidSegsFromS3");
 		if (s3 == null) {
 			logger.log("attach to S3 request");
 			s3 = AmazonS3ClientBuilder.standard().withRegion(Regions.US_EAST_2).build();
-			logger.log("attach to S3 succeed");
+			logger.log("attach to S3 succeeded");
 		}
 		ArrayList<VidSeg> folderVidSegs = new ArrayList<>();
 
 		// retrieve listing of all objects in the designated bucket
 		ListObjectsV2Request listObjectsRequest = new ListObjectsV2Request()
-				.withBucketName("gd3733")    // top-level bucket
-				.withPrefix("vidsegs");       // sub-folder declarations here (i.e., a/b/c)
+				.withBucketName("gd3733")		// top-level bucket
+				.withPrefix("videoSegments");	// sub-folder declarations here (i.e., a/b/c)
 
 
-		// request the s3 objects in the s3 bucket 'cs3733wpi/constants' -- change based on your bucket name
+		// request the s3 objects in the s3 bucket 'gd3733/videoSegments'
 		logger.log("process request");
 		ListObjectsV2Result result = s3.listObjectsV2(listObjectsRequest);
 		logger.log("process request succeeded");
@@ -56,34 +55,27 @@ public class ListVidSegsHandler implements RequestHandler<Object,AllVidSegsRespo
 
 		for (S3ObjectSummary os: objects) {
 			String name = os.getKey();
-			logger.log("S3 found:" + name);
-
-			// If name ends with slash it is the 'constants/' bucket itself so you skip
-			if (name.endsWith("/")) { continue; }
+			logger.log("S3 found: " + name);
 
 			S3Object obj = s3.getObject("gd3733", name);
 
 			try (S3ObjectInputStream vidSegStream = obj.getObjectContent()) {
+				int postSlash = name.indexOf('/');
+				String id = name.substring(postSlash+1);
+				
 				Scanner sc = new Scanner(vidSegStream);
-				String id = sc.nextLine();
-				String character = sc.nextLine();
-				String quote = sc.nextLine();
-				String seasonNum = sc.nextLine();
-				String episodeNum = sc.nextLine();
-				String isLocal = sc.nextLine();
-				String isMarked = sc.nextLine();
-
+				String contents = sc.nextLine();
 				sc.close();
 
 				// just grab name *after* the slash. Note this is a SYSTEM constant
-				int postSlash = name.indexOf('/');
 				//Check on this later on!!!
-				folderVidSegs.add(new VidSeg(id, character, quote, Integer.valueOf(seasonNum), Integer.valueOf(episodeNum), Integer.valueOf(isLocal), Integer.valueOf(isMarked)));
+				folderVidSegs.add(new VidSeg(id, contents));
 			} 
 			catch (Exception e) {
 				logger.log("Unable to parse contents of " + name);
 			}
 		}
+		
 		return folderVidSegs;
 	}
 	
@@ -97,8 +89,8 @@ public class ListVidSegsHandler implements RequestHandler<Object,AllVidSegsRespo
 		try {
 			// get all user defined constants AND system-defined constants.
 			// Note that user defined constants override system-defined constants.
-			List<VidSeg> list = getVidSegs();
-			for (VidSeg c : systemConstants()) {
+			List<VidSeg> list = getVidSegsFromRDS();
+			for (VidSeg c : getVidSegsFromS3()) {
 				if (!list.contains(c)) {
 					list.add(c);
 				}
