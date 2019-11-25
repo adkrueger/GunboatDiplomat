@@ -7,23 +7,30 @@ public class Playlist {
 
 	public final String name;
 	public List<VidSeg> contents = new ArrayList<>();
-	
+
 	public Playlist(String name) {
 		this.name = name;
 	}
-	
-	
-	/*
-	 * @Override
-	 
+
+
+	@Override 
 	public boolean equals(Object o) {
-		return ((VidSeg)o).id.equals(id) 
-				&& ((VidSeg)o).character.equals(character) 
-				&& ((VidSeg)o).quote.equals(quote) 
-				&& ((VidSeg)o).seasonNum == seasonNum 
-				&& ((VidSeg)o).episodeNum == episodeNum
-				&& ((VidSeg)o).isLocal == isLocal
-				&& ((VidSeg)o).isMarked == isMarked;
+		boolean eq = true;
+		if (((Playlist)o).name.equals(name)) {
+
+			for(int i = 0; i < contents.size(); i++) {
+				if (((Playlist)o).contents.get(i).equals(contents.get(i))) {
+					eq = true;
+				}
+				else {
+					return false;
+				}
+			}
+		}
+		else {
+			return false;
+		}
+		
+		return eq;
 	}
-	*/
 }

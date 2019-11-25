@@ -4,6 +4,8 @@ import java.sql.*;
 import java.util.List;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+
+import gunboatdiplomat.model.Playlist;
 import gunboatdiplomat.model.VidSeg;
 
 public class PlaylistDAO {
@@ -75,6 +77,17 @@ public class PlaylistDAO {
 
 		return new VidSeg(id, character, quote, season, episode, isLocal, isMarked);
 	}
+	
+	//TODO : create deletePlaylist function and finish it for DeletePlaylistHandler
+	public boolean deletePlaylist(Playlist playlist) throws Exception {
+		return true;
+	}
+	
+	//TODO : create getAllPlaylists function and finish it for ListPlaylistHandler
+		public List<Playlist> getAllPlaylists() throws Exception {
+			List<Playlist> allPlaylists = new ArrayList<>();
+			return allPlaylists;
+		}
 
 }
 
