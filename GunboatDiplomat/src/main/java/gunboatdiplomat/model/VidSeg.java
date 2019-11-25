@@ -64,5 +64,10 @@ public class VidSeg {
 				&& ((VidSeg)o).isLocal == isLocal
 				&& ((VidSeg)o).isMarked == isMarked;				
 	}
+	
+	@Override
+	public String toString() {
+		return id + ", with " + character + " saying \"" + quote + "\".";
+	}
 
 }
