@@ -1,6 +1,6 @@
-function refreshVidSegList() {
+function refreshPlaylistList() {
 	let xhr = new XMLHttpRequest();
-	xhr.open("GET", listVidSegs_url, true);
+	xhr.open("GET", listPlaylists_url, true);
 	xhr.send();
 	console.log("sent");
 	
@@ -17,7 +17,7 @@ function refreshVidSegList() {
 function processListResponse(response) {
 	
 	let js = JSON.parse(response);
-	let vidsegList = document.getElementById("vidSegList");
+	let playlistList = document.getElementById("vidSegList");
 	
 	let output = "<ul class=\"itemList\">";
 	for(let i = 0; i < js.vidSegs.length; i++) {
