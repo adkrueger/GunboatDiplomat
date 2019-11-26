@@ -10,6 +10,7 @@ public class VidSeg {
 	public int isLocal;		// 0 or 1
 	public int isMarked;	// 0 or 1
 	public String base64EncodedContents;
+	public String url;
 
 	
 	public VidSeg(String id, String character, String quote, int seasonNum, int episodeNum, int isLocal, int isMarked, String contents) {
@@ -47,15 +48,20 @@ public class VidSeg {
 
 	}
 	
-	public VidSeg(String id, String contents) {
+	public VidSeg(String id, String url) {
 		
 		this.id = id;
-		this.base64EncodedContents = contents;
+		this.url = url;
 		
 	}
 	
 	public boolean setContents(String contents) {
 		base64EncodedContents = contents;
+		return true;
+	}
+	
+	public boolean setURL(String url) {
+		this.url = url;
 		return true;
 	}
 

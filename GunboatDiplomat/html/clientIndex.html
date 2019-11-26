@@ -100,7 +100,16 @@ add this back if we want to center buttons */
 <body>
 	<div class="playlists">
 		<h1 class="header">PLAYLISTS</h1>
-		<input class="button" type="button" value="New Playlist" />
+		<form name="createPlaylist" method="post">
+			<input class="textInput" name="name" type="text"
+				placeholder="Playlist Name"/>
+			<div class="divider"></div>
+			<input class="textInput" name="videoSegments" type="text"
+				placeholder="Enter Video Segments"/>
+			<div class="divider"></div>
+			<input class="button" type="button" value="New Playlist" />
+		</form>
+		
 		<div class="divider"></div>
 		<div id="playlistList">
 			<ul class="itemList">
@@ -180,16 +189,10 @@ add this back if we want to center buttons */
 		</script>
 
 		<div id="vidSegList">
-			<ul class="itemList">
-				<li>
-					<div class="vidSeg">
-						<p class="vidSegID"></p>
-						<p class="vidSegQuote"></p>
-						<input class="button" type="button" value="Delete" />
-						<div class="divider"></div>
-					</div>
-				</li>
-			</ul>
+
+		</div>
+		<div id="vidSegInfoList">
+			
 		</div>
 	</div>
 </body>
