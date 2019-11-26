@@ -1,6 +1,7 @@
 package gunboatdiplomat;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,13 +20,14 @@ import com.amazonaws.services.s3.model.S3ObjectSummary;
 import gunboatdiplomat.db.PlaylistDAO;
 import gunboatdiplomat.http.ListPlaylistsResponse;
 import gunboatdiplomat.model.Playlist;
+import gunboatdiplomat.model.VidSeg;
 
 public class ListPlaylistsHandler implements RequestHandler<Object, ListPlaylistsResponse> {
 
 	private AmazonS3 s3 = null;
 	LambdaLogger logger;
 
-	List<Playlist> getPlaylistsFromRDS() throws Exception {
+	HashMap<String, List<VidSeg>> getPlaylistsFromRDS() throws Exception {
 		logger.log("in Playlists");
 		PlaylistDAO dao = new PlaylistDAO();
 
