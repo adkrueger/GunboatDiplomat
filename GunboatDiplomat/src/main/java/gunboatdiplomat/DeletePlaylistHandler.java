@@ -28,7 +28,7 @@ public class DeletePlaylistHandler implements RequestHandler<DeletePlaylistReque
 		Playlist playlist = new Playlist(req.id);
 		
 		try {
-			if(dao.deletePlaylist(playlist)) {
+			if(dao.deletePlaylist(playlist.name)) {
 				response = new DeletePlaylistResponse(req.id, 200);
 			}
 			else {
