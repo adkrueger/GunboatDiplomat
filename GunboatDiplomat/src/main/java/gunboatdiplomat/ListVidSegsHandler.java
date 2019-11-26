@@ -28,7 +28,7 @@ public class ListVidSegsHandler implements RequestHandler<Object,AllVidSegsRespo
 	public List<VidSeg> getVidSegsFromRDS() throws Exception {
 		logger.log("in getVideoSegments");
 		VideoSegmentDAO dao = new VideoSegmentDAO();
-
+		// rely on DAO for this one
 		return dao.getAllVidSegs();
 	}
 
