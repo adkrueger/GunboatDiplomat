@@ -48,6 +48,7 @@ public class VidSeg {
 
 	}
 	
+	// used in getVidSegs to add video segments to the list from the S3 bucket
 	public VidSeg(String id, String url) {
 		
 		this.id = id;
