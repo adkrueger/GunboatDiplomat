@@ -152,8 +152,6 @@ public class PlaylistDAO {
 		String idNum = "";
 		String character = "";
 		String quote = "";
-		int season = 0;
-		int episode = 0;
 		int isLocal = 0;
 		int isMarked = 0;
 
@@ -161,13 +159,11 @@ public class PlaylistDAO {
 			idNum = rs5.getString(1);
 			character = rs5.getString(2);
 			quote = rs5.getString(3);
-			season = rs5.getInt(4);
-			episode = rs5.getInt(5);
-			isLocal = rs5.getInt(6);
-			isMarked = rs5.getInt(7);
+			isLocal = rs5.getInt(4);
+			isMarked = rs5.getInt(5);
 		}
 
-		return new VidSeg(idNum, character, quote, season, episode, isLocal, isMarked);
+		return new VidSeg(idNum, character, quote, isLocal, isMarked);
 
 	}
 
@@ -177,13 +173,11 @@ public class PlaylistDAO {
 		String character = rs.getString("character_speaking");
 		System.out.println(id);
 		String quote = rs.getString("quote");
-		int season = rs.getInt("season");
-		int episode = rs.getInt("episode");
 		int isLocal = rs.getInt("is_local");
 		int isMarked = rs.getInt("is_marked");
 
 		System.out.println(id + "has been pulled.");
 
-		return new VidSeg(id, character, quote, season, episode, isLocal, isMarked);
+		return new VidSeg(id, character, quote, isLocal, isMarked);
 	}
 }

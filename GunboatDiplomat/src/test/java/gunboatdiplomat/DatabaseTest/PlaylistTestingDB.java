@@ -17,12 +17,12 @@ public class PlaylistTestingDB {
 
 		// All the video segments that should be returned.
 		List<VidSeg> lsSolution = new ArrayList<>();
-		VidSeg vs1 = new VidSeg("4e770ca3-2961-4a38-a412-c2c60505bbc5", "Spock", "A more facinating thing happened.", 2, 9, 1, 0);
-		VidSeg vs2 = new VidSeg("668260dc-cebf-44b3-89fe-c30ec4909d76", "James T. Kirk", "More like love.", 2, 9, 1, 0);
-		VidSeg vs3 = new VidSeg("32b1d20e-62cf-4917-bc19-33c3cbb09a7e", "Leonard McCoy", "Now you must want the child!",2, 11, 1, 0);
-		VidSeg vs4 = new VidSeg("c44af4fd-1b23-4350-bd91-d797de7f1eca", "Spock", "That should prove very interesting.",2, 11, 1, 0);
-		VidSeg vs5 = new VidSeg("30f065a0-42e2-4be3-a64f-14aac9a03252", "Leonard McCoy","You touch it, her nearest male relative will have to try to kill you.", 2, 11, 1, 0);
-		VidSeg vs6 = new VidSeg("df79e576-3c06-468d-a3b2-fab974607260", "Amanda Grayson","Well it's sort of a fat teddy bear.", 2, 10, 1, 0);
+		VidSeg vs1 = new VidSeg("4e770ca3-2961-4a38-a412-c2c60505bbc5", "Spock", "A more facinating thing happened.", 1, 0);
+		VidSeg vs2 = new VidSeg("668260dc-cebf-44b3-89fe-c30ec4909d76", "James T. Kirk", "More like love.", 1, 0);
+		VidSeg vs3 = new VidSeg("32b1d20e-62cf-4917-bc19-33c3cbb09a7e", "Leonard McCoy", "Now you must want the child!", 1, 0);
+		VidSeg vs4 = new VidSeg("c44af4fd-1b23-4350-bd91-d797de7f1eca", "Spock", "That should prove very interesting.", 1, 0);
+		VidSeg vs5 = new VidSeg("30f065a0-42e2-4be3-a64f-14aac9a03252", "Leonard McCoy","You touch it, her nearest male relative will have to try to kill you.", 1, 0);
+		VidSeg vs6 = new VidSeg("df79e576-3c06-468d-a3b2-fab974607260", "Amanda Grayson","Well it's sort of a fat teddy bear.", 1, 0);
 		
 		lsSolution.add(vs6);
 		lsSolution.add(vs5);
@@ -45,19 +45,18 @@ public class PlaylistTestingDB {
 	}
 
 	@Test
-
 	public void testGetAllPlaylists() throws Exception {
 
 		HashMap<String, List<VidSeg>> solution = new HashMap<>();
 		List<VidSeg> sol1 = new ArrayList<>();
 
-		VidSeg vs1 = new VidSeg("4e770ca3-2961-4a38-a412-c2c60505bbc5", "Spock", "A more facinating thing happened.", 2, 9, 1, 0);
-		VidSeg vs2 = new VidSeg("668260dc-cebf-44b3-89fe-c30ec4909d76", "James T. Kirk", "More like love.", 2, 9, 1, 0);
-		VidSeg vs3 = new VidSeg("32b1d20e-62cf-4917-bc19-33c3cbb09a7e", "Leonard McCoy", "Now you must want the child!",2, 11, 1, 0);
-		VidSeg vs4 = new VidSeg("c44af4fd-1b23-4350-bd91-d797de7f1eca", "Spock", "That should prove very interesting.",2, 11, 1, 0);
-		VidSeg vs5 = new VidSeg("30f065a0-42e2-4be3-a64f-14aac9a03252", "Leonard McCoy", "You touch it, her nearest male relative will have to try to kill you.", 2, 11, 1, 0);
-		VidSeg vs6 = new VidSeg("df79e576-3c06-468d-a3b2-fab974607260", "Amanda Grayson", "Well it's sort of a fat teddy bear.", 2, 10, 1, 0);
-		VidSeg vs7 = new VidSeg("65ec514c-64f4-473d-902e-b93c4bcd9439", "Leonard McCoy", "That's a pretty far out story.", 2, 9, 1, 0);
+		VidSeg vs1 = new VidSeg("4e770ca3-2961-4a38-a412-c2c60505bbc5", "Spock", "A more facinating thing happened.", 1, 0);
+		VidSeg vs2 = new VidSeg("668260dc-cebf-44b3-89fe-c30ec4909d76", "James T. Kirk", "More like love.", 1, 0);
+		VidSeg vs3 = new VidSeg("32b1d20e-62cf-4917-bc19-33c3cbb09a7e", "Leonard McCoy", "Now you must want the child!", 1, 0);
+		VidSeg vs4 = new VidSeg("c44af4fd-1b23-4350-bd91-d797de7f1eca", "Spock", "That should prove very interesting.", 1, 0);
+		VidSeg vs5 = new VidSeg("30f065a0-42e2-4be3-a64f-14aac9a03252", "Leonard McCoy", "You touch it, her nearest male relative will have to try to kill you.", 1, 0);
+		VidSeg vs6 = new VidSeg("df79e576-3c06-468d-a3b2-fab974607260", "Amanda Grayson", "Well it's sort of a fat teddy bear.", 1, 0);
+		VidSeg vs7 = new VidSeg("65ec514c-64f4-473d-902e-b93c4bcd9439", "Leonard McCoy", "That's a pretty far out story.", 1, 0);
 
 		sol1.add(vs1);
 		sol1.add(vs2);

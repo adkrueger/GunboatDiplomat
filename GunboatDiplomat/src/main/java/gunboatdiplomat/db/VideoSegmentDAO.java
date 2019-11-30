@@ -58,14 +58,12 @@ public class VideoSegmentDAO {
 		
 		try {
 			
-			PreparedStatement ps = connection.prepareStatement("INSERT INTO VideoSegment (video_id,character_speaking,quote,season,episode,is_local,is_marked) VALUES(?,?,?,?,?,?,?)");
+			PreparedStatement ps = connection.prepareStatement("INSERT INTO VideoSegment (video_id,character_speaking,quote,is_local,is_marked) VALUES(?,?,?,?,?)");
 			ps.setString(1, vs.id);
 			ps.setString(2, vs.character);
 			ps.setString(3, vs.quote);
-			ps.setInt(4, vs.seasonNum);
-			ps.setInt(5, vs.episodeNum);
-			ps.setInt(6, vs.isLocal);
-			ps.setInt(7, vs.isMarked);
+			ps.setInt(4, vs.isLocal);
+			ps.setInt(5, vs.isMarked);
 			ps.execute();
 			return true;
 			
@@ -128,12 +126,10 @@ public class VideoSegmentDAO {
 		String id = rs.getString("video_id");
 		String character = rs.getString("character_speaking");
 		String quote = rs.getString("quote");
-		int season = rs.getInt("season");
-		int episode = rs.getInt("episode");
 		int isLocal = rs.getInt("is_local");
 		int isMarked = rs.getInt("is_marked");
 		
-		return new VidSeg(id, character, quote, season, episode, isLocal, isMarked);
+		return new VidSeg(id, character, quote, isLocal, isMarked);
 	}
 
 }

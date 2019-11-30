@@ -14,7 +14,6 @@ import com.amazonaws.services.s3.model.S3ObjectSummary;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import gunboatdiplomat.db.VideoSegmentDAO;
 import gunboatdiplomat.http.AllVidSegsResponse;

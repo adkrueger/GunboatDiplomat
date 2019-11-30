@@ -102,14 +102,14 @@ add this back if we want to center buttons */
 		<h1 class="header">PLAYLISTS</h1>
 		<form name="createPlaylist" method="post">
 			<input class="textInput" name="name" type="text"
-				placeholder="Playlist Name"/>
+				placeholder="Playlist Name" />
 			<div class="divider"></div>
 			<input class="textInput" name="videoSegments" type="text"
-				placeholder="Enter Video Segments"/>
+				placeholder="Enter Video Segments" />
 			<div class="divider"></div>
 			<input class="button" type="button" value="New Playlist" />
 		</form>
-		
+
 		<div class="divider"></div>
 		<div id="playlistList">
 			<ul class="itemList">
@@ -133,11 +133,20 @@ add this back if we want to center buttons */
 	<hr />
 	<div class="vidSegs">
 		<h1 class="header">VIDEO SEGMENTS</h1>
-		<input class="textInput" type="text"
-			placeholder="Search video segments..." style="display: inline-block;" />
-		<div class="divider"></div>
-		<input class="button" type="button" value="Search" />
-		<br/><br/>
+		<div id="search">
+			<input class="textInput" type="text"
+				placeholder="Search characters..." style="display: inline-block;" />
+			<div class="divider"></div>
+			<input class="button" type="button" value="Search" />
+			<!-- only for characters -->
+			<input class="textInput" type="text" placeholder="Search quotes..."
+				style="display: inline-block;" />
+			<div class="divider"></div>
+			<input class="button" type="button" value="Search" />
+			<!-- only for quotes -->
+		</div>
+		<br />
+		<br />
 		<form name="uploadVidSeg" method="post">
 			<span>Select a video to upload: </span> <input type="file"
 				id="vidSegFile" name="vidSegFile"> <br /> <input
@@ -155,8 +164,8 @@ add this back if we want to center buttons */
 			<input class="textInput" name="episodeNum" type="text"
 				placeholder="Insert episode number" />
 			<div class="divider"></div>
-			<input class="button" name="uploadButton" type="button" value="Upload Video" disabled
-				onclick="handleUploadClick(this)" />
+			<input class="button" name="uploadButton" type="button"
+				value="Upload Video" disabled onclick="handleUploadClick(this)" />
 		</form>
 
 		<script>
@@ -178,19 +187,19 @@ add this back if we want to center buttons */
 				var files = evt.target.files;
 				if (files[0].size > 1000000000) { // make as large or small as you need
 					document.uploadVidSeg.base64Encoding.value = "";
-					alert("File size too large to use: " + files[0].size + " bytes");
+					alert("File size too large to use: " + files[0].size
+							+ " bytes");
 				} else {
 					getBase64(files[0]); // request the load (async)
 				}
 			}
 
 			// register
-			document.getElementById('vidSegFile').addEventListener('change', handleFileSelect, false);
+			document.getElementById('vidSegFile').addEventListener('change',
+					handleFileSelect, false);
 		</script>
 
-		<div id="vidSegList">
-
-		</div>
+		<div id="vidSegList"></div>
 	</div>
 </body>
 </html>

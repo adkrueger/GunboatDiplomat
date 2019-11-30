@@ -30,8 +30,6 @@ function processVidSegListResponseAdmin(response) {
 		let id = vidSegJson["id"];
 		let charSpeaking = vidSegJson["character"];
 		let quote = vidSegJson["quote"];
-		let seasonNum = vidSegJson["seasonNum"];
-		let episodeNum = vidSegJson["episodeNum"];
 		let isLocal = vidSegJson["isLocal"];
 		let isMarked = vidSegJson["isMarked"];
 		let url = vidSegJson["url"];
