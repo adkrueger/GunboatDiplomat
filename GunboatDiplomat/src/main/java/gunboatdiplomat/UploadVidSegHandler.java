@@ -8,6 +8,7 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
@@ -53,7 +54,7 @@ public class UploadVidSegHandler implements RequestHandler<UploadVidSegRequest, 
 		ObjectMetadata omd = new ObjectMetadata();
 		omd.setContentLength(contents.length);
 
-		s3.putObject(new PutObjectRequest("gd3733", "videoSegments/" + id, bais, omd));
+		s3.putObject(new PutObjectRequest("gd3733", "videoSegments/" + id, bais, omd).withCannedAcl(CannedAccessControlList.PublicRead));
 
 		return true;
 
