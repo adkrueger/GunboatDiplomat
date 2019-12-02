@@ -1,5 +1,5 @@
 // api gateway url
-let api_url = "https://quf3be50n8.execute-api.us-east-2.amazonaws.com/bravo/";
+let api_url = " https://quf3be50n8.execute-api.us-east-2.amazonaws.com/charlie/";
 
 let appendVidSeg_url = api_url + "appendVidSeg";			// POST
 let createPLaylist_url = api_url + "createPlaylist";		// POST
