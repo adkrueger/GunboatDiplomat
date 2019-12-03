@@ -43,6 +43,11 @@ public class PlaylistTestingDB {
 		}
 
 	}
+	
+	@Test
+	public void testAddVidSegToPlaylist() throws Exception{
+		
+	}
 
 	@Test
 	public void testGetAllPlaylists() throws Exception {
@@ -70,6 +75,14 @@ public class PlaylistTestingDB {
 		HashMap h = playlistDAO.getAllPlaylists();
 		assertEquals(solution, playlistDAO.getAllPlaylists());
 
+	}
+	
+	@Test
+	public void testAppendVidSeg() throws Exception {
+		String videoID = "Testing1";
+		String playlistName = "Funny Clips";
+		
+		playlistDAO.addVidSegToPlaylist(playlistName, videoID);
 	}
 
 	/*

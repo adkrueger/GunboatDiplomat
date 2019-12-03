@@ -2,6 +2,7 @@ package gunboatdiplomat.db;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +27,18 @@ public class PlaylistDAO {
 		}
 
 	}
+	
+	public boolean addVidSegToPlaylist(String playlistName, String vidID) throws Exception {
+
+			PreparedStatement ps = conn.prepareStatement("INSERT INTO Playlist (video_id,playlist_title) VALUES (?,?);");
+			
+			ps.setString(1, vidID);
+			ps.setString(2, playlistName);
+			ps.execute();
+			
+			return true;
+			
+	}
 
 	public boolean deletePlaylist(String playlistName) throws Exception {
 
@@ -45,6 +58,7 @@ public class PlaylistDAO {
 		ps1.close();
 		return true;
 	}
+	
 	/**
 	 * This method uses a playlistname and returns all the VidSeg that are a part of
 	 * that playlist.
