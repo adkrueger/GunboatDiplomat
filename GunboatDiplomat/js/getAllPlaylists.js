@@ -36,8 +36,7 @@ function processPlaylistListResponse(response) {
 		output = output + "<li><div id=\"playlist-" + name + "\"><b>" + name + "</b><br/><input class=\"button\" type=\"button\" value=\"Play\"/>"
 		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Append VS\"/>"
 		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Remove VS\"/>"
-		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Delete\"/>"
-		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"List VS in Playlist\"/></div></li>";
+		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Delete\"/></div></li>";
 
 		if(i == js.playlists.length-1) {
 			output = output + "</ul>";
