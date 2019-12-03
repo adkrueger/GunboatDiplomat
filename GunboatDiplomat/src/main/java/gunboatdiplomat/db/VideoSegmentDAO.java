@@ -75,15 +75,13 @@ public class VideoSegmentDAO {
 	}
 	
 	public boolean deleteVidSeg(VidSeg vs) throws Exception {
-		try { 
-			System.out.println(vs.id + " is gonna be deleted");
+		try {
 			//Check to see if VidSeg Exists
 			if(vs.id.equals(getVidSeg(vs.id).id)) {
 				System.out.println(getVidSeg(vs.id));
 				//If yes, then delete. 
 				PreparedStatement ps = connection.prepareStatement("DELETE FROM VideoSegment WHERE video_id=?;");
 				ps.setString(1, vs.id);
-				System.out.println("deleted dat boi");
 				ps.executeUpdate();
 				return true;
 			}
@@ -103,12 +101,12 @@ public class VideoSegmentDAO {
 		
 		try {
 			Statement statement = connection.createStatement();
-			String query = "SELECT * FROM VideoSegment";
+			String query = "SELECT * FROM VideoSegment;";
 			ResultSet rs = statement.executeQuery(query);
 			
 			while(rs.next()) {
-				VidSeg c = generateVidSeg(rs);
-				allVidSegs.add(c);
+				VidSeg vs = generateVidSeg(rs);
+				allVidSegs.add(vs);
 			}
 			rs.close();
 			statement.close();
