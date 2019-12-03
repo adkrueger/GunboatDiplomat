@@ -31,7 +31,7 @@ public class DeletePlaylistHandler implements RequestHandler<DeletePlaylistReque
 		}
 		
 		try {
-			s3.deleteObject(new DeleteObjectRequest("gd3733", "videoSegments/" + id));
+			s3.deleteObject(new DeleteObjectRequest("gd3733", "playlists/" + id));
 			return true;
 		}
 		catch(Exception e) {
