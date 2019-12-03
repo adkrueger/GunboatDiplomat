@@ -36,7 +36,7 @@ function processVidSegListResponseAdmin(response) {
 
 		output = output + "<li><div id=\"vidSeg-" + id + "\"><b>" + id + "</b><br/><span>" + charSpeaking + ": \"" + quote + 
 		"\"</span><br/><video width=\"350\" height=\"260\" controls><source src=\"" + url + "\" type=\"video/ogg\"></video>" +
-		"<br/><input class=\"button\" type=\"button\" value=\"Delete\"/><div class=\"divider\"></div>" +
+		"<br/><input class=\"button\" type=\"button\" value=\"Delete\" onclick=\"requestDelete(\'" + id + "\', 1)\"/><div class=\"divider\"></div>" +
 		"<input class=\"button\" type=\"button\" value=\"Mark\"><div class=\"divider\"></div>" +
 		"<input class=\"button\" type=\"button\" value=\"Unmark\"></div></li><br/><br/>";
 
