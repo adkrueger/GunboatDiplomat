@@ -19,7 +19,7 @@ public class DeletePlaylistResponse {
 	}
 	
 	public String toString() {
-		if(statusCode/200 == 2) {
+		if(statusCode/100 == 2) {
 			return "DeleteReponse(" + id + ")";
 		}
 		else {
