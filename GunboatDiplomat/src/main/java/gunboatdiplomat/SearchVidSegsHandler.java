@@ -9,6 +9,7 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.s3.AmazonS3;
 
 import gunboatdiplomat.db.VideoSegmentDAO;
+import gunboatdiplomat.http.AllVidSegsResponse;
 import gunboatdiplomat.http.SearchVidSegsRequest;
 import gunboatdiplomat.http.SearchVidSegsResponse;
 import gunboatdiplomat.model.VidSeg;
@@ -50,7 +51,17 @@ public class SearchVidSegsHandler implements RequestHandler<SearchVidSegsRequest
 		logger = context.getLogger();
 		logger.log(req.toString());
 
-		SearchVidSegsResponse response = null;		// TODO: remove " = null;"
+		SearchVidSegsResponse response = null;
+		
+		try {
+			List<VidSeg> vsList = new ArrayList<>();
+			vsList = searchRDS(req.getCharacter_speaking(), req.getQuote());
+			System.out.println("found " + vsList);
+			response = new SearchVidSegsResponse(vsList, 200);
+		}
+		catch(Exception e) {
+			response = new SearchVidSegsResponse(403, e.getMessage());
+		}
 		
 		return response;
 		
