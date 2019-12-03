@@ -8,6 +8,7 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
@@ -23,13 +24,13 @@ public class UploadVidSegHandler implements RequestHandler<UploadVidSegRequest, 
 	LambdaLogger logger;
 
 	// uploading the video segment info to RDS (essentially creating a new video segment)
-	public boolean uploadVidSegToRDS(String id, String character, String quote, int seasonNum, int episodeNum, int isLocal, int isMarked) throws Exception {
+	public boolean uploadVidSegToRDS(String id, String character, String quote, int isLocal, int isMarked) throws Exception {
 
 		if(logger != null) { logger.log("in uploadVidSegToRDS"); }
 		VideoSegmentDAO dao = new VideoSegmentDAO();
 
 		VidSeg exist = dao.getVidSeg(id);
-		VidSeg vidSeg = new VidSeg(id, character, quote, seasonNum, episodeNum, isLocal, isMarked);
+		VidSeg vidSeg = new VidSeg(id, character, quote, isLocal, isMarked);
 		if(exist == null) {
 			return dao.addVidSeg(vidSeg);
 		}
@@ -53,7 +54,7 @@ public class UploadVidSegHandler implements RequestHandler<UploadVidSegRequest, 
 		ObjectMetadata omd = new ObjectMetadata();
 		omd.setContentLength(contents.length);
 
-		s3.putObject(new PutObjectRequest("gd3733", "videoSegments/" + id, bais, omd));
+		s3.putObject(new PutObjectRequest("gd3733", "videoSegments/" + id, bais, omd).withCannedAcl(CannedAccessControlList.PublicRead));
 
 		return true;
 
@@ -66,20 +67,20 @@ public class UploadVidSegHandler implements RequestHandler<UploadVidSegRequest, 
 		logger.log(req.toString());
 
 		UploadVidSegResponse response;
-
 		try {
 			byte[] encodedFile = java.util.Base64.getDecoder().decode(req.base64EncodedContents);
-			logger.log("attempting to upload to s3");
+
 			if (uploadVidSegToS3(req.id, encodedFile)) {
 				response = new UploadVidSegResponse(req.id);
-			} else {
+			} 
+			else {
 				response = new UploadVidSegResponse(req.id, 422);
 			}
-			logger.log("attempting to upload to RDS");
-
-			if (uploadVidSegToRDS(req.id, req.character_speaking, req.quote, req.seasonNum, req.episodeNum, req.isLocal, req.isMarked)) {
+			
+			if (uploadVidSegToRDS(req.id, req.character_speaking, req.quote, req.isLocal, req.isMarked)) {
 				response = new UploadVidSegResponse(req.id);
-			} else {
+			} 
+			else {
 				response = new UploadVidSegResponse(req.id, 422);
 			}
 		} 

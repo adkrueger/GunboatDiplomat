@@ -2,11 +2,18 @@
 
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8" />
 <script type="text/javascript" src="../js/api.js"></script>
 <script type="text/javascript" src="../js/getAllVidSegsAdmin.js"></script>
 <script type="text/javascript" src="../js/uploadVidSeg.js"></script>
 <script type="text/javascript" src="../js/getAllPlaylists.js"></script>
+<script type="text/javascript" src="../js/deleteVidSeg.js"></script>
+<script type="text/javascript" src="../js/createPlaylist.js"></script>
+<script type="text/javascript" src="../js/appendVidSeg.js"></script>
+<script type="text/javascript" src="../js/deletePlaylist.js"></script>
+<script type="text/javascript" src="../js/registerRemote.js"></script>
+<script type="text/javascript" src="../js/deleteRemote.js"></script>
+<script type="text/javascript" src="../js/searchVidSegs.js"></script>
 
 <script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function() {
@@ -102,29 +109,17 @@ add this back if we want to center buttons */
 		<h1 class="header">PLAYLISTS</h1>
 		<form name="createPlaylist" method="post">
 			<input class="textInput" name="name" type="text"
-				placeholder="Playlist Name"/>
-			<div class="divider"></div>
-			<input class="textInput" name="videoSegments" type="text"
-				placeholder="Enter Video Segments"/>
+				placeholder="Playlist Name" />
 			<div class="divider"></div>
 			<input class="button" type="button" value="New Playlist" />
 		</form>
-		
+
 		<div class="divider"></div>
 		<div id="playlistList">
 			<ul class="itemList">
 				<li>
 					<div class="playlist">
 						<p class="playlistName"></p>
-						<input class="button" type="button" value="Play" />
-						<div class="divider"></div>
-						<input class="button" type="button" value="Append VS" />
-						<div class="divider"></div>
-						<input class="button" type="button" value="Remove VS" />
-						<div class="divider"></div>
-						<input class="button" type="button" value="Delete" />
-						<div class="divider"></div>
-						<input class="button" type="button" value="List VS in Playlist" />
 					</div>
 				</li>
 			</ul>
@@ -133,15 +128,22 @@ add this back if we want to center buttons */
 	<hr />
 	<div class="vidSegs">
 		<h1 class="header">VIDEO SEGMENTS</h1>
-		<input class="textInput" type="text"
-			placeholder="Search video segments..." style="display: inline-block;" />
-		<div class="divider"></div>
-		<input class="button" type="button" value="Search" />
-		<div class="vertSpace"></div>
+		<div id="search">
+			<input class="textInput" type="text"
+				placeholder="Search characters..." style="display: inline-block;" />
+			<div class="divider"></div>
+			<!-- only for characters -->
+			<input class="textInput" type="text" placeholder="Search quotes..."
+				style="display: inline-block;" />
+			<div class="divider"></div>
+			<input class="button" type="button" value="Search" />
+			<!-- only for quotes -->
+		</div>
+		<br /> <br />
 		<form name="uploadVidSeg" method="post">
 			<span>Select a video to upload: </span> <input type="file"
 				id="vidSegFile" name="vidSegFile"> <br /> <input
-				name="base64Encoding" value="" hidden />
+				name="base64Encoding" value="" hidden="true"/>
 			<div class="vertSpace"></div>
 			<input class="textInput" name="character" type="text"
 				placeholder="Insert character" />
@@ -149,14 +151,8 @@ add this back if we want to center buttons */
 			<input class="textInput" name="quote" type="text"
 				placeholder="Insert quote" />
 			<div class="divider"></div>
-			<input class="textInput" name="seasonNum" type="text"
-				placeholder="Insert season number" />
-			<div class="divider"></div>
-			<input class="textInput" name="episodeNum" type="text"
-				placeholder="Insert episode number" />
-			<div class="divider"></div>
-			<input class="button" name="uploadButton" type="button" value="Upload Video" disabled
-				onclick="handleUploadClick(this)" />
+			<input class="button" name="uploadButton" type="button"
+				value="Upload Video" disabled onclick="handleUploadClick(this, 1)" />
 		</form>
 
 		<script>
@@ -178,22 +174,19 @@ add this back if we want to center buttons */
 				var files = evt.target.files;
 				if (files[0].size > 1000000000) { // make as large or small as you need
 					document.uploadVidSeg.base64Encoding.value = "";
-					alert("File size too large to use: " + files[0].size + " bytes");
+					alert("File size too large to use: " + files[0].size
+							+ " bytes");
 				} else {
 					getBase64(files[0]); // request the load (async)
 				}
 			}
 
 			// register
-			document.getElementById('vidSegFile').addEventListener('change', handleFileSelect, false);
+			document.getElementById('vidSegFile').addEventListener('change',
+					handleFileSelect, false);
 		</script>
 
-		<div id="vidSegList">
-
-		</div>
-		<div id="vidSegInfoList">
-			
-		</div>
+		<div id="vidSegList"></div>
 	</div>
 	<hr />
 	<div class="admin">

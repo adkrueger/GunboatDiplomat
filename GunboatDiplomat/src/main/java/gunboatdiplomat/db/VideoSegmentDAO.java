@@ -54,18 +54,68 @@ public class VideoSegmentDAO {
 
 	}
 	
+	public List<VidSeg> getVidSegsByCharacter(String character) throws Exception {
+
+		List<VidSeg> listOfVS = new ArrayList<>();
+		
+		try {
+			VidSeg vs = null;
+			PreparedStatement ps = connection.prepareStatement("SELECT * FROM VideoSegment WHERE character_speaking=?;");
+			ps.setString(1, character);
+			ResultSet rs = ps.executeQuery();
+
+			while(rs.next()) {
+				vs = generateVidSeg(rs);
+				listOfVS.add(vs);
+			}
+			rs.close();
+			ps.close();
+
+			return listOfVS;
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			throw new Exception("Failed in getting video segment: " + e.getMessage());
+		}
+
+	}
+	
+	public List<VidSeg> getVidSegsByQuote(String quote) throws Exception {
+
+		List<VidSeg> listOfVS = new ArrayList<>();
+		
+		try {
+			VidSeg vs = null;
+			PreparedStatement ps = connection.prepareStatement("SELECT * FROM VideoSegment WHERE quote=?;");
+			ps.setString(1, quote);
+			ResultSet rs = ps.executeQuery();
+
+			while(rs.next()) {
+				vs = generateVidSeg(rs);
+				listOfVS.add(vs);
+			}
+			rs.close();
+			ps.close();
+
+			return listOfVS;
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			throw new Exception("Failed in getting video segment: " + e.getMessage());
+		}
+
+	}
+	
 	public boolean addVidSeg(VidSeg vs) throws Exception {
 		
 		try {
 			
-			PreparedStatement ps = connection.prepareStatement("INSERT INTO VideoSegment (video_id,character_speaking,quote,season,episode,is_local,is_marked) VALUES(?,?,?,?,?,?,?)");
+			PreparedStatement ps = connection.prepareStatement("INSERT INTO VideoSegment (video_id,character_speaking,quote,is_local,is_marked) VALUES(?,?,?,?,?);");
 			ps.setString(1, vs.id);
 			ps.setString(2, vs.character);
 			ps.setString(3, vs.quote);
-			ps.setInt(4, vs.seasonNum);
-			ps.setInt(5, vs.episodeNum);
-			ps.setInt(6, vs.isLocal);
-			ps.setInt(7, vs.isMarked);
+			ps.setInt(4, vs.isLocal);
+			ps.setInt(5, vs.isMarked);
 			ps.execute();
 			return true;
 			
@@ -77,20 +127,18 @@ public class VideoSegmentDAO {
 	}
 	
 	public boolean deleteVidSeg(VidSeg vs) throws Exception {
-		try { 
-			
+		try {
 			//Check to see if VidSeg Exists
-			if(vs.equals(getVidSeg(vs.id))) {
-				
+			if(vs.id.equals(getVidSeg(vs.id).id)) {
+				System.out.println(getVidSeg(vs.id));
 				//If yes, then delete. 
 				PreparedStatement ps = connection.prepareStatement("DELETE FROM VideoSegment WHERE video_id=?;");
 				ps.setString(1, vs.id);
 				ps.executeUpdate();
 				return true;
 			}
-			
 			//VidSeg does not exist.
-			else {return false;}
+			else { return false; }
 			
 		}
 		catch(Exception e) {
@@ -105,12 +153,12 @@ public class VideoSegmentDAO {
 		
 		try {
 			Statement statement = connection.createStatement();
-			String query = "SELECT * FROM VideoSegment";
+			String query = "SELECT * FROM VideoSegment;";
 			ResultSet rs = statement.executeQuery(query);
 			
 			while(rs.next()) {
-				VidSeg c = generateVidSeg(rs);
-				allVidSegs.add(c);
+				VidSeg vs = generateVidSeg(rs);
+				allVidSegs.add(vs);
 			}
 			rs.close();
 			statement.close();
@@ -128,12 +176,10 @@ public class VideoSegmentDAO {
 		String id = rs.getString("video_id");
 		String character = rs.getString("character_speaking");
 		String quote = rs.getString("quote");
-		int season = rs.getInt("season");
-		int episode = rs.getInt("episode");
 		int isLocal = rs.getInt("is_local");
 		int isMarked = rs.getInt("is_marked");
 		
-		return new VidSeg(id, character, quote, season, episode, isLocal, isMarked);
+		return new VidSeg(id, character, quote, isLocal, isMarked);
 	}
 
 }

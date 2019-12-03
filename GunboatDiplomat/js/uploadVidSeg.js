@@ -1,24 +1,30 @@
-function processUploadResponse(response) {
+function processUploadResponse(response, isAdmin) {
 	console.log("response: " + response);
 	
-	refreshVidSegList();
+	if(isAdmin) {
+		console.log('admin request');
+		refreshVidSegListAdmin();
+	}
+	else {
+		console.log('client request');
+		refreshVidSegList();
+	}
+	
 }
 
-function handleUploadClick(e) {
+function handleUploadClick(e, isAdmin) {
 	let form = document.uploadVidSeg;
 
 	let data = {}
-	data["id"] = uuidv4();	// get a UUID for the file
-	data["character"] = form.character.value;
+	data["id"] = uuidv4();	// get a UUID for the video segment id
+	data["character_speaking"] = form.character.value;
 	data["quote"] = form.quote.value;
-	data["seasonNum"] = form.seasonNum.value;
-	data["episodeNum"] = form.episodeNum.value;
 	data["isLocal"] = 1;
 	data["isMarked"] = 0;
 	
 	let segments = form.base64Encoding.value.split(',');
-	data["base64EncodedValue"] = segments[1];
-
+	data["base64EncodedContents"] = segments[1];
+	console.log("contents are: " + data["base64EncodedContents"]);
 	// make a JSON object out of the input
 	let js = JSON.stringify(data);
 	console.log("Upload JS: " + js);
@@ -30,10 +36,11 @@ function handleUploadClick(e) {
 	
 	xhr.onloadend = function() {
 		console.log(xhr);
+		console.log(xhr.request);
 		if(xhr.readyState == XMLHttpRequest.DONE) {
 			if(xhr.status == 200) {
 				console.log("XHR: " + xhr.responseText);
-				processUploadResponse(xhr.responseText);
+				processUploadResponse(xhr.responseText, isAdmin);
 			}
 			else {
 				console.log("actual: " + xhr.responseText);
@@ -43,12 +50,12 @@ function handleUploadClick(e) {
 			}
 		}
 		else {
-			processUploadResponse("N/A");
+			processUploadResponse("N/A", isAdmin);
 		}
 	};
 }
 
-function uuidv4() {
+function uuidv4() {		// found this on stack overflow - just returns a uuid string
 	  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
 	    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
 	  );

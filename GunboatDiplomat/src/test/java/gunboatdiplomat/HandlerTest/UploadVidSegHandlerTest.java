@@ -53,7 +53,7 @@ public class UploadVidSegHandlerTest extends LambdaTest {
 			Assert.fail("Invalid: " + ioe.getMessage());
 		}
 		
-		UploadVidSegRequest request = new UploadVidSegRequest("testingVidSeg", "Leonard McCoy", "Death by natural causes.", 2, 12, 1, 0, testFile);
+		UploadVidSegRequest request = new UploadVidSegRequest("testingVidSeg", "Leonard McCoy", "Death by natural causes.", 1, 0, testFile);
 		String input = new Gson().toJson(request);
 
 		try {

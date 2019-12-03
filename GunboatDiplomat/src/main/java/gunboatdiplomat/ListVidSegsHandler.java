@@ -14,7 +14,6 @@ import com.amazonaws.services.s3.model.S3ObjectSummary;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import gunboatdiplomat.db.VideoSegmentDAO;
 import gunboatdiplomat.http.AllVidSegsResponse;
@@ -28,7 +27,7 @@ public class ListVidSegsHandler implements RequestHandler<Object,AllVidSegsRespo
 	public List<VidSeg> getVidSegsFromRDS() throws Exception {
 		logger.log("in getVideoSegments");
 		VideoSegmentDAO dao = new VideoSegmentDAO();
-
+		// rely on DAO for this one
 		return dao.getAllVidSegs();
 	}
 
@@ -61,12 +60,12 @@ public class ListVidSegsHandler implements RequestHandler<Object,AllVidSegsRespo
 
 			try (S3ObjectInputStream vidSegStream = obj.getObjectContent()) {
 				int postSlash = name.indexOf('/');
-				String id = name.substring(postSlash+1);
+				String id = name.substring(postSlash+1);	// only want the id of the file (UUID)
 
-				Scanner sc = new Scanner(vidSegStream);
+/*				Scanner sc = new Scanner(vidSegStream);		// might need if we have to get the actual contents of the file
 				String contents = sc.nextLine();
 				sc.close();
-
+*/
 				folderVidSegs.add(new VidSeg(id, "https://gd3733.s3.us-east-2.amazonaws.com/" + name));
 			} 
 			catch (Exception e) {
@@ -88,8 +87,8 @@ public class ListVidSegsHandler implements RequestHandler<Object,AllVidSegsRespo
 		try {
 			List<VidSeg> list = new ArrayList<>();
 			for (VidSeg vs : getVidSegsFromS3()) {
-				VidSeg currVS = dao.getVidSeg(vs.id);
-				currVS.setURL(vs.url);
+				VidSeg currVS = dao.getVidSeg(vs.id);	// get all info about the vid seg that isn't stored in the S3 bucket
+				currVS.setURL(vs.url);		// make sure our vid seg has a URL to its place in the S3 bucket
 				list.add(currVS);
 				System.out.println(currVS.url);
 			}
