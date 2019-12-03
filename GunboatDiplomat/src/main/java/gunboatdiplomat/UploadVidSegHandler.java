@@ -69,16 +69,18 @@ public class UploadVidSegHandler implements RequestHandler<UploadVidSegRequest, 
 		UploadVidSegResponse response;
 		try {
 			byte[] encodedFile = java.util.Base64.getDecoder().decode(req.base64EncodedContents);
-			logger.log("attempting to upload to s3");
+
 			if (uploadVidSegToS3(req.id, encodedFile)) {
 				response = new UploadVidSegResponse(req.id);
-			} else {
+			} 
+			else {
 				response = new UploadVidSegResponse(req.id, 422);
 			}
-			logger.log("attempting to upload to RDS");
+			
 			if (uploadVidSegToRDS(req.id, req.character_speaking, req.quote, req.isLocal, req.isMarked)) {
 				response = new UploadVidSegResponse(req.id);
-			} else {
+			} 
+			else {
 				response = new UploadVidSegResponse(req.id, 422);
 			}
 		} 
