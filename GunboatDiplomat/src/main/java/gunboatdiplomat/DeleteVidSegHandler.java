@@ -50,6 +50,14 @@ public class DeleteVidSegHandler implements RequestHandler<DeleteVidSegRequest, 
 		VidSeg vidSeg = new VidSeg(request.id, "", "", 0, 0);
 		
 		try {
+			// delete the video segment from S3
+			if(deleteVidSegFromS3(request.id)) {
+				response = new DeleteVidSegResponse(request.id, 200);
+			}
+			else {
+				response = new DeleteVidSegResponse(request.id, 422, "Unable to delete video segment from S3.");
+			}
+			
 			// delete the video segment from RDS
 			if(dao.deleteVidSeg(vidSeg)) {
 				response = new DeleteVidSegResponse(request.id, 200);
@@ -58,13 +66,6 @@ public class DeleteVidSegHandler implements RequestHandler<DeleteVidSegRequest, 
 				response = new DeleteVidSegResponse(request.id, 422, "Unable to delete video segment from RDS.");
 			}
 			
-			// delete the video segment from S3
-			if(deleteVidSegFromS3(request.id)) {
-				response = new DeleteVidSegResponse(request.id, 200);
-			}
-			else {
-				response = new DeleteVidSegResponse(request.id, 422, "Unable to delete video segment from S3.");
-			}
 		} 
 		catch(Exception e) {
 			response = new DeleteVidSegResponse(request.id, 403, "Unable to delete video segment: " + request.id + "(" + e.getMessage() + ")");

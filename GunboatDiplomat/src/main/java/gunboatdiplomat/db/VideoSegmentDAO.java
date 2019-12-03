@@ -76,19 +76,19 @@ public class VideoSegmentDAO {
 	
 	public boolean deleteVidSeg(VidSeg vs) throws Exception {
 		try { 
-			
+			System.out.println(vs.id + " is gonna be deleted");
 			//Check to see if VidSeg Exists
-			if(vs.equals(getVidSeg(vs.id))) {
-				
+			if(vs.id.equals(getVidSeg(vs.id).id)) {
+				System.out.println(getVidSeg(vs.id));
 				//If yes, then delete. 
 				PreparedStatement ps = connection.prepareStatement("DELETE FROM VideoSegment WHERE video_id=?;");
 				ps.setString(1, vs.id);
+				System.out.println("deleted dat boi");
 				ps.executeUpdate();
 				return true;
 			}
-			
 			//VidSeg does not exist.
-			else {return false;}
+			else { return false; }
 			
 		}
 		catch(Exception e) {
