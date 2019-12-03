@@ -6,17 +6,13 @@ import java.util.List;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.amazonaws.services.s3.AmazonS3;
 
 import gunboatdiplomat.db.VideoSegmentDAO;
-import gunboatdiplomat.http.AllVidSegsResponse;
 import gunboatdiplomat.http.SearchVidSegsRequest;
 import gunboatdiplomat.http.SearchVidSegsResponse;
 import gunboatdiplomat.model.VidSeg;
 
 public class SearchVidSegsHandler implements RequestHandler<SearchVidSegsRequest, SearchVidSegsResponse> {
-
-	private AmazonS3 s3 = null;
 
 	LambdaLogger logger;
 	
