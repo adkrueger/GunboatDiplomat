@@ -41,7 +41,7 @@ public class GetVidSegInPlaylistResponse {
 	}
 	
 	public String toString() {
-		if(statusCode/200 == 2) {
+		if(statusCode/100 == 2) {
 			return "GetVidSeg(" + id + ")";
 		}
 		else {
