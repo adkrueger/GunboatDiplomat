@@ -26,12 +26,12 @@ public class VidSegTestingDB {
 	@Test
 	public void testFindVideoSeg() throws Exception{
 
-		VidSeg vs1 = new VidSeg("5ecb7cb5-115a-4114-9865-bec03f4b2f5a", "Leonard McCoy", "Death by natural causes.", 1, 0);
-		VidSeg vs2;
-
-		vs2 = vidsegDAO.getVidSeg("5ecb7cb5-115a-4114-9865-bec03f4b2f5a");
+		VidSeg vs1 = new VidSeg("testingFindVidSeg", "Leonard McCoy", "Death by natural causes.", 1, 0);
+		vidsegDAO.addVidSeg(vs1);
+		VidSeg vs2 = vidsegDAO.getVidSeg("testingFindVidSeg");;
 
 		assertTrue(vs1.equals(vs2));
+		vidsegDAO.deleteVidSeg(vs1.id);
 
 	}
 
@@ -75,16 +75,16 @@ public class VidSegTestingDB {
 	@Test
 	public void testGetAllVidSeg() throws Exception {
 		
-		VidSeg vs1 = new VidSeg("5ecb7cb5-115a-4114-9865-bec03f4b2f5a", "Leonard McCoy", "Death by natural causes.", 1, 0);
-		VidSeg vs2 = new VidSeg("dea234c9-f27b-42e0-9f61-e8c462294f2b", "James T. Kirk", "I am the captain of the ship and totally capable of commanding her", 1, 0 );
-		VidSeg vs3 = new VidSeg("6600f679-27e6-43b4-b743-50c66483b2d5", "Zefram Cochrane", "Captain, why did you build that translator with a feminine voice?", 1, 0);
-		VidSeg vs4 = new VidSeg("65ec514c-64f4-473d-902e-b93c4bcd9439", "Leonard McCoy", "That's a pretty far out story.", 1, 0);
-		VidSeg vs5 = new VidSeg("df79e576-3c06-468d-a3b2-fab974607260", "Amanda Grayson", "Well it's sort of a fat teddy bear.", 1, 0);
-		VidSeg vs6 = new VidSeg("30f065a0-42e2-4be3-a64f-14aac9a03252", "Leonard McCoy", "You touch it, her nearest male relative will have to try to kill you.", 1, 0);
-		VidSeg vs7 = new VidSeg("c44af4fd-1b23-4350-bd91-d797de7f1eca", "Spock", "That should prove very interesting.", 1, 0);
-		VidSeg vs8 = new VidSeg("32b1d20e-62cf-4917-bc19-33c3cbb09a7e", "Leonard McCoy", "Now you must want the child!", 1, 0);
-		VidSeg vs9 = new VidSeg("668260dc-cebf-44b3-89fe-c30ec4909d76", "James T. Kirk", "More like love.", 1, 0);
-		VidSeg vs10 = new VidSeg("4e770ca3-2961-4a38-a412-c2c60505bbc5", "Spock", "A most fascinating thing happened.", 1, 0);
+		VidSeg vs1 = new VidSeg("testSeg1", "Leonard McCoy", "Death by natural causes.", 1, 0);
+		VidSeg vs2 = new VidSeg("testSeg2", "James T. Kirk", "I am the captain of the ship and totally capable of commanding her", 1, 0 );
+		VidSeg vs3 = new VidSeg("testSeg3", "Zefram Cochrane", "Captain, why did you build that translator with a feminine voice?", 1, 0);
+		VidSeg vs4 = new VidSeg("testSeg4", "Leonard McCoy", "That's a pretty far out story.", 1, 0);
+		VidSeg vs5 = new VidSeg("testSeg5", "Amanda Grayson", "Well it's sort of a fat teddy bear.", 1, 0);
+		VidSeg vs6 = new VidSeg("testSeg6", "Leonard McCoy", "You touch it, her nearest male relative will have to try to kill you.", 1, 0);
+		VidSeg vs7 = new VidSeg("testSeg7", "Spock", "That should prove very interesting.", 1, 0);
+		VidSeg vs8 = new VidSeg("testSeg8", "Leonard McCoy", "Now you must want the child!", 1, 0);
+		VidSeg vs9 = new VidSeg("testSeg9", "James T. Kirk", "More like love.", 1, 0);
+		VidSeg vs10 = new VidSeg("testSeg10", "Spock", "A most fascinating thing happened.", 1, 0);
 		
 		List<VidSeg> listOfSegSolution  = new ArrayList<VidSeg>();
 		listOfSegSolution.add(vs1);
@@ -98,14 +98,35 @@ public class VidSegTestingDB {
 		listOfSegSolution.add(vs9);
 		listOfSegSolution.add(vs10);
 		
+		vidsegDAO.addVidSeg(vs1);
+		vidsegDAO.addVidSeg(vs2);
+		vidsegDAO.addVidSeg(vs3);
+		vidsegDAO.addVidSeg(vs4);
+		vidsegDAO.addVidSeg(vs5);
+		vidsegDAO.addVidSeg(vs6);
+		vidsegDAO.addVidSeg(vs7);
+		vidsegDAO.addVidSeg(vs8);
+		vidsegDAO.addVidSeg(vs9);
+		vidsegDAO.addVidSeg(vs10);
+		
 		List<VidSeg> listOfSegTest = new ArrayList<>();
 		listOfSegTest = vidsegDAO.getAllVidSegs();
 		
-		for (int i = 0; i < listOfSegSolution.size(); i++) {
-//			System.out.println(listOfSegSolution.get(i));
-//			System.out.println(listOfSegTest.get(i));
-			assertTrue(listOfSegSolution.get(i).equals(listOfSegTest.get(i)));
+		for (VidSeg vs : listOfSegSolution) {
+			assertTrue(listOfSegTest.contains(vs));
+			vidsegDAO.deleteVidSeg(vs.id);
 		}
+	}
+	
+	@Test
+	public void testDeleteVidSeg() throws Exception {
+		vidsegDAO.addVidSeg(new VidSeg("testingDeleteVidSeg", "Aaron Krueger", "i am a robot beep boop", 1, 0));
+		VidSeg vsTest = vidsegDAO.getVidSeg("testingDeleteVidSeg");
+		assertTrue(vsTest != null);		// make sure it's there
+		
+		vidsegDAO.deleteVidSeg("testingDeleteVidSeg");
+		vsTest = vidsegDAO.getVidSeg("testingDeleteVidSeg");
+		assertTrue(vsTest == null);		// video segment should no longer be there
 	}
 	
 	/**
@@ -116,20 +137,22 @@ public class VidSegTestingDB {
 	
 	@Test
 	public void testMarkVidSeg() throws Exception {
-		vidsegDAO.markVidSeg("5ecb7cb5-115a-4114-9865-bec03f4b2f5a");
+		vidsegDAO.addVidSeg(new VidSeg("testingMarkVidSeg", "Aaron Krueger", "Hello, world!", 1, 0));
+		vidsegDAO.markVidSeg("testingMarkVidSeg");
 		
 		//check to see if Video has been marked. 
-		assertEquals(vidsegDAO.getVidSeg("5ecb7cb5-115a-4114-9865-bec03f4b2f5a").isMarked, 1);
-		vidsegDAO.unmarkVidSeg("5ecb7cb5-115a-4114-9865-bec03f4b2f5a");
+		assertEquals(vidsegDAO.getVidSeg("testingMarkVidSeg").isMarked, 1);
+		vidsegDAO.deleteVidSeg("testingMarkVidSeg");
 	}
 	
 	@Test
 	public void testUnmarkVidSeg() throws Exception{
-		vidsegDAO.unmarkVidSeg("5ecb7cb5-115a-4114-9865-bec03f4b2f5a");
+		vidsegDAO.addVidSeg(new VidSeg("testingUnmarkVidSeg", "Aaron Krueger", "good morning america", 1, 1));
+		vidsegDAO.unmarkVidSeg("testingUnmarkVidSeg");
 		
 		//Check to see if Video has been unmarked. 
-		assertEquals(vidsegDAO.getVidSeg("5ecb7cb5-115a-4114-9865-bec03f4b2f5a").isMarked, 0);
-		
+		assertEquals(vidsegDAO.getVidSeg("testingUnmarkVidSeg").isMarked, 0);
+		vidsegDAO.deleteVidSeg("testingUnmarkVidSeg");
 	}
 
 

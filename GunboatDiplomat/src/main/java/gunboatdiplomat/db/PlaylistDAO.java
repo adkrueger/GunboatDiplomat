@@ -171,13 +171,13 @@ public class PlaylistDAO {
 
 		while (rs5.next()) {
 			idNum = rs5.getString(1);
-			character = rs5.getString(2);
 			quote = rs5.getString(3);
+			character = rs5.getString(2);
 			isLocal = rs5.getInt(4);
 			isMarked = rs5.getInt(5);
 		}
 
-		return new VidSeg(idNum, character, quote, isLocal, isMarked);
+		return new VidSeg(idNum, quote, character, isLocal, isMarked);
 
 	}
 
