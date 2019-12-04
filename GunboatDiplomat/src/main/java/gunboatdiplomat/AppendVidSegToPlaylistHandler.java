@@ -17,32 +17,34 @@ public class AppendVidSegToPlaylistHandler implements RequestHandler<AppendVidSe
 	
 	@Override
 	public AppendVidSegResponse handleRequest(AppendVidSegRequest req, Context context) {
+		AppendVidSegResponse response = null;
+		PlaylistDAO playlistDAO = new PlaylistDAO();
+		
+		
+		String videoID = req.getVideoID();
+		String playlistName = req.getPlaylistName();
+		
+		try {
+			if(playlistDAO.addVidSegToPlaylist(playlistName, videoID)) {
+					response =  new AppendVidSegResponse(playlistName, 200);
+			}
+			else {
+				response = new AppendVidSegResponse(playlistName, 422);
+			}
+		} catch (Exception e) {
+			response = new AppendVidSegResponse(playlistName, 403, "Something has gone wrong");
+		}
+		
+		
+		
 		
 		logger = context.getLogger();
 		logger.log(req.toString());
 
-		AppendVidSegResponse response = null;		// TODO: remove " = null;"
+				// TODO: remove " = null;"
 		
 		return response;
 		
 	}
-	
-	
-	/**
-	 * Add VidSeg to playlist in RDS
-	 * @throws Exception 
-	 */
-	
-	public boolean appendVidSegToPlaylist(String playlistName, String vidSegID) throws Exception {
-		PlaylistDAO dao = new PlaylistDAO();
-		dao.addVidSegToPlaylist(playlistName, vidSegID);
-		
-		return true;
-		
-	}
-	
-	
-	
-	
 
 }
