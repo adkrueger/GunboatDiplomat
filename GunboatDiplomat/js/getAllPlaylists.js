@@ -33,7 +33,8 @@ function processPlaylistListResponse(response) {
 		"\"</span><br/><video width=\"350\" height=\"350\" controls><source src=\"" + atob(base64Contents); + "\" type=\"video/ogg\"></video>" +
 				"<br/><input class=\"button\" type=\"button\" value=\"Delete\"/></div></br></li>";
 		 */
-		output = output + "<li><div id=\"playlist-" + name + "\"><b>" + name + "</b><br/><input class=\"button\" type=\"button\" value=\"Play\"/>"
+		output = output + "<li><div id=\"playlist-" + name + "\"><b>" + name + "</b>"
+		+ "<br/><input class=\"button\" type=\"button\" value=\"Play\"/>"
 		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Append VS\"/>"
 		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Remove VS\"/>"
 		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Delete\" onclick=\"requestDeletePlaylist(\'" + name + "\')\"/></div></li>";

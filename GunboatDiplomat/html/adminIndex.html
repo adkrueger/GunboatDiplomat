@@ -14,6 +14,7 @@
 <script type="text/javascript" src="../js/registerRemote.js"></script>
 <script type="text/javascript" src="../js/unregisterRemote.js"></script>
 <script type="text/javascript" src="../js/searchVidSegs.js"></script>
+<script type="text/javascript" src="../js/getAllRemotes.js"></script>
 
 <script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function() {
@@ -21,6 +22,7 @@
 			console.log("initializing");
 			refreshVidSegListAdmin();
 			refreshPlaylistList();
+			refreshRemoteList();
 		}
 
 		initialize();
@@ -204,7 +206,6 @@ add this back if we want to center buttons */
 			<input class="button" type="button" value="Add URL" />
 		</form>
 		<div class="vertSpace"></div>
-		<h3>Remote URLs</h3>
 		<div id="remoteList">
 			
 		</div>
