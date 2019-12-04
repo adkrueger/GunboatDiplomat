@@ -1,24 +1,24 @@
 package gunboatdiplomat.http;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-import gunboatdiplomat.model.Playlist;
+import gunboatdiplomat.model.VidSeg;
 
 public class ListPlaylistsResponse {
 
-	public final List<Playlist> playlists;
+	public HashMap<String, List<VidSeg>> playlists;
 	public final int statusCode;
 	public final String error;
 	
-	public ListPlaylistsResponse(List<Playlist> playlists, int statusCode) {
+	public ListPlaylistsResponse(HashMap<String, List<VidSeg>> playlists, int statusCode) {
 		this.playlists = playlists;
 		this.statusCode = statusCode;
 		this.error = "";
 	}
 	
 	public ListPlaylistsResponse(int code, String errorMessage) {
-		this.playlists = new ArrayList<Playlist>();
+		this.playlists = new HashMap<String, List<VidSeg>>();
 		this.statusCode = code;
 		this.error = errorMessage;
 	}
