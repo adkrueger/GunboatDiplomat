@@ -1,9 +1,9 @@
 package gunboatdiplomat.http;
 
 public class GetVidSegInPlaylistResponse {
-	public final String id;
-	public final int statusCode;	//if the video segment is not found in the playlist
-	public final String error;		//output message if video segment is not found
+	public String id;
+	public int statusCode;	//if the video segment is not found in the playlist
+	public String error;		//output message if video segment is not found
 	
 	public GetVidSegInPlaylistResponse(String id, int statusCode) {
 		this.id = id;
