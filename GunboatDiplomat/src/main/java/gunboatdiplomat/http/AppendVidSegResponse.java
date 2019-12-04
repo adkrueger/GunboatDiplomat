@@ -27,18 +27,6 @@ public class AppendVidSegResponse {
 			return "Could not be appended to " + playlistName + " Error Code: " + errorCode;
 		}
 	}
-	
-	public String getPlaylistName() {
-		return playlistName;
-	}
-	public int getErrorCode() {
-		return errorCode;
-	}
-	public void setPlaylistName(String playlistName) {
-		this.playlistName = playlistName;
-	}
-	public void setErrorCode(int errorCode) {
-		this.errorCode = errorCode;
-	}
+
 	
 }
