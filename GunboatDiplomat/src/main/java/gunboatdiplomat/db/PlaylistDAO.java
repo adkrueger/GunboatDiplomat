@@ -194,4 +194,12 @@ public class PlaylistDAO {
 
 		return new VidSeg(id, character, quote, isLocal, isMarked);
 	}
+	
+	//TODO: this method takes in the playlist name and returns all the video segments in
+	//		that given playlist
+	public List<VidSeg> getVideoSegInPlaylist() {	//one parameter should be the playlist name
+													//Just did this because there were errors in the other handler...oops
+		List<VidSeg> vsList = new ArrayList<>();
+		return vsList;
+	}
 }

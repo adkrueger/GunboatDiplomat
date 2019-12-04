@@ -12,7 +12,7 @@
 <script type="text/javascript" src="../js/appendVidSeg.js"></script>
 <script type="text/javascript" src="../js/deletePlaylist.js"></script>
 <script type="text/javascript" src="../js/registerRemote.js"></script>
-<script type="text/javascript" src="../js/deleteRemote.js"></script>
+<script type="text/javascript" src="../js/unregisterRemote.js"></script>
 <script type="text/javascript" src="../js/searchVidSegs.js"></script>
 
 <script type="text/javascript">
@@ -132,13 +132,16 @@ add this back if we want to center buttons */
 			<form name="searchVidSegs" method="post">
 				<!-- only for characters -->
 				<input class="textInput" name="character" type="text"
-					placeholder="Search characters..." value="" style="display: inline-block;" />
+					placeholder="Search characters..." value=""
+					style="display: inline-block;" />
 				<div class="divider"></div>
 				<!-- only for quotes -->
 				<input class="textInput" name="quote" type="text"
-					placeholder="Search quotes..." value="" style="display: inline-block;" />
+					placeholder="Search quotes..." value=""
+					style="display: inline-block;" />
 				<div class="divider"></div>
-				<input class="button" type="button" value="Search" onclick="handleSearchClick()"/>
+				<input class="button" type="button" value="Search"
+					onclick="handleSearchClick()" />
 			</form>
 		</div>
 		<div id="searchResults"></div>
@@ -194,22 +197,16 @@ add this back if we want to center buttons */
 	<hr />
 	<div class="admin">
 		<h1 class="header">ADMIN USAGE</h1>
-		<input class="textInput" type="text" placeholder="Add Remote URL"
-			style="display: inline-block;" />
-		<div class="divider"></div>
-		<input class="button" type="button" value="Add URL" />
+		<form name="remoteForm">
+			<input class="textInput" type="text" placeholder="Add Remote URL"
+				style="display: inline-block;" />
+			<div class="divider"></div>
+			<input class="button" type="button" value="Add URL" />
+		</form>
 		<div class="vertSpace"></div>
 		<h3>Remote URLs</h3>
 		<div id="remoteList">
-			<ul class="itemList">
-				<li>
-					<div class="vidSeg">
-						<p class="remoteURL"></p>
-						<input class="button" type="button" value="Delete" />
-						<div class="divider"></div>
-					</div>
-				</li>
-			</ul>
+			
 		</div>
 		<div id="localVidSegList">
 			<ul class="itemList">

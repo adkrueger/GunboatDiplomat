@@ -7,7 +7,6 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import gunboatdiplomat.db.PlaylistDAO;
 import gunboatdiplomat.http.DeletePlaylistRequest;
 import gunboatdiplomat.http.DeletePlaylistResponse;
-import gunboatdiplomat.model.Playlist;
 
 public class DeletePlaylistHandler implements RequestHandler<DeletePlaylistRequest, DeletePlaylistResponse> {
 
@@ -22,11 +21,10 @@ public class DeletePlaylistHandler implements RequestHandler<DeletePlaylistReque
 		DeletePlaylistResponse response;
 		
 		PlaylistDAO dao = new PlaylistDAO();
-		Playlist playlist = new Playlist(req.id);
 		
 		try {
 			// delete the playlist from RDS
-			if(dao.deletePlaylist(playlist.name)) {
+			if(dao.deletePlaylist(req.id)) {
 				response = new DeletePlaylistResponse(req.id, 200);
 			}
 			else {
