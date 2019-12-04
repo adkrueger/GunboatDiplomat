@@ -34,7 +34,7 @@ function processVidSegListResponseAdmin(response) {
 		let isMarked = vidSegJson["isMarked"];
 		let url = vidSegJson["url"];
 
-		output = output + "<li><div id=\"vidSeg-" + id + "\"><b>" + id + "</b><br/><span>" + charSpeaking + ": \"" + quote + 
+		output = output + "<li><a name=\"vidSeg-" + id + "\"></a><div id=\"vidSeg-" + id + "\"><b>" + id + "</b><br/><span>" + charSpeaking + ": \"" + quote + 
 		"\"</span><br/><video width=\"350\" height=\"260\" controls><source src=\"" + url + "\" type=\"video/ogg\"></video>" +
 		"<br/><input class=\"button\" type=\"button\" value=\"Delete\" onclick=\"requestDelete(\'" + id + "\', 1)\"/><div class=\"divider\"></div>" +
 		"<input class=\"button\" type=\"button\" value=\"Mark\"><div class=\"divider\"></div>" +

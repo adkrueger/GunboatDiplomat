@@ -34,7 +34,9 @@ public class SearchVidSegsHandler implements RequestHandler<SearchVidSegsRequest
 			finalList.add(vs);
 		}
 		for(VidSeg vs : quoteList) {
-			finalList.add(vs);
+			if(!finalList.contains(vs)) {
+				finalList.add(vs);
+			}
 		}
 		
 		return finalList;
