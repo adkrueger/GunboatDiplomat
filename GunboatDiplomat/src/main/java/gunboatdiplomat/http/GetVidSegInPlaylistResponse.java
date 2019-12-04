@@ -17,6 +17,12 @@ public class GetVidSegInPlaylistResponse {
 		this.error = err;
 	}
 	
+	public GetVidSegInPlaylistResponse(int statusCode, String error) {
+		this.id = "";
+		this.statusCode = statusCode;
+		this.error = error;
+	}
+	
 	public String toString() {
 		if(statusCode/100 == 2) {
 			return "GetVidSegInPlaylist(" + id + ")";
