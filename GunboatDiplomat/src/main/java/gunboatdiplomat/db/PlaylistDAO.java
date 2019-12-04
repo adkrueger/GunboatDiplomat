@@ -57,21 +57,7 @@ public class PlaylistDAO {
 		}
 		ps1.close();
 		return true;
-	}
-	
-	/**
-	 * This method uses a playlistname and returns all the VidSeg that are a part of
-	 * that playlist.
-	 * 
-	 * 
-	 * 
-	 * @param playlistName
-	 * 
-	 * @return List<VidSeg>
-	 * 
-	 * @throws Exception
-	 * 
-	 */
+	} 
 
 	public List<VidSeg> getPlaylistVidSeg(String playlistName) throws Exception {
 
@@ -197,9 +183,22 @@ public class PlaylistDAO {
 	
 	//TODO: this method takes in the playlist name and returns all the video segments in
 	//		that given playlist
-	public List<VidSeg> getVideoSegInPlaylist() {	//one parameter should be the playlist name
+	public List<VidSeg> getVideoSegInPlaylist(String playlistName) throws Exception {	//one parameter should be the playlist name
 													//Just did this because there were errors in the other handler...oops
 		List<VidSeg> vsList = new ArrayList<>();
+		
+		PreparedStatement ps = conn.prepareStatement("SELECT * FROM Playlist WHERE playlist_title = ?");
+		ps.setString(1, playlistName);
+		ResultSet rs = ps.executeQuery();
+		
+		while(rs.next()) {
+			VidSeg vs = generateVidSeg(rs.getString("video_id"));
+			vsList.add(vs);
+			
+		}
+		
+		
+		
 		return vsList;
 	}
 }
