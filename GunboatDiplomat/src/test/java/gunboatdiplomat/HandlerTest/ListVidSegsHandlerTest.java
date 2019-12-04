@@ -1,6 +1,5 @@
 package gunboatdiplomat.HandlerTest;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.junit.Assert;
@@ -12,7 +11,7 @@ import gunboatdiplomat.db.VideoSegmentDAO;
 import gunboatdiplomat.http.AllVidSegsResponse;
 import gunboatdiplomat.model.VidSeg;
 
-public class ListVidSegsHandlerTest extends LambdaTest{
+public class ListVidSegsHandlerTest extends LambdaTest {
 	
 	@Test
 	public void testgetList() throws Exception {
@@ -25,8 +24,6 @@ public class ListVidSegsHandlerTest extends LambdaTest{
 		VideoSegmentDAO dao = new VideoSegmentDAO();
 
 		for(VidSeg vs : s3List) {
-			System.out.println(vs.id);
-			System.out.println(dao.getVidSeg(vs.id));
 			Assert.assertTrue(rdsList.contains(dao.getVidSeg(vs.id)));
 		}
 		
