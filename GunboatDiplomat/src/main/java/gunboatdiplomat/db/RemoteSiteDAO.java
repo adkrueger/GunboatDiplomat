@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 import gunboatdiplomat.model.RemoteSite;
 
@@ -83,9 +82,9 @@ public class RemoteSiteDAO {
 		
 	}
 	
-	public List<RemoteSite> getAllRemoteSites() throws Exception {
+	public ArrayList<RemoteSite> getAllRemoteSites() throws Exception {
 		
-		List<RemoteSite> allRemoteSites = new ArrayList<>();
+		ArrayList<RemoteSite> allRemoteSites = new ArrayList<>();
 		
 		try {
 			Statement statement = connection.createStatement();

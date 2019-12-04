@@ -26,7 +26,6 @@ public class ListPlaylistsHandler implements RequestHandler<Object, ListPlaylist
 	public ListPlaylistsResponse handleRequest(Object req, Context context) {
 
 		logger = context.getLogger();
-		logger.log(req.toString());
 
 		ListPlaylistsResponse response;	
 		
