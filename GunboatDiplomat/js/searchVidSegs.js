@@ -13,8 +13,8 @@ function processSearchResponse(response) {
 		let charSpeaking = resultJson["character"];
 		let quote = resultJson["quote"];
 		
-		output = output + "<li><a href=\"#vidSeg-" + id + "\"><b>" + id + "</b></a><br/><p>"
-		+ charSpeaking + ": \"" + quote + "\"</p></li>";
+		output = output + "<li><a href=\"#vidSeg-" + id + "\"><b>" + id + "</b></a><div class=\"vertSpace\"></div>"
+		+ "<span>" + charSpeaking + ": \"" + quote + "\"</span></li><br/>";
 
 		if(i == js.vidSegs.length-1) {
 			output = output + "</ul>";
