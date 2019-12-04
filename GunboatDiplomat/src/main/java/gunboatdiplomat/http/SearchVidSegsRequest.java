@@ -26,6 +26,8 @@ public class SearchVidSegsRequest {
 		this.quote = quote;
 	}
 	
+	public SearchVidSegsRequest() {}
+	
 	public String toString() {
 		return "SearchVidSegs(" + character_speaking + "," + quote + ")";
 	}

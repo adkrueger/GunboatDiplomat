@@ -5,6 +5,7 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.s3.AmazonS3;
 
+import gunboatdiplomat.db.PlaylistDAO;
 import gunboatdiplomat.http.AppendVidSegRequest;
 import gunboatdiplomat.http.AppendVidSegResponse;
 
@@ -25,5 +26,23 @@ public class AppendVidSegToPlaylistHandler implements RequestHandler<AppendVidSe
 		return response;
 		
 	}
+	
+	
+	/**
+	 * Add VidSeg to playlist in RDS
+	 * @throws Exception 
+	 */
+	
+	public boolean appendVidSegToPlaylist(String playlistName, String vidSegID) throws Exception {
+		PlaylistDAO dao = new PlaylistDAO();
+		dao.addVidSegToPlaylist(playlistName, vidSegID);
+		
+		return true;
+		
+	}
+	
+	
+	
+	
 
 }

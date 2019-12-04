@@ -25,7 +25,7 @@ public class SearchVidSegsResponse {
 	
 	public String toString() {
 		if (vidSegs == null) { return "No Vid Segs Found"; }
-		return "AllConstants(" + vidSegs.size() + ")";
+		return "SearchVidSegs(" + vidSegs.size() + ")";
 	}
 	
 }

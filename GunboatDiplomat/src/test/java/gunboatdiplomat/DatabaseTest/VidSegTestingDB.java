@@ -59,7 +59,7 @@ public class VidSegTestingDB {
 		assertTrue(vs1.equals(vs2));
 
 		//Deleting the VidSeg that was just added. 
-		if(vidsegDAO.deleteVidSeg(vs2) == true) {
+		if(vidsegDAO.deleteVidSeg(vs2.id) == true) {
 			System.out.println("Video has been deleted from the the table");
 		}
 
@@ -84,7 +84,7 @@ public class VidSegTestingDB {
 		VidSeg vs7 = new VidSeg("c44af4fd-1b23-4350-bd91-d797de7f1eca", "Spock", "That should prove very interesting.", 1, 0);
 		VidSeg vs8 = new VidSeg("32b1d20e-62cf-4917-bc19-33c3cbb09a7e", "Leonard McCoy", "Now you must want the child!", 1, 0);
 		VidSeg vs9 = new VidSeg("668260dc-cebf-44b3-89fe-c30ec4909d76", "James T. Kirk", "More like love.", 1, 0);
-		VidSeg vs10 = new VidSeg("4e770ca3-2961-4a38-a412-c2c60505bbc5", "Spock", "A most facinating thing happened.", 1, 0);
+		VidSeg vs10 = new VidSeg("4e770ca3-2961-4a38-a412-c2c60505bbc5", "Spock", "A most fascinating thing happened.", 1, 0);
 		
 		List<VidSeg> listOfSegSolution  = new ArrayList<VidSeg>();
 		listOfSegSolution.add(vs1);
@@ -106,9 +106,31 @@ public class VidSegTestingDB {
 //			System.out.println(listOfSegTest.get(i));
 			assertTrue(listOfSegSolution.get(i).equals(listOfSegTest.get(i)));
 		}
-
 	}
 	
+	/**
+	 * testMark and Unmark VideoSegment
+	 * @throws Exception 
+	 * 	
+	 */
+	
+	@Test
+	public void testMarkVidSeg() throws Exception {
+		vidsegDAO.markVidSeg("5ecb7cb5-115a-4114-9865-bec03f4b2f5a");
+		
+		//check to see if Video has been marked. 
+		assertEquals(vidsegDAO.getVidSeg("5ecb7cb5-115a-4114-9865-bec03f4b2f5a").isMarked, 1);
+		vidsegDAO.unmarkVidSeg("5ecb7cb5-115a-4114-9865-bec03f4b2f5a");
+	}
+	
+	@Test
+	public void testUnmarkVidSeg() throws Exception{
+		vidsegDAO.unmarkVidSeg("5ecb7cb5-115a-4114-9865-bec03f4b2f5a");
+		
+		//Check to see if Video has been unmarked. 
+		assertEquals(vidsegDAO.getVidSeg("5ecb7cb5-115a-4114-9865-bec03f4b2f5a").isMarked, 0);
+		
+	}
 
 
 }

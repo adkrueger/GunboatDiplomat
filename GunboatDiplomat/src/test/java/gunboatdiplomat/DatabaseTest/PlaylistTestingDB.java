@@ -1,6 +1,7 @@
 package gunboatdiplomat.DatabaseTest;
 
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,6 +44,11 @@ public class PlaylistTestingDB {
 		}
 
 	}
+	
+	@Test
+	public void testAddVidSegToPlaylist() throws Exception{
+		
+	}
 
 	@Test
 	public void testGetAllPlaylists() throws Exception {
@@ -70,6 +76,14 @@ public class PlaylistTestingDB {
 		HashMap h = playlistDAO.getAllPlaylists();
 		assertEquals(solution, playlistDAO.getAllPlaylists());
 
+	}
+	
+	@Test
+	public void testAppendVidSeg() throws Exception {
+		String videoID = "Testing1";
+		String playlistName = "Funny Clips";
+		
+		playlistDAO.addVidSegToPlaylist(playlistName, videoID);
 	}
 
 	/*

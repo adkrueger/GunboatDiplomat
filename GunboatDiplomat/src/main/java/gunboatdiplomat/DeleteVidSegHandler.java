@@ -47,7 +47,6 @@ public class DeleteVidSegHandler implements RequestHandler<DeleteVidSegRequest, 
 		logger.log("delete request: " + request.toString());
 		
 		VideoSegmentDAO dao = new VideoSegmentDAO();
-		VidSeg vidSeg = new VidSeg(request.id, "", "", 0, 0);
 		
 		try {
 			// delete the video segment from S3
@@ -59,7 +58,7 @@ public class DeleteVidSegHandler implements RequestHandler<DeleteVidSegRequest, 
 			}
 			
 			// delete the video segment from RDS
-			if(dao.deleteVidSeg(vidSeg)) {
+			if(dao.deleteVidSeg(request.id)) {
 				response = new DeleteVidSegResponse(request.id, 200);
 			} 
 			else {

@@ -29,6 +29,36 @@ public class VideoSegmentDAO {
 			System.out.println("Connection has failed!");
 		}
 	}
+	
+	public boolean markVidSeg(String id) {
+		try {
+			PreparedStatement ps = connection.prepareStatement("UPDATE VideoSegment SET is_marked = 1 WHERE video_id = ?");
+			ps.setString(1, id);
+			
+			ps.executeUpdate();
+			
+			return true;
+			
+		}
+		catch(Exception e){
+			System.out.println("Video Segment was not successfully marked");
+			return false;
+		}
+	}
+	
+	public boolean unmarkVidSeg(String id) {
+		try {
+			PreparedStatement ps = connection.prepareStatement("UPDATE VideoSegment SET is_marked = 0 WHERE video_id = ?");
+			ps.setString(1, id);
+			
+			ps.executeUpdate();
+			return true;
+		}
+		catch(Exception e) {
+			System.out.println("Video Segment was not successfully unmarked");
+			return false;
+		}
+	}
 
 
 	public VidSeg getVidSeg(String id) throws Exception {
@@ -126,14 +156,14 @@ public class VideoSegmentDAO {
 		
 	}
 	
-	public boolean deleteVidSeg(VidSeg vs) throws Exception {
+	public boolean deleteVidSeg(String video_id) throws Exception {
 		try {
 			//Check to see if VidSeg Exists
-			if(vs.id.equals(getVidSeg(vs.id).id)) {
-				System.out.println(getVidSeg(vs.id));
+			if(video_id.equals(getVidSeg(video_id).id)) {
+				System.out.println(getVidSeg(video_id));
 				//If yes, then delete. 
 				PreparedStatement ps = connection.prepareStatement("DELETE FROM VideoSegment WHERE video_id=?;");
-				ps.setString(1, vs.id);
+				ps.setString(1, video_id);
 				ps.executeUpdate();
 				return true;
 			}
