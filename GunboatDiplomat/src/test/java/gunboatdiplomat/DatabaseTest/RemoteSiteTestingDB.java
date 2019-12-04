@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import gunboatdiplomat.model.RemoteSite;
 
-public class RemoteSiteTesting {
+public class RemoteSiteTestingDB {
 	
 	RemoteSiteDAO rsDAO = new RemoteSiteDAO();
 	

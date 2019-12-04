@@ -29,6 +29,36 @@ public class VideoSegmentDAO {
 			System.out.println("Connection has failed!");
 		}
 	}
+	
+	public boolean markVidSeg(String id) {
+		try {
+			PreparedStatement ps = connection.prepareStatement("UPDATE VideoSegment SET is_marked = 1 WHERE video_id = ?");
+			ps.setString(1, id);
+			
+			ps.executeUpdate();
+			
+			return true;
+			
+		}
+		catch(Exception e){
+			System.out.println("Video Segment was not successfully marked");
+			return false;
+		}
+	}
+	
+	public boolean unmarkVidSeg(String id) {
+		try {
+			PreparedStatement ps = connection.prepareStatement("UPDATE VideoSegment SET is_marked = 0 WHERE video_id = ?");
+			ps.setString(1, id);
+			
+			ps.executeUpdate();
+			return true;
+		}
+		catch(Exception e) {
+			System.out.println("Video Segment was not successfully unmarked");
+			return false;
+		}
+	}
 
 
 	public VidSeg getVidSeg(String id) throws Exception {
