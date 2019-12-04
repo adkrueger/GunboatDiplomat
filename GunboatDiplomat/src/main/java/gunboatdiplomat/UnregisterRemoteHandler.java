@@ -12,8 +12,6 @@ import gunboatdiplomat.model.RemoteSite;
 
 public class UnregisterRemoteHandler implements RequestHandler<UnregisterRemoteRequest, UnregisterRemoteResponse> {
 
-	private AmazonS3 s3 = null;
-
 	LambdaLogger logger;
 	
 	@Override
