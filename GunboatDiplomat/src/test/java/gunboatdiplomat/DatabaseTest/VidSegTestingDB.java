@@ -84,7 +84,7 @@ public class VidSegTestingDB {
 		VidSeg vs7 = new VidSeg("c44af4fd-1b23-4350-bd91-d797de7f1eca", "Spock", "That should prove very interesting.", 1, 0);
 		VidSeg vs8 = new VidSeg("32b1d20e-62cf-4917-bc19-33c3cbb09a7e", "Leonard McCoy", "Now you must want the child!", 1, 0);
 		VidSeg vs9 = new VidSeg("668260dc-cebf-44b3-89fe-c30ec4909d76", "James T. Kirk", "More like love.", 1, 0);
-		VidSeg vs10 = new VidSeg("4e770ca3-2961-4a38-a412-c2c60505bbc5", "Spock", "A most facinating thing happened.", 1, 0);
+		VidSeg vs10 = new VidSeg("4e770ca3-2961-4a38-a412-c2c60505bbc5", "Spock", "A most fascinating thing happened.", 1, 0);
 		
 		List<VidSeg> listOfSegSolution  = new ArrayList<VidSeg>();
 		listOfSegSolution.add(vs1);
@@ -106,17 +106,6 @@ public class VidSegTestingDB {
 //			System.out.println(listOfSegTest.get(i));
 			assertTrue(listOfSegSolution.get(i).equals(listOfSegTest.get(i)));
 		}
-		
-		vidsegDAO.deleteVidSeg("5ecb7cb5-115a-4114-9865-bec03f4b2f5a");
-		vidsegDAO.deleteVidSeg("dea234c9-f27b-42e0-9f61-e8c462294f2b");
-		vidsegDAO.deleteVidSeg("6600f679-27e6-43b4-b743-50c66483b2d5");
-		vidsegDAO.deleteVidSeg("65ec514c-64f4-473d-902e-b93c4bcd9439");
-		vidsegDAO.deleteVidSeg("df79e576-3c06-468d-a3b2-fab974607260");
-		vidsegDAO.deleteVidSeg("30f065a0-42e2-4be3-a64f-14aac9a03252");
-		vidsegDAO.deleteVidSeg("c44af4fd-1b23-4350-bd91-d797de7f1eca");
-		vidsegDAO.deleteVidSeg("32b1d20e-62cf-4917-bc19-33c3cbb09a7e");
-		vidsegDAO.deleteVidSeg("668260dc-cebf-44b3-89fe-c30ec4909d76");
-		vidsegDAO.deleteVidSeg("4e770ca3-2961-4a38-a412-c2c60505bbc5");
 	}
 	
 	/**
@@ -135,12 +124,11 @@ public class VidSegTestingDB {
 	}
 	
 	@Test
-	public void testUnarkVidSeg() throws Exception{
+	public void testUnmarkVidSeg() throws Exception{
 		vidsegDAO.unmarkVidSeg("5ecb7cb5-115a-4114-9865-bec03f4b2f5a");
 		
 		//Check to see if Video has been unmarked. 
 		assertEquals(vidsegDAO.getVidSeg("5ecb7cb5-115a-4114-9865-bec03f4b2f5a").isMarked, 0);
-		vidsegDAO.markVidSeg("5ecb7cb5-115a-4114-9865-bec03f4b2f5a");
 		
 	}
 
