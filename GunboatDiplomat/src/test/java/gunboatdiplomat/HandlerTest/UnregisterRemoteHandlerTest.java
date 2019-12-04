@@ -13,27 +13,30 @@ import gunboatdiplomat.http.UnregisterRemoteRequest;
 import gunboatdiplomat.http.UnregisterRemoteResponse;
 import gunboatdiplomat.model.RemoteSite;
 
-
-public class RegisterRemoteHandlerTest extends LambdaTest {
+public class UnregisterRemoteHandlerTest extends LambdaTest {
 
 	public RemoteSiteDAO rsDAO = new RemoteSiteDAO();
 	
 	@Test
-	public void testRegisterRemote() throws Exception {
+	public void testUnregisterRemote() throws Exception {
 		
-		RemoteSite rs = new RemoteSite("https://www.google.com");
+		RemoteSite rs = new RemoteSite("https://www.letTestUnregister.org");
 		
 		// register the remote
 		RegisterRemoteRequest req = new RegisterRemoteRequest(rs.getUrl());
 		RegisterRemoteResponse resp = new RegisterRemoteHandler().handleRequest(req, createContext("register"));
-		Assert.assertEquals("https://www.google.com", resp.id);
-		RemoteSite testRS = rsDAO.getRemoteSite("https://www.google.com");
+		Assert.assertEquals("https://www.letTestUnregister.org", resp.id);
+		RemoteSite testRS = rsDAO.getRemoteSite("https://www.letTestUnregister.org");
 		Assert.assertTrue(testRS != null);
 		
 		// now get rid of it
-		UnregisterRemoteRequest urr = new UnregisterRemoteRequest("https://www.google.com");
+		UnregisterRemoteRequest urr = new UnregisterRemoteRequest("https://www.letTestUnregister.org");
 		UnregisterRemoteResponse unregResponse = new UnregisterRemoteHandler().handleRequest(urr, createContext("unregister"));
-		Assert.assertEquals("https://www.google.com", unregResponse.id);
+		Assert.assertEquals("https://www.letTestUnregister.org", unregResponse.id);
+		
+		// make sure it's gone
+		testRS = rsDAO.getRemoteSite("https://www.letTestUnregister.org");
+		Assert.assertTrue(testRS == null);
 		
 	}
 	
