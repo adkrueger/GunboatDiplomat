@@ -18,6 +18,7 @@ public class DeletePlaylistHandler implements RequestHandler<DeletePlaylistReque
 	public LambdaLogger logger = null;
 	private AmazonS3 s3 = null;
 	
+	//we can get rid of deleting a playlist from s3
 	public boolean deletePlaylistFromS3(String id) throws Exception {
 		
 		if(logger != null) {
