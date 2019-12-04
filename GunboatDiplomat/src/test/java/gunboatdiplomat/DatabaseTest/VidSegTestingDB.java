@@ -59,7 +59,7 @@ public class VidSegTestingDB {
 		assertTrue(vs1.equals(vs2));
 
 		//Deleting the VidSeg that was just added. 
-		if(vidsegDAO.deleteVidSeg(vs2) == true) {
+		if(vidsegDAO.deleteVidSeg(vs2.id) == true) {
 			System.out.println("Video has been deleted from the the table");
 		}
 

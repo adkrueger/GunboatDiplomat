@@ -9,9 +9,12 @@ import org.junit.Test;
 import com.amazonaws.util.IOUtils;
 import com.google.gson.Gson;
 
+import gunboatdiplomat.DeleteVidSegHandler;
 import gunboatdiplomat.LambdaTest;
 import gunboatdiplomat.UploadVidSegHandler;
 import gunboatdiplomat.db.VideoSegmentDAO;
+import gunboatdiplomat.http.DeleteVidSegRequest;
+import gunboatdiplomat.http.DeleteVidSegResponse;
 import gunboatdiplomat.http.UploadVidSegRequest;
 import gunboatdiplomat.http.UploadVidSegResponse;
 import gunboatdiplomat.model.VidSeg;
@@ -38,10 +41,10 @@ public class UploadVidSegHandlerTest extends LambdaTest {
 	public void testOkInput() throws Exception {
 
 		VideoSegmentDAO dao = new VideoSegmentDAO();
-		VidSeg exist = dao.getVidSeg("testingVidSeg");
+		VidSeg exist = dao.getVidSeg("testingUploadVidSeg");
 		if(exist != null) {
 			System.out.println("vid seg already in table");
-			dao.deleteVidSeg(exist);
+			dao.deleteVidSeg(exist.id);
 		}
 		
 		InputStream inputStream = UploadVidSegHandlerTest.class.getResourceAsStream("Segment1.ogg");
@@ -53,7 +56,7 @@ public class UploadVidSegHandlerTest extends LambdaTest {
 			Assert.fail("Invalid: " + ioe.getMessage());
 		}
 		
-		UploadVidSegRequest request = new UploadVidSegRequest("testingVidSeg", "Leonard McCoy", "Death by natural causes.", 1, 0, testFile);
+		UploadVidSegRequest request = new UploadVidSegRequest("testingUploadVidSeg", "Leonard McCoy", "Death by natural causes.", 1, 0, testFile);
 		String input = new Gson().toJson(request);
 
 		try {
@@ -63,6 +66,11 @@ public class UploadVidSegHandlerTest extends LambdaTest {
 			Assert.fail("Invalid: " + ioe.getMessage());
 		}
 		
+        DeleteVidSegRequest dvsr = new DeleteVidSegRequest("testingUploadVidSeg");
+        DeleteVidSegResponse deleteResponse = new DeleteVidSegHandler().handleRequest(dvsr, createContext("delete"));
+        System.out.println(deleteResponse.id);
+        Assert.assertEquals("testingUploadVidSeg", deleteResponse.id);
+        
 	}
 	
 }
