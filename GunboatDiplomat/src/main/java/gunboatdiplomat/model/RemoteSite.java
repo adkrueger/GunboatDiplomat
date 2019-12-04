@@ -20,4 +20,10 @@ public class RemoteSite {
 		
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+		return ((RemoteSite)o).url.equals(url);
+	}
+
+	
 }
