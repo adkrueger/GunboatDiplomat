@@ -7,8 +7,8 @@ import gunboatdiplomat.model.VidSeg;
 
 public class GetVidSegInPlaylistResponse {
 	public final String id;
-	public final int statusCode;
-	public final String error;
+	public final int statusCode;	//if the video segment is not found in the playlist
+	public final String error;		//output message if video segment is not found
 	
 	//Not sure if this will be necessary but we will include a created playlist
 	//and list of video segments for now
