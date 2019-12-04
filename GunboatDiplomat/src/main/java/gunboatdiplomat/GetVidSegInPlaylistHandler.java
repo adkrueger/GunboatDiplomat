@@ -16,11 +16,11 @@ public class GetVidSegInPlaylistHandler implements RequestHandler<GetVidSegInPla
 
 	LambdaLogger logger;
 
-	public List<VidSeg> getVidSegInPlaylistFromRDS() throws Exception {
+	public List<VidSeg> getVidSegInPlaylistFromRDS(String playlistID) throws Exception {
 		logger.log("in getVideoSegmentsFromPlaylist");
 		PlaylistDAO dao = new PlaylistDAO();
 		
-		return dao.getVideoSegInPlaylist();
+		return dao.getVideoSegInPlaylist(playlistID);
 	}
 	
 	public GetVidSegInPlaylistResponse handleRequest(GetVidSegInPlaylistRequest request, Context context) {
@@ -30,9 +30,13 @@ public class GetVidSegInPlaylistHandler implements RequestHandler<GetVidSegInPla
 		
 		GetVidSegInPlaylistResponse response;
 		
-		
-		response = null;		// TODO: Implement and delete this line!!! (just here to satisfy AWS req's)
-		
+		try {
+			List<VidSeg> list = getVidSegInPlaylistFromRDS(request.playlist_id);
+			response = new GetVidSegInPlaylistResponse(request.playlist_id, 200);
+		}
+		catch (Exception e) {
+			response = new GetVidSegInPlaylistResponse(403, e.getMessage());
+		}
 		
 		return response;
 		
