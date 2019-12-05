@@ -23,6 +23,10 @@ public class RemoteSiteDAO {
 		}
 	}
 	
+	public RemoteSiteDAO(boolean noConn) {
+		connection = null;
+	}
+	
 	public RemoteSite getRemoteSite(String url) throws Exception {
 		
 		try {
