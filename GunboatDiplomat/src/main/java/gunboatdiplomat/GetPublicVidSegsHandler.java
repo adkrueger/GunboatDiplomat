@@ -7,14 +7,20 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.s3.AmazonS3;
 
+import gunboatdiplomat.db.VideoSegmentDAO;
 import gunboatdiplomat.http.GetPublicVidSegsResponse;
 import gunboatdiplomat.model.VidSeg;
 
 public class GetPublicVidSegsHandler implements RequestHandler<Object, GetPublicVidSegsResponse> {
 	
 	private AmazonS3 s3 = null;
-	
 	LambdaLogger logger;
+	
+	public List<VidSeg> getVidSegsFromRDS() throws Exception {
+		logger.log("in getVideoSegments");
+		VideoSegmentDAO dao = new VideoSegmentDAO();
+		return dao.getAllVidSegs();
+	}
 	
 	public GetPublicVidSegsResponse handleRequest(Object request, Context context) {
 		
