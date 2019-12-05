@@ -24,6 +24,7 @@ import gunboatdiplomat.model.VidSeg;
 
 public class SearchVidSegsHandlerTest extends LambdaTest {
 
+
 	@Test
 	public void testSearchBothHandler() throws Exception {
 		// upload a testing video segment

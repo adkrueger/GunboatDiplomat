@@ -17,8 +17,12 @@ public class SearchVidSegsHandler implements RequestHandler<SearchVidSegsRequest
 	LambdaLogger logger;
 
 	public List<VidSeg> searchRDS(String character, String quote) throws Exception {
-
+/*
 		List<VidSeg> finalList = new ArrayList<>();
+		VideoSegmentDAO dao = new VideoSegmentDAO();
+		
+		finalList = dao.getAllVidSegs();
+*/		List<VidSeg> finalList = new ArrayList<>();
 		List<VidSeg> charList = new ArrayList<>();
 		List<VidSeg> quoteList = new ArrayList<>();
 

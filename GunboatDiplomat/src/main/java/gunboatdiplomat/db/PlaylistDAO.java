@@ -70,7 +70,9 @@ public class PlaylistDAO {
 
 		while (rs_playlist.next()) {
 			VidSeg vs = generateVidSeg(rs_playlist);
-			ls.add(vs);
+			if(!ls.contains(vs)) {
+				ls.add(vs);
+			}
 		}
 
 		ps.close();

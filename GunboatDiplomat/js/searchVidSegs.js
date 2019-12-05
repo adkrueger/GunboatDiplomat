@@ -5,6 +5,7 @@ function processSearchResponse(response) {
 
 	let output = "<h3>Search Results</h3><ul class=\"itemList\">";
 
+	// vidSegs is in response https class of search
 	for(let i = 0; i < js.vidSegs.length; i++) {
 		let resultJson = js.vidSegs[i];
 		console.log(resultJson);
