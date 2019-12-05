@@ -90,7 +90,7 @@ public class VideoSegmentDAO {
 		
 		try {
 			VidSeg vs = null;
-			PreparedStatement ps = connection.prepareStatement("SELECT * FROM VideoSegment WHERE character_speaking=?;");
+			PreparedStatement ps = connection.prepareStatement("SELECT * FROM VideoSegment WHERE character_speaking LIKE ?;");
 			ps.setString(1, character);
 			ResultSet rs = ps.executeQuery();
 
@@ -116,7 +116,7 @@ public class VideoSegmentDAO {
 		
 		try {
 			VidSeg vs = null;
-			PreparedStatement ps = connection.prepareStatement("SELECT * FROM VideoSegment WHERE quote=?;");
+			PreparedStatement ps = connection.prepareStatement("SELECT * FROM VideoSegment WHERE quote LIKE ?;");
 			ps.setString(1, quote);
 			ResultSet rs = ps.executeQuery();
 
@@ -134,6 +134,33 @@ public class VideoSegmentDAO {
 			throw new Exception("Failed in getting video segment: " + e.getMessage());
 		}
 
+	}
+	
+	public List<VidSeg> getVidSegsByQuoteAndCharacter(String quote, String character) throws Exception {
+		
+		List<VidSeg> listOfVS = new ArrayList<>();
+		
+		try {
+			VidSeg vs = null;
+			PreparedStatement ps = connection.prepareStatement("SELECT * FROM VideoSegment WHERE (quote LIKE ? AND character_speaking LIKE ?);");
+			ps.setString(1, quote);
+			ps.setString(2, character);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				vs = generateVidSeg(rs);
+				listOfVS.add(vs);
+			}
+			rs.close();
+			ps.close();
+			
+			return listOfVS;
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			throw new Exception("Failed in getting video segment: " + e.getMessage());
+		}
+		
 	}
 	
 	public boolean addVidSeg(VidSeg vs) throws Exception {
