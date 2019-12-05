@@ -105,13 +105,16 @@ public class PlaylistTestingDB {
 		sol1.add(vs5);
 		sol1.add(vs6);
 
-
 		solution.put("TestingGetAllPlaylist", sol1);
 
-		HashMap<String, List<VidSeg>> h = playlistDAO.getAllPlaylists();
+		HashMap<String, List<VidSeg>> allPlaylists = playlistDAO.getAllPlaylists();
 
 		playlistDAO.deletePlaylist("TestingGetAllPlaylist");
-		
+
+		for(HashMap.Entry<String, List<VidSeg>> retList : allPlaylists.entrySet()) {
+			solution.entrySet().contains(retList);
+		}
+
 		vsDAO.deleteVidSeg("testingGetALLPlaylist1");
 		vsDAO.deleteVidSeg("testingGetALLPlaylist2");
 		vsDAO.deleteVidSeg("testingGetALLPlaylist3");
@@ -119,32 +122,36 @@ public class PlaylistTestingDB {
 		vsDAO.deleteVidSeg("testingGetALLPlaylist5");
 		vsDAO.deleteVidSeg("testingGetALLPlaylist6");
 
-		for(HashMap.Entry<String, List<VidSeg>> solList : solution.entrySet()) {
-			for(HashMap.Entry<String, List<VidSeg>> retList : h.entrySet()) {
-				for(int i = 0; i < solList.getValue().size(); i++) {
-					
-					assertTrue(solList.getValue().get(i).equals(retList.getValue().get(i)));
-				}
-			}
-		}
-
 	}
 
 	@Test
 	public void testAppendVidSeg() throws Exception {
-		String videoID = "Testing1";
 		String playlistName = "Funny Clips";
 
-		playlistDAO.addVidSegToPlaylist(playlistName, videoID);
+		playlistDAO.addVidSegToPlaylist(playlistName, "testAppendVidSeg1");
+		playlistDAO.addVidSegToPlaylist(playlistName, "testAppendVidSeg2");
+		playlistDAO.addVidSegToPlaylist(playlistName, "testAppendVidSeg3");
 
+		VideoSegmentDAO vsDAO = new VideoSegmentDAO();   	 // need to add to video segment table for playlist to find it
+		vsDAO.addVidSeg(new VidSeg("testAppendVidSeg1", "", "", 1, 0));
+		vsDAO.addVidSeg(new VidSeg("testAppendVidSeg2", "", "", 1, 0));
+		vsDAO.addVidSeg(new VidSeg("testAppendVidSeg3", "", "", 1, 0));
+
+		List<VidSeg> allVSInPlaylist = playlistDAO.getPlaylistVidSeg(playlistName);
+
+		assertEquals("testAppendVidSeg1", allVSInPlaylist.get(0).id);
+		assertEquals("testAppendVidSeg2", allVSInPlaylist.get(1).id);
+		assertEquals("testAppendVidSeg3", allVSInPlaylist.get(2).id);
+
+		vsDAO.deleteVidSeg("testAppendVidSeg1");
+		vsDAO.deleteVidSeg("testAppendVidSeg2");
+		vsDAO.deleteVidSeg("testAppendVidSeg3");
 		playlistDAO.deletePlaylist("Funny Clips");
-
 
 	}
 
 
 	@Test
-
 	public void testDeletePlaylist() throws Exception {
 
 		//Checking to see if its there.
@@ -152,12 +159,12 @@ public class PlaylistTestingDB {
 		assertEquals(playlistDAO.deletePlaylist("Funny Clips"), true);
 
 	}
-	
+
 	@Test
 	public void testGetVideoSegInPlaylist() throws Exception{
-		
+
 		List<VidSeg> vsSol = new ArrayList<>();
-		
+
 		VidSeg vs1 = new VidSeg("testingGetVSPlaylist1", "Spock", "A most fascinating thing happened.", 1, 0);
 		VidSeg vs2 = new VidSeg("testingGetVSPlaylist2", "James T. Kirk", "More like love.", 1, 0);
 		VidSeg vs3 = new VidSeg("testingGetVSPlaylist3", "Leonard McCoy", "Now you must want the child!", 1, 0);
@@ -171,23 +178,23 @@ public class PlaylistTestingDB {
 		vsSol.add(vs4);
 		vsSol.add(vs5);
 		vsSol.add(vs6);
-		
+
 		vsDAO.addVidSeg(vs1);
 		vsDAO.addVidSeg(vs2);
 		vsDAO.addVidSeg(vs3);
 		vsDAO.addVidSeg(vs4);
 		vsDAO.addVidSeg(vs5);
 		vsDAO.addVidSeg(vs6);
-		
+
 		playlistDAO.addVidSegToPlaylist("testingVSPlaylist", "testingGetVSPlaylist1");
 		playlistDAO.addVidSegToPlaylist("testingVSPlaylist", "testingGetVSPlaylist2");
 		playlistDAO.addVidSegToPlaylist("testingVSPlaylist", "testingGetVSPlaylist3");
 		playlistDAO.addVidSegToPlaylist("testingVSPlaylist", "testingGetVSPlaylist4");
 		playlistDAO.addVidSegToPlaylist("testingVSPlaylist", "testingGetVSPlaylist5");
 		playlistDAO.addVidSegToPlaylist("testingVSPlaylist", "testingGetVSPlaylist6");
-		
+
 		List<VidSeg> vsRet = playlistDAO.getVideoSegInPlaylist("testingVSPlaylist");
-		
+
 		playlistDAO.deletePlaylist("testingVSPlaylist");
 		vsDAO.deleteVidSeg("testingGetVSPlaylist1");
 		vsDAO.deleteVidSeg("testingGetVSPlaylist2");
@@ -195,12 +202,12 @@ public class PlaylistTestingDB {
 		vsDAO.deleteVidSeg("testingGetVSPlaylist4");
 		vsDAO.deleteVidSeg("testingGetVSPlaylist5");
 		vsDAO.deleteVidSeg("testingGetVSPlaylist6");
-		
-		
+
+
 		for(int i = 0; i < vsSol.size(); i++) {
 			assertTrue(vsSol.get(i).equals(vsRet.get(i)));
 		}
-		
+
 	}
 
 

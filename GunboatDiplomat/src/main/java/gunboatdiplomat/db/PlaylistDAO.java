@@ -63,14 +63,16 @@ public class PlaylistDAO {
 
 		List<VidSeg> ls = new ArrayList<>();
 		PreparedStatement ps = conn.prepareStatement(
-				"SELECT * FROM VideoSegment v JOIN Playlist p WHERE p.video_id = v.video_id AND p.playlist_title = ?;");
+				"SELECT * FROM VideoSegment v JOIN Playlist p WHERE p.video AND (p.video_id = v.video_id AND p.playlist_title = ?);");
 
 		ps.setString(1, playlistName);
 		ResultSet rs_playlist = ps.executeQuery(); // return all the video_id that are in that playlist.
 
 		while (rs_playlist.next()) {
 			VidSeg vs = generateVidSeg(rs_playlist);
-			ls.add(vs);
+			if(!ls.contains(vs)) {
+				ls.add(vs);
+			}	
 		}
 
 		ps.close();
