@@ -20,11 +20,13 @@ public class GetPublicVidSegsHandler implements RequestHandler<Object, GetPublic
 
 		GetPublicVidSegsResponse response;	
 		
+		//create a new method that takes in a list of video segments from the DAO and then checks to see if each
+		//video segment is marked or not and if it is not marked then we remove it and return the list with all
+		//the marked video segments
 		
 		response = null;		// TODO: Implement and delete this line!!! (just here to satisfy AWS req's)
 		
 		
 		return response;
-		
 	}
 }
