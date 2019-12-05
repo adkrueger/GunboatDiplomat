@@ -56,9 +56,9 @@ public class RemoteSiteTestingDB {
 		rsListINS.add(rs3);
 		
 		List<RemoteSite> rsListRET= rsDAO.getAllRemoteSites();
-		
-		for (int i = 0; i < rsListINS.size(); i++) {
-			assertTrue(rsListINS.get(i).getUrl().equals(rsListRET.get(i).getUrl()));
+		assertTrue(rsListRET.size() >= rsListINS.size());
+		for(RemoteSite rs : rsListINS) {
+			assertTrue(rsListRET.contains(rs));
 		}
 		
 		

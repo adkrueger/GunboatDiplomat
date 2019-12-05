@@ -72,7 +72,7 @@ public class PlaylistDAO {
 			VidSeg vs = generateVidSeg(rs_playlist);
 			if(!ls.contains(vs)) {
 				ls.add(vs);
-			}	
+			}
 		}
 
 		ps.close();

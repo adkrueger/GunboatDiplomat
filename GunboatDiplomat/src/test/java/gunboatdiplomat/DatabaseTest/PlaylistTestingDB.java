@@ -132,21 +132,23 @@ public class PlaylistTestingDB {
 		playlistDAO.addVidSegToPlaylist(playlistName, "testAppendVidSeg2");
 		playlistDAO.addVidSegToPlaylist(playlistName, "testAppendVidSeg3");
 
-		VideoSegmentDAO vsDAO = new VideoSegmentDAO();   	 // need to add to video segment table for playlist to find it
+
+		VideoSegmentDAO vsDAO = new VideoSegmentDAO();		// need to add to video segment table for playlist to find it
 		vsDAO.addVidSeg(new VidSeg("testAppendVidSeg1", "", "", 1, 0));
 		vsDAO.addVidSeg(new VidSeg("testAppendVidSeg2", "", "", 1, 0));
 		vsDAO.addVidSeg(new VidSeg("testAppendVidSeg3", "", "", 1, 0));
-
+		
 		List<VidSeg> allVSInPlaylist = playlistDAO.getPlaylistVidSeg(playlistName);
-
+		
 		assertEquals("testAppendVidSeg1", allVSInPlaylist.get(0).id);
 		assertEquals("testAppendVidSeg2", allVSInPlaylist.get(1).id);
 		assertEquals("testAppendVidSeg3", allVSInPlaylist.get(2).id);
-
+		
 		vsDAO.deleteVidSeg("testAppendVidSeg1");
 		vsDAO.deleteVidSeg("testAppendVidSeg2");
 		vsDAO.deleteVidSeg("testAppendVidSeg3");
 		playlistDAO.deletePlaylist("Funny Clips");
+		
 
 	}
 
