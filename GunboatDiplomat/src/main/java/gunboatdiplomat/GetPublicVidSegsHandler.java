@@ -1,11 +1,14 @@
 package gunboatdiplomat;
 
+import java.util.List;
+
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.s3.AmazonS3;
 
 import gunboatdiplomat.http.GetPublicVidSegsResponse;
+import gunboatdiplomat.model.VidSeg;
 
 public class GetPublicVidSegsHandler implements RequestHandler<Object, GetPublicVidSegsResponse> {
 	
@@ -29,4 +32,15 @@ public class GetPublicVidSegsHandler implements RequestHandler<Object, GetPublic
 		
 		return response;
 	}
+	
+	public List<VidSeg> returnMarkedPublic(List<VidSeg> vs) {
+		
+		for (int i = 0; i < vs.size(); i++) {
+			if (vs.get(i).isMarked == 0) {	//if it is not marked then it is = 0 and it is not public
+				vs.remove(vs.get(i));
+			}
+		}
+		return vs;
+	}
+	
 }
