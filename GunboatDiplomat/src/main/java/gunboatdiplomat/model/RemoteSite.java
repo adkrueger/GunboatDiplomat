@@ -3,6 +3,10 @@ package gunboatdiplomat.model;
 public class RemoteSite {
 	
 	public String url;
+	
+	public RemoteSite() {
+		
+	}
 
 	public String getUrl() {
 		return url;
@@ -14,10 +18,6 @@ public class RemoteSite {
 	
 	public RemoteSite(String url) {
 		this.url = url;
-	}
-	
-	public RemoteSite() {
-		
 	}
 	
 	@Override
