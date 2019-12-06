@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -260,6 +259,8 @@ public class PlaylistTestingDB {
 			assertTrue(sol.get(i).equals(list.get(i)));
 		}
 		
+		vsDAO.deleteVidSeg("deleteID1");
+		vsDAO.deleteVidSeg("deleteID2");
 		
 	}
 

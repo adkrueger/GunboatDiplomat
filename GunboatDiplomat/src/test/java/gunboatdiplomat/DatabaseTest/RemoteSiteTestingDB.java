@@ -33,7 +33,7 @@ public class RemoteSiteTestingDB {
 	public void testDeleteRemoteURL() throws Exception {
 		RemoteSite rs = new RemoteSite("testingVidURL");
 		
-		rsDAO.deleteRemoteSite(rs);
+		rsDAO.deleteRemoteSite(rs.url);
 		
 		//Check to see if it exists
 		assertEquals(rsDAO.getRemoteSite("testingVidURL"), null); // was not found. 
@@ -62,9 +62,9 @@ public class RemoteSiteTestingDB {
 		}
 		
 		
-		rsDAO.deleteRemoteSite(rs1);
-		rsDAO.deleteRemoteSite(rs2);
-		rsDAO.deleteRemoteSite(rs3);
+		rsDAO.deleteRemoteSite(rs1.url);
+		rsDAO.deleteRemoteSite(rs2.url);
+		rsDAO.deleteRemoteSite(rs3.url);
 	}
 
 }

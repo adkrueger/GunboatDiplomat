@@ -1,12 +1,10 @@
 package gunboatdiplomat.HandlerTest;
 
-import java.io.IOException;
 import java.io.InputStream;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.util.IOUtils;
 
 import gunboatdiplomat.DeleteVidSegHandler;

@@ -22,11 +22,10 @@ public class UnregisterRemoteHandler implements RequestHandler<UnregisterRemoteR
 
 		UnregisterRemoteResponse response;
 		RemoteSiteDAO dao = new RemoteSiteDAO();
-		RemoteSite rs = new RemoteSite(req.url);
 		
 		try {
 			
-			if(dao.deleteRemoteSite(rs)) {
+			if(dao.deleteRemoteSite(req.url)) {
 				response = new UnregisterRemoteResponse(req.url, 200);
 			}
 			else {
