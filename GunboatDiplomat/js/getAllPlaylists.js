@@ -20,25 +20,41 @@ function processPlaylistListResponse(response) {
 	console.log(js);
 	let playlistList = document.getElementById("playlistList");
 
-	let output = "<ul class=\"itemList\">";
-	for(let i = 0; i < js.playlists.length; i++) {
-		let playlistJson = js.playlists[i];
-		console.log(playlistJson);
+	let output = "<h3>Playlists</h3><ul class=\"itemList\">";
+	console.log(Object.keys(js.playlists).length + " is the length");
+	for(let i = 0; i < Object.keys(js.playlists).length; i++) {
+		let name = Object.keys(js.playlists)[i];
+		console.log("name: " + name);
 
-		let name = playlistJson["name"];
+		output = output + "<br/><li><div id=\"playlist-" + name + "\"><b>" + name + "</b><br/>";
 
-//		console.log("ENCODED: " + base64Contents);
-//		console.log("DECODED: " + atob(base64Contents););
-		/*		output = output + "<li><div id=\"vidSeg-" + id + "\"><b>" + id + "</b><br/><span>" + charSpeaking + ": \"" + quote + 
-		"\"</span><br/><video width=\"350\" height=\"350\" controls><source src=\"" + atob(base64Contents); + "\" type=\"video/ogg\"></video>" +
-				"<br/><input class=\"button\" type=\"button\" value=\"Delete\"/></div></br></li>";
-		 */
-		output = output + "<li><div id=\"playlist-" + name + "\"><b>" + name + "</b><br/><input class=\"button\" type=\"button\" value=\"Play\"/>"
-		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Append VS\"/>"
+		let vidSegs = js.playlists[name];
+		console.log("its vidSegs: " + JSON.stringify(vidSegs));
+
+		console.log("vidSegs length is " + vidSegs.length);
+		for(let j = 0; j < vidSegs.length; j++) {
+			console.log("vid seg " + j + " is: " + JSON.stringify(js.playlists[name][j]));
+			console.log("vid seg id " + j + " is: " + vidSegs[j]["id"]);
+
+			let vsID = vidSegs[j]["id"];
+			if(vsID != "") {
+				let vsURL = vs_url + vsID;
+
+				output = output + "<video width=\"350\" height=\"260\" controls><source src=\"" + vsURL + "\" type=\"video/ogg\"></video>";
+			}
+
+			if(j == vidSegs.length-1) {
+				output = output + "<br/>";
+			}
+
+		}
+
+		output = output + "<input class=\"button\" type=\"button\" value=\"Play\"/>"
+		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Append VS\" onclick=\"requestAppendVidSeg(\'" + name + "\')\"/>"
 		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Remove VS\"/>"
 		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Delete\" onclick=\"requestDeletePlaylist(\'" + name + "\')\"/></div></li>";
 
-		if(i == js.playlists.length-1) {
+		if(i == Object.keys(js.playlists).length-1) {
 			output = output + "</ul>";
 		}
 

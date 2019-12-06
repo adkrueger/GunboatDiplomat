@@ -1,5 +1,5 @@
 // api gateway url
-let api_url = " https://quf3be50n8.execute-api.us-east-2.amazonaws.com/charlie/";
+let api_url = "https://quf3be50n8.execute-api.us-east-2.amazonaws.com/charlie/";
 
 let appendVidSeg_url = api_url + "appendVidSeg";			// POST
 let createPLaylist_url = api_url + "createPlaylist";		// POST
@@ -14,3 +14,5 @@ let searchVidSegs_url = api_url + "searchVidSegs";			// POST
 let showPlaylists_url = api_url + "showPlaylists";			// GET
 let unregisterRemote_url = api_url + "unregisterRemote";	// POST
 let uploadVidSeg_url = api_url + "uploadVidSeg";			// POST
+
+let vs_url = "https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/";
