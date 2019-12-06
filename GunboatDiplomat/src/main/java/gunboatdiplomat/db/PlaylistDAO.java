@@ -66,7 +66,7 @@ public class PlaylistDAO {
 		ps.setString(1, playlistName);
 		ResultSet rs_playlist = ps.executeQuery(); // return all the video_id that are in that playlist.
 
-		while (rs_playlist.next()) {
+		while (rs_playlist.next() && (rs_playlist.getString(1) != "")) {
 			VidSeg vs = generateVidSeg(rs_playlist);
 			if(!ls.contains(vs)) {
 				ls.add(vs);
@@ -197,12 +197,22 @@ public class PlaylistDAO {
 
 	private VidSeg generateVidSeg(ResultSet rs) throws Exception {
 
-		String id = rs.getString(1);
-		String character = rs.getString("character_speaking");
-		System.out.println(id);
-		String quote = rs.getString("quote");
-		int isLocal = rs.getInt("is_local");
-		int isMarked = rs.getInt("is_marked");
+		String id = "";
+		String character = "";
+		String quote = "";
+		int isLocal = 0;
+		int isMarked = 0;
+
+		while (rs.next()) {
+
+			id = rs.getString(1);
+			quote = rs.getString(3);
+			character = rs.getString(2);
+			isLocal = rs.getInt(4);
+			isMarked = rs.getInt(5);
+
+
+		}
 
 		System.out.println(id + "has been pulled.");
 
@@ -229,28 +239,28 @@ public class PlaylistDAO {
 
 		return vsList;
 	}
-	
+
 	public boolean deleteVidSegFromPlaylistWithIndex(String playlistName, int index) throws Exception {
-		
+
 		// This is getting the list of VidSeg associated with a playlist. 
 		List<VidSeg> listOfVidSeg = this.getPlaylistVidSeg(playlistName);
 		listOfVidSeg.remove(index);
-		
+
 		//Remove the playlist from the DB. 
 		this.deletePlaylist(playlistName);
-		
+
 		//Recreate the same playlist. 
 		this.createPlaylist(playlistName);
-		
+
 		//Re-add the video segments. 
 		for(int i = 0; i < listOfVidSeg.size(); i++) {
 			this.addVidSegToPlaylist(playlistName, listOfVidSeg.get(i).id);
 		}
-		
+
 		//Return true
 		return true;
 	}
-	
+
 
 	public boolean createPlaylist(String playlistName) throws SQLException {
 		PreparedStatement ps = conn.prepareStatement("INSERT INTO Playlist (video_id, playlist_title) VALUES (?, ?);");
