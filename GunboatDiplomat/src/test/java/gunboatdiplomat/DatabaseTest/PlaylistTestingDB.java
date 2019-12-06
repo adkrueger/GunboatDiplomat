@@ -3,6 +3,8 @@ package gunboatdiplomat.DatabaseTest;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -210,6 +212,55 @@ public class PlaylistTestingDB {
 			assertTrue(vsSol.get(i).equals(vsRet.get(i)));
 		}
 
+	}
+	
+	@Test
+	public void testCreatePlaylist() throws Exception {
+		List<VidSeg> vsList = new ArrayList<VidSeg>();
+		VidSeg vs1 = new VidSeg("testCreatePlaylistCreateVIDSEG", "Spock", "A most fascinating thing happened.", 1, 0);
+		vsList.add(vs1);
+		vsDAO.addVidSeg(vs1);
+		
+		
+		playlistDAO.createPlaylist("testPlaylist");
+		playlistDAO.addVidSegToPlaylist("testPlaylist", "testCreatePlaylistCreateVIDSEG");
+		
+		List<VidSeg> list = playlistDAO.getPlaylistVidSeg("testPlaylist");
+		
+		
+		for(int i = 0; i < list.size(); i++) {
+			assertTrue(vsList.get(i).equals(list.get(i)));
+		}
+		
+		playlistDAO.deletePlaylist("testPlaylist");
+		vsDAO.deleteVidSeg("testCreatePlaylistCreateVIDSEG");
+	
+	}
+	
+	@Test
+	public void testDeleteVidSegFromPlaylist() throws Exception{
+		VidSeg vs1 = new VidSeg("deleteID1", "Spock", "A most fascinating thing happened.", 1, 0);
+		VidSeg vs2 = new VidSeg("deleteID2", "James T. Kirk", "More like love.", 1, 0);
+		List<VidSeg> sol = new ArrayList<>();
+		sol.add(vs2);
+		vsDAO.addVidSeg(vs1);
+		vsDAO.addVidSeg(vs2);
+		
+		playlistDAO.createPlaylist("testingDeletePlaylist");
+		playlistDAO.addVidSegToPlaylist("testingDeletePlaylist", "deleteID1");
+		playlistDAO.addVidSegToPlaylist("testingDeletePlaylist", "deleteID2");
+		
+		playlistDAO.deleteVidSegFromPlaylist("testingDeletePlaylist", "deleteID1");
+		
+		List<VidSeg> list = playlistDAO.getPlaylistVidSeg("testingDeletePlaylist"); //should only return 1 Video
+		
+		playlistDAO.deletePlaylist("testingDeletePlaylist");
+		
+		for(int i = 0; i < sol.size(); i++) {
+			assertTrue(sol.get(i).equals(list.get(i)));
+		}
+		
+		
 	}
 
 

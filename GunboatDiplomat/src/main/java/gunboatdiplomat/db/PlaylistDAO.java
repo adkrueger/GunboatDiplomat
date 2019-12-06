@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import gunboatdiplomat.model.Playlist;
-
 import gunboatdiplomat.model.VidSeg;
 
 public class PlaylistDAO {
@@ -81,8 +79,33 @@ public class PlaylistDAO {
 		return ls;
 
 	}
+	/**
+	 * This function will delete a video segment that is in a certain playlist. 
+	 * 
+	 * @param playlistName
+	 * @param video_id
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean deleteVidSegFromPlaylist(String playlistName, String video_id) throws Exception {
 
-	public boolean deleteVidSegFromPlaylist(String video_id) throws Exception {
+		// Deleting VidSeg from Playlist.
+		PreparedStatement ps = conn.prepareStatement("DELETE FROM Playlist WHERE video_id = ? AND playlist_title = ?");
+		ps.setString(1, video_id);
+		ps.setString(2, playlistName);
+		ps.executeUpdate();
+
+		return true;
+
+	}
+	/**
+	 * This function will delete a video segment from all playlists that contain it. 
+	 * 
+	 * @param video_id
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean deleteVidSegFromAllPlaylists(String video_id) throws Exception {
 
 		// Deleting VidSeg from Playlist.
 		PreparedStatement ps = conn.prepareStatement("DELETE FROM Playlist WHERE video_id = ?");
@@ -158,11 +181,14 @@ public class PlaylistDAO {
 		int isMarked = 0;
 
 		while (rs5.next()) {
-			idNum = rs5.getString(1);
-			quote = rs5.getString(3);
-			character = rs5.getString(2);
-			isLocal = rs5.getInt(4);
-			isMarked = rs5.getInt(5);
+			if(!(rs5.getString(1).equals(null))) {
+				idNum = rs5.getString(1);
+				quote = rs5.getString(3);
+				character = rs5.getString(2);
+				isLocal = rs5.getInt(4);
+				isMarked = rs5.getInt(5);
+			}
+
 		}
 
 		return new VidSeg(idNum, quote, character, isLocal, isMarked);
@@ -202,5 +228,14 @@ public class PlaylistDAO {
 
 
 		return vsList;
+	}
+
+	public boolean createPlaylist(String playlistName) throws SQLException {
+		PreparedStatement ps = conn.prepareStatement("INSERT INTO Playlist (video_id, playlist_title) VALUES (?, ?);");
+		ps.setString(2, playlistName);
+		ps.setString(1, null);
+		ps.execute();
+
+		return true;
 	}
 }
