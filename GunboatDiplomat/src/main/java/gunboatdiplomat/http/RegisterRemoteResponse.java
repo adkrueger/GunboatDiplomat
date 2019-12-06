@@ -22,7 +22,8 @@ public class RegisterRemoteResponse {
 			return "RegisterRemoteResponse(" + id + ")";
 		}
 		else {
-			return "ErrorResult(" + id + ",statusCode=" + statusCode + ",error=" + error + ")";
+			return "ErrorResult(statusCode = " + statusCode
+					+ ", error = " + error + ")";
 		}
 	}
 }
