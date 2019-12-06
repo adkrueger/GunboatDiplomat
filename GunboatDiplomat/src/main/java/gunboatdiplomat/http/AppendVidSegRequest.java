@@ -5,8 +5,8 @@ public class AppendVidSegRequest {
 	public String playlistName;
 	public String videoID;
 	
-	public AppendVidSegRequest(String playlisName, String videoID) {
-		this.playlistName = playlisName;
+	public AppendVidSegRequest(String playlistName, String videoID) {
+		this.playlistName = playlistName;
 		this.videoID = videoID;
 		
 	}

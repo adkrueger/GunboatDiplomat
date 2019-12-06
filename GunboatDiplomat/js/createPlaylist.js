@@ -1,5 +1,5 @@
 function processCreateResponse(result) {
-	console.log("response: " + result);
+	console.log("create response: " + result);
 	
 	refreshPlaylistList();
 }
@@ -13,7 +13,7 @@ function handleCreateClick() {
 	if(pData["name"] == "") {
 		alert("Please enter a playlist name.");
 	}
-	else if(pData["name"].indexOf("\'") || pData["name"].indexOf("\"")) {
+	else if(pData["name"].indexOf("\'") !== -1 || pData["name"].indexOf("\"") !== -1) {
 		alert("Playlist names cannot contain double quote (\") or apostrophe (\') characters.");
 	}
 	else {
