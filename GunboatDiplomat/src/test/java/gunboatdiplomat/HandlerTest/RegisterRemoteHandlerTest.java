@@ -48,7 +48,7 @@ public class RegisterRemoteHandlerTest extends LambdaTest {
 		Assert.assertEquals(resp1.toString(), "RegisterRemoteResponse(testing)");
 		
 		RegisterRemoteResponse resp2 = new RegisterRemoteResponse("testing", 400);
-		Assert.assertEquals(resp2.toString(), "ErrorResult(testing,statusCode=400,error=)");
+		Assert.assertEquals(resp2.toString(), "ErrorResult(statusCode = 400, error = )");
 		
 		RegisterRemoteRequest req = new RegisterRemoteRequest();
 		req.setUrl("url");
