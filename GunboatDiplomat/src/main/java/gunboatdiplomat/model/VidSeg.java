@@ -31,14 +31,6 @@ public class VidSeg {
 		this.isMarked = isMarked;
 
 	}
-
-	public VidSeg(String id, String character, String quote) {
-
-		this.id = id;
-		this.character = character;
-		this.quote = quote;
-
-	}
 	
 	// used in getVidSegs to add video segments to the list from the S3 bucket
 	public VidSeg(String id, String url) {
