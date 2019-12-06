@@ -33,8 +33,6 @@ function processPlaylistListResponse(response) {
 
 		console.log("vidSegs length is " + vidSegs.length);
 		for(let j = 0; j < vidSegs.length; j++) {
-			console.log("vid seg " + j + " is: " + JSON.stringify(js.playlists[name][j]));
-			console.log("vid seg id " + j + " is: " + vidSegs[j]["id"]);
 
 			let vsID = vidSegs[j]["id"];
 			if(vsID != "") {
