@@ -23,7 +23,7 @@ public class DeleteVidSegResponse {
 			return "DeleteResponse(" + id + ")";
 		}
 		else {
-			return "ErrorResult(" + id + ", statusCode = " + statusCode
+			return "ErrorResult(statusCode = " + statusCode
 					+ ", error = " + err + ")";
 		}
 	}
