@@ -41,11 +41,10 @@ public class PlaylistTest {
 		
 		assertNotEquals(p1, p3);
 		
-		p3.addVideoSegment(v2);
+		p3.addVideoSegment(v3);
 		p3.addVideoSegment(v4);
 		
 		assertNotEquals(p1, p3);
-		
 		
 	}
 }
