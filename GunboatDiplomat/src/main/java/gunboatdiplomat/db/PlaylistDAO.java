@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import gunboatdiplomat.model.Playlist;
-
 import gunboatdiplomat.model.VidSeg;
 
 public class PlaylistDAO {
@@ -27,17 +25,17 @@ public class PlaylistDAO {
 		}
 
 	}
-	
+
 	public boolean addVidSegToPlaylist(String playlistName, String vidID) throws Exception {
 
-			PreparedStatement ps = conn.prepareStatement("INSERT INTO Playlist (video_id,playlist_title) VALUES (?,?);");
-			
-			ps.setString(1, vidID);
-			ps.setString(2, playlistName);
-			ps.execute();
-			
-			return true;
-			
+		PreparedStatement ps = conn.prepareStatement("INSERT INTO Playlist (video_id,playlist_title) VALUES (?,?);");
+
+		ps.setString(1, vidID);
+		ps.setString(2, playlistName);
+		ps.execute();
+
+		return true;
+
 	}
 
 	public boolean deletePlaylist(String playlistName) throws Exception {
@@ -70,7 +68,9 @@ public class PlaylistDAO {
 
 		while (rs_playlist.next()) {
 			VidSeg vs = generateVidSeg(rs_playlist);
-			ls.add(vs);
+			if(!ls.contains(vs)) {
+				ls.add(vs);
+			}
 		}
 
 		ps.close();
@@ -79,8 +79,33 @@ public class PlaylistDAO {
 		return ls;
 
 	}
+	/**
+	 * This function will delete a video segment that is in a certain playlist. 
+	 * 
+	 * @param playlistName
+	 * @param video_id
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean deleteVidSegFromPlaylist(String playlistName, String video_id) throws Exception {
 
-	public boolean deleteVidSegFromPlaylist(String video_id) throws Exception {
+		// Deleting VidSeg from Playlist.
+		PreparedStatement ps = conn.prepareStatement("DELETE FROM Playlist WHERE video_id = ? AND playlist_title = ?");
+		ps.setString(1, video_id);
+		ps.setString(2, playlistName);
+		ps.executeUpdate();
+
+		return true;
+
+	}
+	/**
+	 * This function will delete a video segment from all playlists that contain it. 
+	 * 
+	 * @param video_id
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean deleteVidSegFromAllPlaylists(String video_id) throws Exception {
 
 		// Deleting VidSeg from Playlist.
 		PreparedStatement ps = conn.prepareStatement("DELETE FROM Playlist WHERE video_id = ?");
@@ -156,11 +181,14 @@ public class PlaylistDAO {
 		int isMarked = 0;
 
 		while (rs5.next()) {
-			idNum = rs5.getString(1);
-			quote = rs5.getString(3);
-			character = rs5.getString(2);
-			isLocal = rs5.getInt(4);
-			isMarked = rs5.getInt(5);
+			if(!(rs5.getString(1).equals(null))) {
+				idNum = rs5.getString(1);
+				quote = rs5.getString(3);
+				character = rs5.getString(2);
+				isLocal = rs5.getInt(4);
+				isMarked = rs5.getInt(5);
+			}
+
 		}
 
 		return new VidSeg(idNum, quote, character, isLocal, isMarked);
@@ -180,25 +208,34 @@ public class PlaylistDAO {
 
 		return new VidSeg(id, character, quote, isLocal, isMarked);
 	}
-	
+
 	//TODO: this method takes in the playlist name and returns all the video segments in
 	//		that given playlist
 	public List<VidSeg> getVideoSegInPlaylist(String playlistName) throws Exception {	//one parameter should be the playlist name
-													//Just did this because there were errors in the other handler...oops
+		//Just did this because there were errors in the other handler...oops
 		List<VidSeg> vsList = new ArrayList<>();
-		
+
 		PreparedStatement ps = conn.prepareStatement("SELECT * FROM Playlist WHERE playlist_title = ?");
 		ps.setString(1, playlistName);
 		ResultSet rs = ps.executeQuery();
-		
+
 		while(rs.next()) {
 			VidSeg vs = generateVidSeg(rs.getString("video_id"));
 			vsList.add(vs);
-			
+
 		}
-		
-		
-		
+
+
+
 		return vsList;
+	}
+
+	public boolean createPlaylist(String playlistName) throws SQLException {
+		PreparedStatement ps = conn.prepareStatement("INSERT INTO Playlist (video_id, playlist_title) VALUES (?, ?);");
+		ps.setString(2, playlistName);
+		ps.setString(1, null);
+		ps.execute();
+
+		return true;
 	}
 }

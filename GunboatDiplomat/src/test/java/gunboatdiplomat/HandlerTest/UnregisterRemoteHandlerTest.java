@@ -35,9 +35,9 @@ public class UnregisterRemoteHandlerTest extends LambdaTest {
 		Assert.assertEquals("https://www.letTestUnregister.org", unregResponse.id);
 		
 		// make sure it's gone
-		testRS = rsDAO.getRemoteSite("https://www.letTestUnregister.org");
-		Assert.assertTrue(testRS == null);
-		
+		unregResponse = new UnregisterRemoteHandler().handleRequest(urr, createContext("unregister"));
+		System.out.println(unregResponse);
+		Assert.assertEquals(422, unregResponse.statusCode);
 	}
 	
 }

@@ -30,6 +30,10 @@ public class RegisterRemoteHandlerTest extends LambdaTest {
 		RemoteSite testRS = rsDAO.getRemoteSite("https://www.google.com");
 		Assert.assertTrue(testRS != null);
 		
+		// attempt to register the same URL again
+		RegisterRemoteResponse respAgain = new RegisterRemoteHandler().handleRequest(req, createContext("register"));
+		Assert.assertEquals(422, respAgain.statusCode);
+		
 		// now get rid of it
 		UnregisterRemoteRequest urr = new UnregisterRemoteRequest("https://www.google.com");
 		UnregisterRemoteResponse unregResponse = new UnregisterRemoteHandler().handleRequest(urr, createContext("unregister"));

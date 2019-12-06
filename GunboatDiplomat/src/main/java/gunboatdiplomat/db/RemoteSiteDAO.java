@@ -63,13 +63,13 @@ public class RemoteSiteDAO {
 		
 	}
 	
-	public boolean deleteRemoteSite(RemoteSite rs) throws Exception {
+	public boolean deleteRemoteSite(String url) throws Exception {
 		
 		try {
 			// attempt to find remote site
-			if(rs.url.equals(getRemoteSite(rs.url).url)) {
+			if(url.equals(getRemoteSite(url).url)) {
 				PreparedStatement ps = connection.prepareStatement("DELETE FROM RemoteSite WHERE url=?;");
-				ps.setString(1, rs.url);
+				ps.setString(1, url);
 				ps.executeUpdate();
 				return true;
 			}

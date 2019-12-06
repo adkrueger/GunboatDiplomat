@@ -33,7 +33,7 @@ public class RemoteSiteTestingDB {
 	public void testDeleteRemoteURL() throws Exception {
 		RemoteSite rs = new RemoteSite("testingVidURL");
 		
-		rsDAO.deleteRemoteSite(rs);
+		rsDAO.deleteRemoteSite(rs.url);
 		
 		//Check to see if it exists
 		assertEquals(rsDAO.getRemoteSite("testingVidURL"), null); // was not found. 
@@ -56,15 +56,15 @@ public class RemoteSiteTestingDB {
 		rsListINS.add(rs3);
 		
 		List<RemoteSite> rsListRET= rsDAO.getAllRemoteSites();
-		
-		for (int i = 0; i < rsListINS.size(); i++) {
-			assertTrue(rsListINS.get(i).getUrl().equals(rsListRET.get(i).getUrl()));
+		assertTrue(rsListRET.size() >= rsListINS.size());
+		for(RemoteSite rs : rsListINS) {
+			assertTrue(rsListRET.contains(rs));
 		}
 		
 		
-		rsDAO.deleteRemoteSite(rs1);
-		rsDAO.deleteRemoteSite(rs2);
-		rsDAO.deleteRemoteSite(rs3);
+		rsDAO.deleteRemoteSite(rs1.url);
+		rsDAO.deleteRemoteSite(rs2.url);
+		rsDAO.deleteRemoteSite(rs3.url);
 	}
 
 }
