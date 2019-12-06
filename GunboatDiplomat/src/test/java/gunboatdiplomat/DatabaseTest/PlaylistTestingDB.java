@@ -263,6 +263,58 @@ public class PlaylistTestingDB {
 		vsDAO.deleteVidSeg("deleteID2");
 		
 	}
+	
+	@Test
+	public void testDeleteVidSegFromPlaylistWithIndex() throws Exception{
+		
+		VidSeg vs1 = new VidSeg("testDeleteVidSegFromPlaylistWithIndex1", "Spock", "A most fascinating thing happened.", 1, 0);
+		VidSeg vs2 = new VidSeg("testDeleteVidSegFromPlaylistWithIndex2", "James T. Kirk", "More like love.", 1, 0);
+		VidSeg vs3 = new VidSeg("testDeleteVidSegFromPlaylistWithIndex3", "Leonard McCoy", "Now you must want the child!", 1, 0);
+		VidSeg vs4 = new VidSeg("testDeleteVidSegFromPlaylistWithIndex4", "Spock", "That should prove very interesting.", 1, 0);
+		VidSeg vs5 = new VidSeg("testDeleteVidSegFromPlaylistWithIndex5", "Leonard McCoy","You touch it, her nearest male relative will have to try to kill you.", 1, 0);
+		VidSeg vs6 = new VidSeg("testDeleteVidSegFromPlaylistWithIndex6", "Amanda Grayson","Well it's sort of a fat teddy bear.", 1, 0);
+
+		vsDAO.addVidSeg(vs1);
+		vsDAO.addVidSeg(vs2);
+		vsDAO.addVidSeg(vs3);
+		vsDAO.addVidSeg(vs4);
+		vsDAO.addVidSeg(vs5);
+		vsDAO.addVidSeg(vs6);
+		
+		playlistDAO.addVidSegToPlaylist("testDeleteVidSegFromPlaylistWithIndexPLAYLIST", vs1.id);
+		playlistDAO.addVidSegToPlaylist("testDeleteVidSegFromPlaylistWithIndexPLAYLIST", vs2.id);
+		playlistDAO.addVidSegToPlaylist("testDeleteVidSegFromPlaylistWithIndexPLAYLIST", vs3.id);
+		playlistDAO.addVidSegToPlaylist("testDeleteVidSegFromPlaylistWithIndexPLAYLIST", vs4.id);
+		playlistDAO.addVidSegToPlaylist("testDeleteVidSegFromPlaylistWithIndexPLAYLIST", vs5.id);
+		playlistDAO.addVidSegToPlaylist("testDeleteVidSegFromPlaylistWithIndexPLAYLIST", vs6.id);
+		
+		playlistDAO.deleteVidSegFromPlaylistWithIndex("testDeleteVidSegFromPlaylistWithIndexPLAYLIST", 1);
+		
+		List<VidSeg> sol = new ArrayList<VidSeg>();
+		sol.add(vs1);
+		sol.add(vs3);
+		sol.add(vs4);
+		sol.add(vs5);
+		sol.add(vs6);
+		
+		List<VidSeg> ret = playlistDAO.getPlaylistVidSeg("testDeleteVidSegFromPlaylistWithIndexPLAYLIST");
+		
+		playlistDAO.deletePlaylist("testDeleteVidSegFromPlaylistWithIndexPLAYLIST");
+		
+		vsDAO.deleteVidSeg("testDeleteVidSegFromPlaylistWithIndex1");
+		vsDAO.deleteVidSeg("testDeleteVidSegFromPlaylistWithIndex2");
+		vsDAO.deleteVidSeg("testDeleteVidSegFromPlaylistWithIndex3");
+		vsDAO.deleteVidSeg("testDeleteVidSegFromPlaylistWithIndex4");
+		vsDAO.deleteVidSeg("testDeleteVidSegFromPlaylistWithIndex5");
+		vsDAO.deleteVidSeg("testDeleteVidSegFromPlaylistWithIndex6");
+		
+		
+		for(int i = 0; i < sol.size(); i ++) {
+			assertTrue(sol.get(i).equals(ret.get(i)));
+		}
+		
+		
+	}
 
 
 

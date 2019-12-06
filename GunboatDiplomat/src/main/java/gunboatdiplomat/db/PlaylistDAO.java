@@ -229,6 +229,28 @@ public class PlaylistDAO {
 
 		return vsList;
 	}
+	
+	public boolean deleteVidSegFromPlaylistWithIndex(String playlistName, int index) throws Exception {
+		
+		// This is getting the list of VidSeg associated with a playlist. 
+		List<VidSeg> listOfVidSeg = this.getPlaylistVidSeg(playlistName);
+		listOfVidSeg.remove(index);
+		
+		//Remove the playlist from the DB. 
+		this.deletePlaylist(playlistName);
+		
+		//Recreate the same playlist. 
+		this.createPlaylist(playlistName);
+		
+		//Re-add the video segments. 
+		for(int i = 0; i < listOfVidSeg.size(); i++) {
+			this.addVidSegToPlaylist(playlistName, listOfVidSeg.get(i).id);
+		}
+		
+		//Return true
+		return true;
+	}
+	
 
 	public boolean createPlaylist(String playlistName) throws SQLException {
 		PreparedStatement ps = conn.prepareStatement("INSERT INTO Playlist (video_id, playlist_title) VALUES (?, ?);");
