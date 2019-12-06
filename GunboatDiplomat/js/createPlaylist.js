@@ -13,6 +13,9 @@ function handleCreateClick() {
 	if(pData["name"] == "") {
 		alert("Please enter a playlist name.");
 	}
+	else if(pData["name"].indexOf("\'") || pData["name"].indexOf("\"")) {
+		alert("Playlist names cannot contain double quote (\") or apostrophe (\') characters.");
+	}
 	else {
 		let js = JSON.stringify(pData);
 		console.log("Create JS: " + js);

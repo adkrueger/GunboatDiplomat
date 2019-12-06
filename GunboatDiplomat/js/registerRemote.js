@@ -10,7 +10,7 @@ function handleRegisterClick() {
 	let rData = {}
 	rData["url"] = form.remoteURL.value;
 	
-	if(rData["url"] == "") {
+	if(rData["url"] === "") {
 		alert("Please enter a URL.");
 	}
 	else {
@@ -24,8 +24,8 @@ function handleRegisterClick() {
 		xhr.onloadend = function() {
 			console.log(xhr);
 
-			if(xhr.readyState == XMLHttpRequest.DONE) {
-				if(xhr.status == 200) {
+			if(xhr.readyState === XMLHttpRequest.DONE) {
+				if(xhr.status === 200) {
 					console.log("XHR: " + xhr.responseText);
 					processRegisterResponse(xhr.responseText);
 				}

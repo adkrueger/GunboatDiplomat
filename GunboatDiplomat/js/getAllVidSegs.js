@@ -5,7 +5,7 @@ function refreshVidSegList() {
 	console.log("sent");
 
 	xhr.onloadend = function() {
-		if(xhr.readyState == XMLHttpRequest.DONE) {
+		if(xhr.readyState === XMLHttpRequest.DONE) {
 			processVidSegListResponse(xhr.responseText);
 		}
 		else {
@@ -39,7 +39,7 @@ function processVidSegListResponse(response) {
 		"\"</span><br/><span>Season Number: " + seasonNum + "<br/>Episode Number: " + episodeNum + "</span>" +
 		"<br/></div></li><br/>";
 		 */
-		if(i == js.vidSegs.length-1) {
+		if(i === js.vidSegs.length-1) {
 			output = output + "</ul>";
 		}
 

@@ -24,8 +24,8 @@ function processPlaylistDelete(playlist) {
 	xhr.onloadend = function() {
 		console.log(xhr);
 		
-		if(xhr.readyState == XMLHttpRequest.DONE) {
-			if(xhr.status == 200) {
+		if(xhr.readyState === XMLHttpRequest.DONE) {
+			if(xhr.status === 200) {
 				console.log("XHR: " + xhr.responseText);
 				processDeletePlaylistResponse(xhr.responseText);
 			}

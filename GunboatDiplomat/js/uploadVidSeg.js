@@ -37,8 +37,8 @@ function handleUploadClick(e, isAdmin) {
 	xhr.onloadend = function() {
 		console.log(xhr);
 		console.log(xhr.request);
-		if(xhr.readyState == XMLHttpRequest.DONE) {
-			if(xhr.status == 200) {
+		if(xhr.readyState === XMLHttpRequest.DONE) {
+			if(xhr.status === 200) {
 				console.log("XHR: " + xhr.responseText);
 				processUploadResponse(xhr.responseText, isAdmin);
 			}

@@ -17,7 +17,7 @@ function processSearchResponse(response) {
 		output = output + "<li><a href=\"#vidSeg-" + id + "\"><b>" + id + "</b></a><div class=\"vertSpace\"></div>"
 		+ "<span>" + charSpeaking + ": \"" + quote + "\"</span></li><br/>";
 
-		if(i == js.vidSegs.length-1) {
+		if(i === js.vidSegs.length-1) {
 			output = output + "</ul>";
 		}
 
@@ -44,8 +44,8 @@ function handleSearchClick() {
 	xhr.onloadend = function() {
 		console.log(xhr);
 
-		if(xhr.readyState == XMLHttpRequest.DONE) {
-			if(xhr.status == 200) {
+		if(xhr.readyState === XMLHttpRequest.DONE) {
+			if(xhr.status === 200) {
 				console.log("XHR: " + xhr.responseText);
 				processSearchResponse(xhr.responseText);
 			}

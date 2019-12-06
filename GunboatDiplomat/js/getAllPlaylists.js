@@ -5,7 +5,7 @@ function refreshPlaylistList() {
 	console.log("sent");
 
 	xhr.onloadend = function() {
-		if(xhr.readyState == XMLHttpRequest.DONE) {
+		if(xhr.readyState === XMLHttpRequest.DONE) {
 			processPlaylistListResponse(xhr.responseText);
 		}
 		else {
@@ -33,15 +33,14 @@ function processPlaylistListResponse(response) {
 
 		console.log("vidSegs length is " + vidSegs.length);
 		for(let j = 0; j < vidSegs.length; j++) {
-
 			let vsID = vidSegs[j]["id"];
-			if(vsID != "") {
+			if(vsID !== "") {
 				let vsURL = vs_url + vsID;
 
 				output = output + "<video width=\"350\" height=\"260\" controls><source src=\"" + vsURL + "\" type=\"video/ogg\"></video>";
 			}
 
-			if(j == vidSegs.length-1) {
+			if(j === vidSegs.length-1) {
 				output = output + "<br/>";
 			}
 
@@ -52,7 +51,7 @@ function processPlaylistListResponse(response) {
 		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Remove VS\"/>"
 		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Delete\" onclick=\"requestDeletePlaylist(\'" + name + "\')\"/></div></li>";
 
-		if(i == Object.keys(js.playlists).length-1) {
+		if(i === Object.keys(js.playlists).length-1) {
 			output = output + "</ul>";
 		}
 

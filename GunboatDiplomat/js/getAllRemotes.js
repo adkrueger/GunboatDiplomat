@@ -5,7 +5,7 @@ function refreshRemoteList() {
 	console.log("sent");
 	
 	xhr.onloadend = function() {
-		if(xhr.readyState == XMLHttpRequest.DONE) {
+		if(xhr.readyState === XMLHttpRequest.DONE) {
 			processRemoteListResponse(xhr.responseText);
 		}
 		else {
@@ -33,7 +33,7 @@ function processRemoteListResponse(response) {
 				"</div></li><div class=\"vertSpace\"></div>";
 				
 		
-		if(i == js.remotes.length-1) {
+		if(i === js.remotes.length-1) {
 			output = output + "</ul>";
 		}
 		

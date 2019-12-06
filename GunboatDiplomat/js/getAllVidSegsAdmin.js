@@ -5,7 +5,7 @@ function refreshVidSegListAdmin() {
 	console.log("sent");
 
 	xhr.onloadend = function() {
-		if(xhr.readyState == XMLHttpRequest.DONE) {
+		if(xhr.readyState === XMLHttpRequest.DONE) {
 			processVidSegListResponseAdmin(xhr.responseText);
 		}
 		else {
@@ -54,7 +54,7 @@ function processVidSegListResponseAdmin(response) {
 			"\"</span><br/><span>Marked status: " + markedString + "</span></div></li><br/>";
 		}
 
-		if(i == js.vidSegs.length-1) {
+		if(i === js.vidSegs.length-1) {
 			output = output + "</ul>";
 			localOutput = localOutput + "</ul>";
 		}
