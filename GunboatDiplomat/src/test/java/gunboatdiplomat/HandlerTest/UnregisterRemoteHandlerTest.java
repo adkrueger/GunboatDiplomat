@@ -40,4 +40,19 @@ public class UnregisterRemoteHandlerTest extends LambdaTest {
 		Assert.assertEquals(422, unregResponse.statusCode);
 	}
 	
+	@Test
+	public void testUnregisterRemoteHTTPS() {
+		
+		UnregisterRemoteResponse resp1 = new UnregisterRemoteResponse("testing", 200, "");
+		Assert.assertEquals(resp1.toString(), "UnregisterRemoteResponse(testing)");
+		
+		UnregisterRemoteResponse resp2 = new UnregisterRemoteResponse("testing", 400);
+		Assert.assertEquals(resp2.toString(), "ErrorResult(testing,statusCode=400,error=)");
+		
+		UnregisterRemoteRequest req = new UnregisterRemoteRequest();
+		req.setUrl("url");
+		Assert.assertEquals(req.getUrl(), "url");
+		
+	}
+	
 }

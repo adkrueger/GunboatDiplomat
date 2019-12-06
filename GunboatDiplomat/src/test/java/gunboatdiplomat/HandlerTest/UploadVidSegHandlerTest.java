@@ -73,4 +73,27 @@ public class UploadVidSegHandlerTest extends LambdaTest {
         
 	}
 	
+	@Test
+	public void testUploadVidSegHTTPS() {
+		
+		UploadVidSegResponse resp1 = new UploadVidSegResponse("testing");
+		Assert.assertEquals(resp1.toString(), "Response(testing)");
+		resp1 = new UploadVidSegResponse("testing", 200);
+		Assert.assertEquals(resp1.toString(), "Response(testing)");
+
+		UploadVidSegRequest req = new UploadVidSegRequest();
+		req.setId("id");
+		Assert.assertEquals(req.getId(), "id");
+		req.setCharacter_speaking("character_speaking");
+		Assert.assertEquals(req.getCharacter_speaking(), "character_speaking");
+		req.setQuote("quote");
+		Assert.assertEquals(req.getQuote(), "quote");
+		req.setLocal(1);
+		Assert.assertTrue(req.isLocal());
+		req.setMarked(0);
+		Assert.assertFalse(req.isMarked());
+		Assert.assertEquals(req.toString(), "UploadVidSeg(id,character_speaking,quote,1,0)");
+		
+	}
+	
 }

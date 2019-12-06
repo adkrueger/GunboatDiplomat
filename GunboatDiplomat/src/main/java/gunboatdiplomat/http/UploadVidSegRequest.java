@@ -7,10 +7,7 @@ public class UploadVidSegRequest {
 	public int isLocal;
 	public int isMarked;
 	public String base64EncodedContents;
-	
-	public String getName( ) { return id; }
-	public void setName(String id) { this.id = id; }
-	
+
 	public String getId() {	return id; }
 	public void setId(String id) { this.id = id; }
 	
