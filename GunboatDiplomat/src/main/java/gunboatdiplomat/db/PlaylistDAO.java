@@ -27,17 +27,17 @@ public class PlaylistDAO {
 		}
 
 	}
-	
+
 	public boolean addVidSegToPlaylist(String playlistName, String vidID) throws Exception {
 
-			PreparedStatement ps = conn.prepareStatement("INSERT INTO Playlist (video_id,playlist_title) VALUES (?,?);");
-			
-			ps.setString(1, vidID);
-			ps.setString(2, playlistName);
-			ps.execute();
-			
-			return true;
-			
+		PreparedStatement ps = conn.prepareStatement("INSERT INTO Playlist (video_id,playlist_title) VALUES (?,?);");
+
+		ps.setString(1, vidID);
+		ps.setString(2, playlistName);
+		ps.execute();
+
+		return true;
+
 	}
 
 	public boolean deletePlaylist(String playlistName) throws Exception {
@@ -63,7 +63,7 @@ public class PlaylistDAO {
 
 		List<VidSeg> ls = new ArrayList<>();
 		PreparedStatement ps = conn.prepareStatement(
-				"SELECT * FROM VideoSegment v JOIN Playlist p WHERE p.video AND (p.video_id = v.video_id AND p.playlist_title = ?);");
+				"SELECT * FROM VideoSegment v JOIN Playlist p WHERE p.video_id = v.video_id AND p.playlist_title = ?;");
 
 		ps.setString(1, playlistName);
 		ResultSet rs_playlist = ps.executeQuery(); // return all the video_id that are in that playlist.
@@ -182,25 +182,25 @@ public class PlaylistDAO {
 
 		return new VidSeg(id, character, quote, isLocal, isMarked);
 	}
-	
+
 	//TODO: this method takes in the playlist name and returns all the video segments in
 	//		that given playlist
 	public List<VidSeg> getVideoSegInPlaylist(String playlistName) throws Exception {	//one parameter should be the playlist name
-													//Just did this because there were errors in the other handler...oops
+		//Just did this because there were errors in the other handler...oops
 		List<VidSeg> vsList = new ArrayList<>();
-		
+
 		PreparedStatement ps = conn.prepareStatement("SELECT * FROM Playlist WHERE playlist_title = ?");
 		ps.setString(1, playlistName);
 		ResultSet rs = ps.executeQuery();
-		
+
 		while(rs.next()) {
 			VidSeg vs = generateVidSeg(rs.getString("video_id"));
 			vsList.add(vs);
-			
+
 		}
-		
-		
-		
+
+
+
 		return vsList;
 	}
 }
