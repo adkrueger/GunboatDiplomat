@@ -206,8 +206,8 @@ public class PlaylistDAO {
 		int isMarked = 0;
 
 		id = rs.getString(1);
-		quote = rs.getString(3);
-		character = rs.getString(2);
+		quote = rs.getString(2);
+		character = rs.getString(3);
 		isLocal = rs.getInt(4);
 		isMarked = rs.getInt(5);
 

@@ -52,7 +52,7 @@ public class PlaylistTestingDB {
 		List<VidSeg> lsReturned = new ArrayList<VidSeg>();
 
 		// Returns a list of video clips.
-		lsReturned = playlistDAO.getPlaylistVidSeg("TestingGetALLVidSeg");
+		lsReturned = playlistDAO.getPlaylistVidSeg("TestingGetAllVidSeg");
 
 		vsDAO.deleteVidSeg("testingGetALLVidSeg1");
 		vsDAO.deleteVidSeg("testingGetALLVidSeg2");
