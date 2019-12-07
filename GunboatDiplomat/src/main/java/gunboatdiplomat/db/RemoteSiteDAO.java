@@ -16,6 +16,9 @@ public class RemoteSiteDAO {
 		try {
 			connection = DatabaseUtil.connect();
 			System.out.println("Connection has passed!");
+			
+			PreparedStatement ps = connection.prepareStatement("SET SQL_SAFE_UPDATES = 0");
+			ps.execute();
 		}
 		catch (Exception e) {
 			connection = null;

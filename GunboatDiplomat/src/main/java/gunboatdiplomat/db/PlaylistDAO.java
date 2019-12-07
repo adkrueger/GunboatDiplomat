@@ -17,6 +17,9 @@ public class PlaylistDAO {
 		try {
 			conn = DatabaseUtil.connect();
 			System.out.println("Connection has passed!");
+			
+			PreparedStatement ps = conn.prepareStatement("SET SQL_SAFE_UPDATES = 0");
+			ps.execute();
 		}
 
 		catch (Exception e) {
