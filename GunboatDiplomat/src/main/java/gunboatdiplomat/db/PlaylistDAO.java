@@ -58,18 +58,20 @@ public class PlaylistDAO {
 	} 
 
 	public List<VidSeg> getPlaylistVidSeg(String playlistName) throws Exception {
-
+		System.out.println(playlistName);
 		List<VidSeg> ls = new ArrayList<>();
 		PreparedStatement ps = conn.prepareStatement(
 				"SELECT * FROM VideoSegment v JOIN Playlist p WHERE p.video_id = v.video_id AND p.playlist_title = ?;");
 
 		ps.setString(1, playlistName);
+		System.out.println(ps);
 		ResultSet rs_playlist = ps.executeQuery(); // return all the video_id that are in that playlist.
-
-		while (rs_playlist.next() && (rs_playlist.getString(1) != "")) {
-			VidSeg vs = generateVidSeg(rs_playlist);
-			if(!ls.contains(vs)) {
-				ls.add(vs);
+		while (rs_playlist.next()) {
+			if(!rs_playlist.getString(1).equals("")) {		// if the playlist isn't empty
+				VidSeg vs = generateVidSeg(rs_playlist);
+				if(!ls.contains(vs)) {
+					ls.add(vs);
+				}
 			}
 		}
 
@@ -203,16 +205,13 @@ public class PlaylistDAO {
 		int isLocal = 0;
 		int isMarked = 0;
 
-		while (rs.next()) {
-
-			id = rs.getString(1);
-			quote = rs.getString(3);
-			character = rs.getString(2);
-			isLocal = rs.getInt(4);
-			isMarked = rs.getInt(5);
+		id = rs.getString(1);
+		quote = rs.getString(3);
+		character = rs.getString(2);
+		isLocal = rs.getInt(4);
+		isMarked = rs.getInt(5);
 
 
-		}
 
 		System.out.println(id + "has been pulled.");
 
