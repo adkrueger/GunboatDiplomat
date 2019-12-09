@@ -173,7 +173,7 @@ add this back if we want to center buttons */
 			function handleFileSelect(evt) {
 				console.log("in handlefileselect");
 				var files = evt.target.files;
-				if (files[0].size > 1000000000) { // make as large or small as you need
+				if (files[0].size > 25000000) { // make as large or small as you need
 					document.uploadVidSeg.base64Encoding.value = "";
 					alert("File size too large to use: " + files[0].size
 							+ " bytes");

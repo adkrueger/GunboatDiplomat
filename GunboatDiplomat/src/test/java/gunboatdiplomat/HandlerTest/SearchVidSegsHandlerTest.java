@@ -40,7 +40,7 @@ public class SearchVidSegsHandlerTest extends LambdaTest {
 			System.out.println(vs);
 			Assert.assertTrue(dao.getVidSeg(vs.id) != null);		// proof of concept - show the vid seg is really in the table
 			Assert.assertEquals("Leonard McCoy", vs.character);		// check character is the only thing we've found
-			Assert.assertEquals("Death by natural causes.", vs.quote);		// check quote is the only thing we've found
+			Assert.assertEquals("Death by natural causes.", vs.text);		// check quote is the only thing we've found
 		}
 
 		// now delete
@@ -92,7 +92,7 @@ public class SearchVidSegsHandlerTest extends LambdaTest {
 		for(VidSeg vs: searchResp.vidSegs) {
 			System.out.println(vs);
 			Assert.assertTrue(dao.getVidSeg(vs.id) != null);		// proof of concept - show the vid seg is really in the table
-			Assert.assertEquals("Death by natural causes.", vs.quote);		// check quote is the only thing we've found
+			Assert.assertEquals("Death by natural causes.", vs.text);		// check quote is the only thing we've found
 		}
 
 		// now delete
