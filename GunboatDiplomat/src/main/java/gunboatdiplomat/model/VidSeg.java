@@ -33,10 +33,12 @@ public class VidSeg {
 	}
 	
 	// used in ListRemoteSegmentsHandler
-	public VidSeg(String url, String character, String text) {
-		this.url = url;
+	public VidSeg(String id, String character, String text, int isMarked) {
+		this.id = id;
+		this.url = "https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/" + id;
 		this.character = character;
 		this.text = text;
+		isMarked = 1;
 	}
 	
 	// used in getVidSegs to add video segments to the list from the S3 bucket
@@ -68,7 +70,7 @@ public class VidSeg {
 	
 	@Override
 	public String toString() {
-		return id + ", with " + character + " saying \"" + text + "\".";
+		return id + ", with " + character + " saying \"" + text + "\". Marked: " + isMarked + ", Local: " + isLocal;
 	}
 
 }
