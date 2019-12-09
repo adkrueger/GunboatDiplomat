@@ -173,7 +173,7 @@ public class VideoSegmentDAO {
 			PreparedStatement ps = connection.prepareStatement("INSERT INTO VideoSegment (video_id,character_speaking,quote,is_local,is_marked) VALUES(?,?,?,?,?);");
 			ps.setString(1, vs.id);
 			ps.setString(2, vs.character);
-			ps.setString(3, vs.quote);
+			ps.setString(3, vs.text);
 			ps.setInt(4, vs.isLocal);
 			ps.setInt(5, vs.isMarked);
 			ps.execute();

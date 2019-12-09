@@ -19,19 +19,21 @@ public class GetPublicVidSegsHandler implements RequestHandler<Object, GetPublic
 	//video segment is marked or not and if it is not marked then we remove it and return the list with all
 	//the marked video segments
 
-	public List<VidSeg> getVidSegsFromRDS() throws Exception {
-		logger.log("in getVideoSegments");
-		VideoSegmentDAO dao = new VideoSegmentDAO();
-		return dao.getAllVidSegs();
-	}
-
 	public List<VidSeg> returnMarkedPublic(List<VidSeg> vs) {
 
+		List<VidSeg> marked = new ArrayList<>();
 		for (int i = 0; i < vs.size(); i++) {
 			if (vs.get(i).isMarked == 0) {	//if it is not marked then it is = 0 and it is not public
-				vs.remove(vs.get(i));
+				vs.remove(i);
+				i--;
+			}
+			else {
+				marked.add(new VidSeg(vs.get(i).id, vs.get(i).character, vs.get(i).text, 1));
 			}
 		}
+		
+		System.out.println(marked.toString());
+		
 		return vs;
 		
 	}

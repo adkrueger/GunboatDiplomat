@@ -40,7 +40,7 @@ public class SearchVidSegsHandlerTest extends LambdaTest {
 			System.out.println(vs);
 			Assert.assertTrue(dao.getVidSeg(vs.id) != null);		// proof of concept - show the vid seg is really in the table
 			Assert.assertEquals("Leonard McCoy", vs.character);		// check character is the only thing we've found
-			Assert.assertEquals("Death by natural causes.", vs.quote);		// check quote is the only thing we've found
+			Assert.assertEquals("Death by natural causes.", vs.text);		// check quote is the only thing we've found
 		}
 
 		// now delete
@@ -68,6 +68,15 @@ public class SearchVidSegsHandlerTest extends LambdaTest {
 			Assert.assertTrue(dao.getVidSeg(vs.id) != null);		// proof of concept - show the vid seg is really in the table
 			Assert.assertEquals("Leonard McCoy", vs.character);		// check character is the only thing we've found
 		}
+		
+		searchReq = new SearchVidSegsRequest("Leonard", "");
+		searchResp = svsh.handleRequest(searchReq, createContext("search"));
+		Assert.assertTrue(searchResp.vidSegs.contains(new VidSeg("testingSearchCharacter", "Leonard McCoy", "Death by natural causes.", 1, 0)));
+		for(VidSeg vs: searchResp.vidSegs) {
+			System.out.println(vs);
+			Assert.assertTrue(dao.getVidSeg(vs.id) != null);		// proof of concept - show the vid seg is really in the table
+			Assert.assertTrue(vs.character.contains("Leonard"));		// check character is the only thing we've found
+		}
 
 		// now delete
 		DeleteVidSegRequest dvsr = new DeleteVidSegRequest("testingSearchCharacter");
@@ -92,9 +101,18 @@ public class SearchVidSegsHandlerTest extends LambdaTest {
 		for(VidSeg vs: searchResp.vidSegs) {
 			System.out.println(vs);
 			Assert.assertTrue(dao.getVidSeg(vs.id) != null);		// proof of concept - show the vid seg is really in the table
-			Assert.assertEquals("Death by natural causes.", vs.quote);		// check quote is the only thing we've found
+			Assert.assertEquals("Death by natural causes.", vs.text);		// check quote is the only thing we've found
 		}
 
+		searchReq = new SearchVidSegsRequest("", "Death");
+		searchResp = svsh.handleRequest(searchReq, createContext("search"));
+		Assert.assertTrue(searchResp.vidSegs.contains(new VidSeg("testingSearchQuote", "Leonard McCoy", "Death by natural causes.", 1, 0)));
+		for(VidSeg vs: searchResp.vidSegs) {
+			System.out.println(vs);
+			Assert.assertTrue(dao.getVidSeg(vs.id) != null);		// proof of concept - show the vid seg is really in the table
+			Assert.assertTrue(vs.character.contains("Leonard"));		// check character is the only thing we've found
+		}
+		
 		// now delete
 		DeleteVidSegRequest dvsr = new DeleteVidSegRequest("testingSearchQuote");
 		DeleteVidSegResponse deleteResponse = new DeleteVidSegHandler().handleRequest(dvsr, createContext("delete"));
