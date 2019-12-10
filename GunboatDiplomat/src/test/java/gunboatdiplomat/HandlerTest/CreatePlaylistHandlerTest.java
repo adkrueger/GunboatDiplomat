@@ -19,7 +19,7 @@ public class CreatePlaylistHandlerTest extends LambdaTest {
 	public PlaylistDAO plDAO = new PlaylistDAO();
 	
     @Test
-    public void testCreateVidSegHandler() throws Exception {
+    public void testCreatePlaylistHandler() throws Exception {
     	    	
     	Playlist pl = new Playlist("testin' playlist creatin'");
     	
