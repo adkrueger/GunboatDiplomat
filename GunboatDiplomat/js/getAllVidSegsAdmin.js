@@ -38,7 +38,7 @@ function processVidSegListResponseAdmin(response) {
 		"\"</span><br/><video width=\"350\" height=\"260\" controls><source src=\"" + url + "\" type=\"video/ogg\"></video>" +
 		"<br/><input class=\"button\" type=\"button\" value=\"Delete\" onclick=\"requestDelete(\'" + id + "\', \'" + charSpeaking + "\', \'" + quote + "\', 1)\"/><div class=\"divider\"></div>" +
 		"<input class=\"button\" type=\"button\" value=\"Mark\" onclick=\"requestMark(\'" + id + "\', 1)\"/><div class=\"divider\"></div>" +
-		"<input class=\"button\" type=\"button\" value=\"Unmark\"></div></li><br/><br/>";
+		"<input class=\"button\" type=\"button\" value=\"Unmark\" onclick=\"requestUnmark(\'" + id + "\', 1)\"/><div class=\"divider\"></div>";
 
 		let localString = isLocal ? "True" : "False";
 		let markedString = isMarked ? "True" : "False";
