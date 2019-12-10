@@ -94,7 +94,7 @@ public class VideoSegmentDAO {
 		try {
 			VidSeg vs = null;
 			PreparedStatement ps = connection.prepareStatement("SELECT * FROM VideoSegment WHERE character_speaking LIKE ?;");
-			ps.setString(1, character);
+			ps.setString(1, "%" + character + "%");
 			ResultSet rs = ps.executeQuery();
 
 			while(rs.next()) {
@@ -118,9 +118,9 @@ public class VideoSegmentDAO {
 		List<VidSeg> listOfVS = new ArrayList<>();
 		
 		try {
-			VidSeg vs = null;
+			VidSeg vs = null;;
 			PreparedStatement ps = connection.prepareStatement("SELECT * FROM VideoSegment WHERE quote LIKE ?;");
-			ps.setString(1, quote);
+			ps.setString(1, "%" + quote + "%");
 			ResultSet rs = ps.executeQuery();
 
 			while(rs.next()) {
@@ -146,8 +146,8 @@ public class VideoSegmentDAO {
 		try {
 			VidSeg vs = null;
 			PreparedStatement ps = connection.prepareStatement("SELECT * FROM VideoSegment WHERE (quote LIKE ? AND character_speaking LIKE ?);");
-			ps.setString(1, quote);
-			ps.setString(2, character);
+			ps.setString(1, "%" + quote + "%");
+			ps.setString(2, "%" + character + "%");
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {

@@ -42,6 +42,16 @@ public class SearchVidSegsHandlerTest extends LambdaTest {
 			Assert.assertEquals("Leonard McCoy", vs.character);		// check character is the only thing we've found
 			Assert.assertEquals("Death by natural causes.", vs.text);		// check quote is the only thing we've found
 		}
+		
+		searchReq = new SearchVidSegsRequest("Leonard", "Death");
+		searchResp = svsh.handleRequest(searchReq, createContext("search"));
+		Assert.assertTrue(searchResp.vidSegs.contains(new VidSeg("testingSearchBoth", "Leonard McCoy", "Death by natural causes.", 1, 0)));
+		for(VidSeg vs: searchResp.vidSegs) {
+			System.out.println(vs);
+			Assert.assertTrue(dao.getVidSeg(vs.id) != null);		// proof of concept - show the vid seg is really in the table
+			Assert.assertTrue(vs.character.contains("Leonard"));		// check character is the only thing we've found
+			Assert.assertTrue(vs.text.contains("Death"));
+		}
 
 		// now delete
 		DeleteVidSegRequest dvsr = new DeleteVidSegRequest("testingSearchBoth");
@@ -110,7 +120,7 @@ public class SearchVidSegsHandlerTest extends LambdaTest {
 		for(VidSeg vs: searchResp.vidSegs) {
 			System.out.println(vs);
 			Assert.assertTrue(dao.getVidSeg(vs.id) != null);		// proof of concept - show the vid seg is really in the table
-			Assert.assertTrue(vs.character.contains("Leonard"));		// check character is the only thing we've found
+			Assert.assertTrue(vs.text.contains("Death"));		// check character is the only thing we've found
 		}
 		
 		// now delete
