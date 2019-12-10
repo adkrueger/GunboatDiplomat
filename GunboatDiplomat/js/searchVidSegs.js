@@ -12,7 +12,7 @@ function processSearchResponse(response) {
 
 		let id = resultJson["id"];
 		let charSpeaking = resultJson["character"];
-		let quote = resultJson["quote"];
+		let quote = resultJson["text"];
 		
 		output = output + "<li><a href=\"#vidSeg-" + id + "\"><b>" + id + "</b></a><div class=\"vertSpace\"></div>"
 		+ "<span>" + charSpeaking + ": \"" + quote + "\"</span></li><br/>";

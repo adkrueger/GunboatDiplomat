@@ -8,10 +8,12 @@ let deleteVidSeg_url = api_url + "deleteVidSeg";			// POST
 let listPlaylists_url = api_url + "listPlaylists";			// GET
 let listRemotes_url = api_url + "listRemotes";				// GET
 let listVidSegs_url = api_url + "listVidSegs";				// GET
+let markVidSeg_url = api_url + "markVidSeg";				// POST
 let registerRemote_url = api_url + "registerRemote";		// POST
 let removeVidSeg_url = api_url + "removeVidSeg";			// POST
 let searchVidSegs_url = api_url + "searchVidSegs";			// POST
 let showPlaylists_url = api_url + "showPlaylists";			// GET
+let unmarkVidSeg_url = api_url + "unmarkVidSeg";			// POST
 let unregisterRemote_url = api_url + "unregisterRemote";	// POST
 let uploadVidSeg_url = api_url + "uploadVidSeg";			// POST
 
