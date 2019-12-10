@@ -10,6 +10,7 @@ function handleRegisterClick() {
 	let rData = {}
 	rData["url"] = form.remoteURL.value;
 	
+	// TODO: Check if remote is legitimate
 	if(rData["url"] === "") {
 		alert("Please enter a URL.");
 	}
