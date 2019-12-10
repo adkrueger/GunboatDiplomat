@@ -22,7 +22,7 @@ public class MarkVidSegHandlerTest extends LambdaTest{
 		VidSeg vsCreated = new VidSeg("TestingMarkVidSegHandler", "AshwinSmellsBad", "Ashwin", 1, 0);
 		vsDAO.addVidSeg(vsCreated);
 		
-		VidSeg vsSol = new VidSeg("TestingMarkVidSegHandler", "AshwinSmellsBad", "Ashwin", 1, 1);
+		VidSeg vsSol = new VidSeg("TestingMarkVidSegHandler", "AshwinSmellsBad", "Ashwin", 1, 1);		// ashwin you smell fine bb
 		
 		MarkVidSegRequest createReq = new MarkVidSegRequest(vsCreated.id);
 		MarkVidSegResponse responseReq = new MarkVidSegHandler().handleRequest(createReq, createContext("Marked"));
