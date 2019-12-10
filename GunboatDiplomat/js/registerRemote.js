@@ -10,9 +10,11 @@ function handleRegisterClick() {
 	let rData = {}
 	rData["url"] = form.remoteURL.value;
 	
-	// TODO: Check if remote is legitimate
 	if(rData["url"] === "") {
 		alert("Please enter a URL.");
+	}
+	else if(rData["url"].indexOf("?apikey=") == -1) {		// look for the apikey query
+		alert("URL must contain an api key query.");
 	}
 	else {
 		let js = JSON.stringify(rData);
