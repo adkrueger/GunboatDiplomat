@@ -30,7 +30,7 @@ public class GetPublicVidSegsHandlerTest extends LambdaTest {
 		
 		GetPublicVidSegsHandler handler = new GetPublicVidSegsHandler();
 		GetPublicVidSegsResponse resp = handler.handleRequest(null, createContext("list public segs"));
-		List<VidSeg> retList = resp.vidSegs;
+		List<VidSeg> retList = resp.segments;
 		
 		for(VidSeg vs : retList) {
 			Assert.assertTrue(vs.isMarked == 1);
