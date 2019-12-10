@@ -5,24 +5,31 @@ function processSearchResponse(response) {
 
 	let output = "<h3>Search Results</h3><ul class=\"itemList\">";
 
-	// vidSegs is in response https class of search
-	for(let i = 0; i < js.vidSegs.length; i++) {
-		let resultJson = js.vidSegs[i];
-		console.log(resultJson);
-
-		let id = resultJson["id"];
-		let charSpeaking = resultJson["character"];
-		let quote = resultJson["text"];
-		
-		output = output + "<li><a href=\"#vidSeg-" + id + "\"><b>" + id + "</b></a><div class=\"vertSpace\"></div>"
-		+ "<span>" + charSpeaking + ": \"" + quote + "\"</span></li><br/>";
-
-		if(i === js.vidSegs.length-1) {
-			output = output + "</ul>";
-		}
-
-		searchResults.innerHTML = output;
+	if(js.vidSegs.length == 0) {
+		output = output + "<p>No results found.</p>"
 	}
+	else {
+		for(let i = 0; i < js.vidSegs.length; i++) {
+			let resultJson = js.vidSegs[i];
+			console.log(resultJson);
+
+			let id = resultJson["id"];
+			let charSpeaking = resultJson["character"];
+			let quote = resultJson["text"];
+
+			output = output + "<li><a href=\"#vidSeg-" + id + "\"><b>" + id + "</b></a><div class=\"vertSpace\"></div>"
+			+ "<span>" + charSpeaking + ": \"" + quote + "\"</span></li><br/>";
+
+			if(i === js.vidSegs.length-1) {
+				output = output + "</ul>";
+			}
+
+		}
+	}
+	// vidSegs is in response https class of search
+
+	searchResults.innerHTML = output;
+
 }
 
 function handleSearchClick() {
