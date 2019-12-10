@@ -3,6 +3,39 @@ function processSearchResponse(response, remoteResponse) {
 	console.log(response);
 	console.log(remoteResponse);
 
+	let remoteVidSegs = [];
+	
+	let remoteJS = JSON.parse(remoteResponse);
+	for(let m = 0; m < remoteJS.remotes.length; m++) {
+		let url = remoteJS.remotes[m].url;
+		let qIndex = url.indexOf("?apikey=");
+		let search_remote_url = url.substring(0, qIndex);
+		let apikey = url.substring(qIndex+8);
+		
+		let remoteXHR = new XMLHttpRequest();
+		remoteXHR.open("GET", search_remote_url, true);
+		remoteXHR.setRequestHeader("x-api-key", apikey);
+		remoteXHR.send();
+		
+		remoteXHR.onloadend = function() {
+			if(remoteXHR.readyState === XMLHttpRequest.DONE) {
+				if(remoteXHR.status === 200) {
+					console.log("Pulled Remote XHR: " + remoteXHR.responseText);
+					//TODO: need to go through each of these and add them to a list of pulled segments
+				}
+				else {
+					console.log("remote actual: " + remoteXHR.responseText);
+					let newJS = JSON.parse(remoteXHR.responseText);
+					let err = newJS["error"];
+					alert(err);
+				}
+			}
+			else {
+				console.log("N/A");
+			}
+		};
+	}
+	
 	let js = JSON.parse(response);
 	let searchResults = document.getElementById("searchResults");
 
