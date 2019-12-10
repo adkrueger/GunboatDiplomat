@@ -13,8 +13,8 @@ function processDeleteResponse(result, isAdmin) {
 	}
 }
 
-function requestDelete(vs, isAdmin) {
-	if(confirm("Delete " + vs + "?")) {
+function requestDelete(vs, charSpeaking, quote, isAdmin) {
+	if(confirm("Delete " + vs + ", where " + charSpeaking + " says \"" + quote + "\"?")) {
 		processDelete(vs, isAdmin);
 	}
 }

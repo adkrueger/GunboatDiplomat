@@ -33,7 +33,7 @@ function processVidSegListResponse(response) {
 
 		output = output + "<li><a name=\"vidSeg-" + id + "\"></a><div id=\"vidSeg-" + id + "\"><b>" + id + "</b><br/><span>" + charSpeaking + ": \"" + quote + 
 		"\"</span><br/><video width=\"350\" height=\"260\" controls><source src=\"" + url + "\" type=\"video/ogg\"></video>" +
-		"<br/><input class=\"button\" type=\"button\" value=\"Delete\" onclick=\"requestDelete(\'" + id + "\', 0)\"/></div></li><br/><br/>";
+		"<br/><input class=\"button\" type=\"button\" value=\"Delete\" onclick=\"requestDelete(\'" + id + "\', \'" + charSpeaking + "\', \'" + quote + "\', 0)\"/></div></li><br/><br/>";
 		/*
 		infoOutput = infoOutput + "<li><div id=\"vidSeg-" + id + "-info\"><b>" + id + "</b><br/><span>" + charSpeaking + ": \"" + quote + 
 		"\"</span><br/><span>Season Number: " + seasonNum + "<br/>Episode Number: " + episodeNum + "</span>" +

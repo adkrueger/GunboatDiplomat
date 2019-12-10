@@ -16,10 +16,16 @@ function processSearchResponse(response) {
 			let id = resultJson["id"];
 			let charSpeaking = resultJson["character"];
 			let quote = resultJson["text"];
+			let isLocal = resultJson["isLocal"];
 
-			output = output + "<li><a href=\"#vidSeg-" + id + "\"><b>" + id + "</b></a><div class=\"vertSpace\"></div>"
-			+ "<span>" + charSpeaking + ": \"" + quote + "\"</span></li><br/>";
-
+			if(isLocal) {
+				output = output + "<li><a href=\"#vidSeg-" + id + "\"><b>" + id + "</b></a><div class=\"vertSpace\"></div>"
+				+ "<span>" + charSpeaking + ": \"" + quote + "\"</span></li><br/>";
+			}
+			else {
+				output = output + "<li><b>" + id + "</b><div class=\"vertSpace\"></div>"
+				+ "<span>" + charSpeaking + ": \"" + quote + "\"</span></li><br/>";
+			}
 			if(i === js.vidSegs.length-1) {
 				output = output + "</ul>";
 			}
