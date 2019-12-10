@@ -9,6 +9,7 @@ import gunboatdiplomat.GetPublicVidSegsHandler;
 import gunboatdiplomat.LambdaTest;
 import gunboatdiplomat.db.VideoSegmentDAO;
 import gunboatdiplomat.http.GetPublicVidSegsResponse;
+import gunboatdiplomat.model.MarkedSegment;
 import gunboatdiplomat.model.VidSeg;
 
 public class GetPublicVidSegsHandlerTest extends LambdaTest {
@@ -30,16 +31,17 @@ public class GetPublicVidSegsHandlerTest extends LambdaTest {
 		
 		GetPublicVidSegsHandler handler = new GetPublicVidSegsHandler();
 		GetPublicVidSegsResponse resp = handler.handleRequest(null, createContext("list public segs"));
-		List<VidSeg> retList = resp.segments;
+		List<MarkedSegment> retList = resp.segments;
+		Assert.assertTrue(retList.size() >= 3);
 		
-		for(VidSeg vs : retList) {
-			Assert.assertTrue(vs.isMarked == 1);
-		}
-		
-		Assert.assertTrue(retList.contains(vs1));
-		Assert.assertTrue(retList.contains(vs2));
-		Assert.assertTrue(retList.contains(vs3));
-		Assert.assertFalse(retList.contains(vs4));
+		MarkedSegment ms1 = new MarkedSegment("markedTestSeg1", "aaron", "hi im aaron");
+		MarkedSegment ms2 = new MarkedSegment("markedTestSeg2", "obama", "welcome to the white house aaron");
+		MarkedSegment ms3 = new MarkedSegment("markedTestSeg3", "aaron", "thanks obama");
+		MarkedSegment ms4 = new MarkedSegment("markedTestSeg4", "obama", "no problem buddy");
+		Assert.assertTrue(retList.contains(ms1));
+		Assert.assertTrue(retList.contains(ms2));
+		Assert.assertTrue(retList.contains(ms3));
+		Assert.assertFalse(retList.contains(ms4));
 		
 		dao.deleteVidSeg("markedTestSeg1");
 		dao.deleteVidSeg("markedTestSeg2");

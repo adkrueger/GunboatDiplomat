@@ -9,6 +9,7 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 
 import gunboatdiplomat.db.VideoSegmentDAO;
 import gunboatdiplomat.http.GetPublicVidSegsResponse;
+import gunboatdiplomat.model.MarkedSegment;
 import gunboatdiplomat.model.VidSeg;
 
 public class GetPublicVidSegsHandler implements RequestHandler<Object, GetPublicVidSegsResponse> {
@@ -19,22 +20,22 @@ public class GetPublicVidSegsHandler implements RequestHandler<Object, GetPublic
 	//video segment is marked or not and if it is not marked then we remove it and return the list with all
 	//the marked video segments
 
-	public List<VidSeg> returnMarkedPublic(List<VidSeg> vs) {
+	public List<MarkedSegment> returnMarkedPublic(List<VidSeg> vs) {
 
-		List<VidSeg> marked = new ArrayList<>();
+		List<MarkedSegment> marked = new ArrayList<>();
 		for (int i = 0; i < vs.size(); i++) {
 			if (vs.get(i).isMarked == 0) {	//if it is not marked then it is = 0 and it is not public
 				vs.remove(i);
 				i--;
 			}
 			else {
-				marked.add(new VidSeg(vs.get(i).id, vs.get(i).character, vs.get(i).text, 1));
+				marked.add(new MarkedSegment(vs.get(i).id, vs.get(i).character, vs.get(i).text));
 			}
 		}
 		
 		System.out.println(marked.toString());
 		
-		return vs;
+		return marked;
 		
 	}
 
@@ -51,8 +52,8 @@ public class GetPublicVidSegsHandler implements RequestHandler<Object, GetPublic
 		try {
 			List<VidSeg> list = new ArrayList<>();
 			list = dao.getAllVidSegs();
-			list = returnMarkedPublic(list);
-			response = new GetPublicVidSegsResponse(list, 200);
+			List<MarkedSegment> markedList = returnMarkedPublic(list);
+			response = new GetPublicVidSegsResponse(markedList, 200);
 		}
 		catch (Exception e) {
 			response = new GetPublicVidSegsResponse(403, e.getMessage());

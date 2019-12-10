@@ -32,9 +32,8 @@ public class VidSeg {
 
 	}
 	
-	// used in ListRemoteSegmentsHandler
-	public VidSeg(String id, String character, String text, int isMarked) {
-		this.id = id;
+	// used in getPublicVidSegsHandler
+	public VidSeg(String id, String character, String text) {
 		this.url = "https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/" + id;
 		this.character = character;
 		this.text = text;
