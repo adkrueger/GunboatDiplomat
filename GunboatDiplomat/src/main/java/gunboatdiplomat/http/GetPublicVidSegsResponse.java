@@ -7,27 +7,27 @@ import gunboatdiplomat.model.VidSeg;
 
 public class GetPublicVidSegsResponse {
 	
-	public final List<VidSeg> vidSegs;
+	public final List<VidSeg> segments;
 	public final int statusCode;
 	public final String error;
 	
-	public GetPublicVidSegsResponse(List<VidSeg> vidSegs, int code) {
-		this.vidSegs = vidSegs;
+	public GetPublicVidSegsResponse(List<VidSeg> segments, int code) {
+		this.segments = segments;
 		this.statusCode = code;
 		this.error = "";
 	}
 	
 	public GetPublicVidSegsResponse(int code, String errorMessage) {
-		this.vidSegs = new ArrayList<VidSeg>();
+		this.segments = new ArrayList<VidSeg>();
 		this.statusCode = code;
 		this.error = errorMessage;
 	}
 	
 	public String toString() {
-		if (vidSegs == null) {
+		if (segments == null) {
 			return "No public video segments";
 		}
-		return "All public video segments (" + vidSegs.size() + ")";
+		return "All public video segments (" + segments.size() + ")";
 	}
 
 }
