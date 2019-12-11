@@ -40,7 +40,7 @@ public class PlaylistDAO {
 		try {
 			if(rs.next()) {
 				PreparedStatement PSPlaylist = conn.prepareStatement("INSERT INTO Playlist (video_id,playlist_title) VALUES (?,?);");
-				PSPlaylist.setString(1, "https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/" + vidID);
+				PSPlaylist.setString(1, vidID);
 				PSPlaylist.setString(2, playlistName);
 				PSPlaylist.execute();
 
@@ -150,13 +150,16 @@ public class PlaylistDAO {
 			// Playlist doesnt exist
 
 			else {
-				List<VidSeg> vsList = new ArrayList<>();
+				if(rs1.getString("video_id") != null) {
+					List<VidSeg> vsList = new ArrayList<>();
 
-				// create new input in hashmap;
-				playlists.put(rs1.getString("playlist_title"), vsList);
-				//				String vidID = rs1.getString("video_id");
-				//				VidSeg vs = generateVidSeg(vidID);
-				playlists.get(rs1.getString("playlist_title")).add(generateVidSegFromPlaylist(rs1));
+					// create new input in hashmap;
+					playlists.put(rs1.getString("playlist_title"), vsList);
+					//				String vidID = rs1.getString("video_id");
+					//				VidSeg vs = generateVidSeg(vidID);
+					playlists.get(rs1.getString("playlist_title")).add(generateVidSegFromPlaylist(rs1));
+
+				}
 
 			}
 
@@ -227,6 +230,7 @@ public class PlaylistDAO {
 
 	public boolean deleteVidSegFromPlaylistWithIndex(String playlistName, int index) throws Exception {
 
+		String url = "https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/";
 		System.out.println(index);
 		// This is getting the list of VidSeg associated with a playlist. 
 		List<VidSeg> listOfVidSeg = this.getVideoSegInPlaylist(playlistName);
@@ -235,7 +239,7 @@ public class PlaylistDAO {
 		System.out.println(listOfVidSeg + "\t deleting " + vidSegID);
 
 		PreparedStatement ps = conn.prepareStatement("DELETE FROM Playlist WHERE video_id=? AND playlist_title=?");
-		ps.setString(1, vidSegID);
+		ps.setString(1, url+vidSegID);
 		ps.setString(2, playlistName);
 		ps.execute();
 

@@ -64,7 +64,7 @@ public class PlaylistTestingDB {
 		playlistDAO.deletePlaylist("TestingGetAllVidSeg");
 
 		for (int i = 0; i < lsSolution.size(); i++) {
-			assertTrue(lsSolution.get(i).equals(lsReturned.get(i)));
+			assertTrue(lsSolution.get(i).id.equals(lsReturned.get(i).id));
 
 		}
 
@@ -93,7 +93,7 @@ public class PlaylistTestingDB {
 		vsDAO.addVidSeg(vs6);
 
 		playlistDAO.createPlaylist("TestingGetAllPlaylist");
-		
+
 		playlistDAO.addVidSegToPlaylist("TestingGetAllPlaylist", "testingGetALLPlaylist1");
 		playlistDAO.addVidSegToPlaylist("TestingGetAllPlaylist", "testingGetALLPlaylist2");
 		playlistDAO.addVidSegToPlaylist("TestingGetAllPlaylist", "testingGetALLPlaylist3");
@@ -121,6 +121,9 @@ public class PlaylistTestingDB {
 		vsDAO.deleteVidSeg("testingGetALLPlaylist5");
 		vsDAO.deleteVidSeg("testingGetALLPlaylist6");
 
+		for(int i = 0; i < solution.get("TestingGetAllPlaylist").size(); i++) {
+			assertTrue(allPlaylists.get("TestingGetAllPlaylist").get(i).id.equals(solution.get("TestingGetAllPlaylist").get(i).id));
+		}
 	}
 
 	@Test
@@ -131,24 +134,24 @@ public class PlaylistTestingDB {
 		vsDAO.addVidSeg(new VidSeg("testAppendVidSeg1", "", "", 1, 0));
 		vsDAO.addVidSeg(new VidSeg("testAppendVidSeg2", "", "", 1, 0));
 		vsDAO.addVidSeg(new VidSeg("testAppendVidSeg3", "", "", 1, 0));
-		
+
 		playlistDAO.createPlaylist(playlistName);
-		
+
 		playlistDAO.addVidSegToPlaylist(playlistName, "testAppendVidSeg1");
 		playlistDAO.addVidSegToPlaylist(playlistName, "testAppendVidSeg2");
 		playlistDAO.addVidSegToPlaylist(playlistName, "testAppendVidSeg3");
-		
+
 		List<VidSeg> allVSInPlaylist = playlistDAO.getVideoSegInPlaylist(playlistName);
-		
-		assertEquals("https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/testAppendVidSeg1", allVSInPlaylist.get(0).id);
-		assertEquals("https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/testAppendVidSeg2", allVSInPlaylist.get(1).id);
-		assertEquals("https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/testAppendVidSeg3", allVSInPlaylist.get(2).id);
-		
+
+		assertEquals("testAppendVidSeg1", allVSInPlaylist.get(0).id);
+		assertEquals("testAppendVidSeg2", allVSInPlaylist.get(1).id);
+		assertEquals("testAppendVidSeg3", allVSInPlaylist.get(2).id);
+
 		vsDAO.deleteVidSeg("testAppendVidSeg1");
 		vsDAO.deleteVidSeg("testAppendVidSeg2");
 		vsDAO.deleteVidSeg("testAppendVidSeg3");
 		playlistDAO.deletePlaylist("Funny Clips");
-		
+
 
 	}
 
@@ -207,65 +210,65 @@ public class PlaylistTestingDB {
 
 
 		for(int i = 0; i < vsSol.size(); i++) {
-			assertTrue(vsSol.get(i).equals(vsRet.get(i)));
+			assertTrue(vsSol.get(i).id.equals(vsRet.get(i).id));
 		}
 
 	}
-	
+
 	@Test
 	public void testCreatePlaylist() throws Exception {
 		List<VidSeg> vsList = new ArrayList<VidSeg>();
 		VidSeg vs1 = new VidSeg("testCreatePlaylistCreateVIDSEG", "Spock", "A most fascinating thing happened.", 1, 0);
 		vsList.add(vs1);
 		vsDAO.addVidSeg(vs1);
-		
-		
+
+
 		playlistDAO.createPlaylist("testPlaylist");
 		playlistDAO.addVidSegToPlaylist("testPlaylist", "testCreatePlaylistCreateVIDSEG");
-		
+
 		List<VidSeg> list = playlistDAO.getVideoSegInPlaylist("testPlaylist");
-		
-		
+
+
 		for(int i = 0; i < list.size(); i++) {
-			assertTrue(vsList.get(i).equals(list.get(i)));
+			assertTrue(vsList.get(i).id.equals(list.get(i).id));
 		}
-		
+
 		playlistDAO.deletePlaylist("testPlaylist");
 		vsDAO.deleteVidSeg("testCreatePlaylistCreateVIDSEG");
-	
+
 	}
-	
+
 	@Test
 	public void testDeleteVidSegFromPlaylist() throws Exception{
-		VidSeg vs1 = new VidSeg("deleteID1", "Spock", "A most fascinating thing happened.", 1, 0);
-		VidSeg vs2 = new VidSeg("deleteID2", "James T. Kirk", "More like love.", 1, 0);
+		VidSeg vs1 = new VidSeg("https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/deleteID1");
+		VidSeg vs2 = new VidSeg("https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/deleteID2");
 		List<VidSeg> sol = new ArrayList<>();
 		sol.add(vs2);
 		vsDAO.addVidSeg(vs1);
 		vsDAO.addVidSeg(vs2);
-		
+
 		playlistDAO.createPlaylist("testingDeletePlaylist");
 		playlistDAO.addVidSegToPlaylist("testingDeletePlaylist", "deleteID1");
 		playlistDAO.addVidSegToPlaylist("testingDeletePlaylist", "deleteID2");
-		
-		playlistDAO.deleteVidSegFromPlaylist("testingDeletePlaylist", "deleteID1");
-		
+
+		playlistDAO.deleteVidSegFromPlaylist("testingDeletePlaylist", "https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/deleteID1");
+
 		List<VidSeg> list = playlistDAO.getVideoSegInPlaylist("testingDeletePlaylist"); //should only return 1 Video
-		
+
 		playlistDAO.deletePlaylist("testingDeletePlaylist");
-		
+
 		for(int i = 0; i < sol.size(); i++) {
-			assertTrue(sol.get(i).equals(list.get(i)));
+			assertTrue(sol.get(i).id.equals(list.get(i).id));
 		}
-		
+
 		vsDAO.deleteVidSeg("deleteID1");
 		vsDAO.deleteVidSeg("deleteID2");
-		
+
 	}
-	
+
 	@Test
 	public void testDeleteVidSegFromPlaylistWithIndex() throws Exception{
-		
+
 		VidSeg vs1 = new VidSeg("testDeleteVidSegFromPlaylistWithIndex1", "Spock", "A most fascinating thing happened.", 1, 0);
 		VidSeg vs2 = new VidSeg("testDeleteVidSegFromPlaylistWithIndex2", "James T. Kirk", "More like love.", 1, 0);
 		VidSeg vs3 = new VidSeg("testDeleteVidSegFromPlaylistWithIndex3", "Leonard McCoy", "Now you must want the child!", 1, 0);
@@ -279,40 +282,40 @@ public class PlaylistTestingDB {
 		vsDAO.addVidSeg(vs4);
 		vsDAO.addVidSeg(vs5);
 		vsDAO.addVidSeg(vs6);
-		
+
 		playlistDAO.addVidSegToPlaylist("testDeleteVidSegFromPlaylistWithIndexPLAYLIST", vs1.id);
 		playlistDAO.addVidSegToPlaylist("testDeleteVidSegFromPlaylistWithIndexPLAYLIST", vs2.id);
 		playlistDAO.addVidSegToPlaylist("testDeleteVidSegFromPlaylistWithIndexPLAYLIST", vs3.id);
 		playlistDAO.addVidSegToPlaylist("testDeleteVidSegFromPlaylistWithIndexPLAYLIST", vs4.id);
 		playlistDAO.addVidSegToPlaylist("testDeleteVidSegFromPlaylistWithIndexPLAYLIST", vs5.id);
 		playlistDAO.addVidSegToPlaylist("testDeleteVidSegFromPlaylistWithIndexPLAYLIST", vs6.id);
-		
+
 		playlistDAO.deleteVidSegFromPlaylistWithIndex("testDeleteVidSegFromPlaylistWithIndexPLAYLIST", 1);
-		
+
 		List<VidSeg> sol = new ArrayList<VidSeg>();
 		sol.add(vs1);
 		sol.add(vs3);
 		sol.add(vs4);
 		sol.add(vs5);
-		sol.add(vs6);
-		
+		sol.add(vs6);																					
+
 		List<VidSeg> ret = playlistDAO.getVideoSegInPlaylist("testDeleteVidSegFromPlaylistWithIndexPLAYLIST");
-		
+
 		playlistDAO.deletePlaylist("testDeleteVidSegFromPlaylistWithIndexPLAYLIST");
-		
+
 		vsDAO.deleteVidSeg("testDeleteVidSegFromPlaylistWithIndex1");
 		vsDAO.deleteVidSeg("testDeleteVidSegFromPlaylistWithIndex2");
 		vsDAO.deleteVidSeg("testDeleteVidSegFromPlaylistWithIndex3");
 		vsDAO.deleteVidSeg("testDeleteVidSegFromPlaylistWithIndex4");
 		vsDAO.deleteVidSeg("testDeleteVidSegFromPlaylistWithIndex5");
 		vsDAO.deleteVidSeg("testDeleteVidSegFromPlaylistWithIndex6");
-		
-		
+
+
 		for(int i = 0; i < sol.size(); i ++) {
-			assertTrue(sol.get(i).equals(ret.get(i)));
+			assertTrue(sol.get(i).id.equals(ret.get(i).id));
 		}
-		
-		
+
+
 	}
 
 
