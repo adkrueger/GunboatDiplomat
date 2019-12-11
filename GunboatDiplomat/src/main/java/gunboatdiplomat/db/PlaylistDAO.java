@@ -37,13 +37,18 @@ public class PlaylistDAO {
 		VSPlaylist.setString(1, vidID);
 		ResultSet rs = VSPlaylist.executeQuery();
 
+		try {
 		if(rs.next()) {
 			PreparedStatement PSPlaylist = conn.prepareStatement("INSERT INTO Playlist (video_id,playlist_title) VALUES (?,?);");
-			PSPlaylist.setString(1, vidID);
+			PSPlaylist.setString(1, "https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/" + vidID);
 			PSPlaylist.setString(2, playlistName);
 			PSPlaylist.execute();
 
 			return true;
+		}
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
 		}
 
 		return false;
@@ -72,30 +77,6 @@ public class PlaylistDAO {
 		return true;
 	} 
 
-	public List<VidSeg> getPlaylistVidSeg(String playlistName) throws Exception {
-		System.out.println(playlistName);
-		List<VidSeg> ls = new ArrayList<>();
-		PreparedStatement ps = conn.prepareStatement(
-				"SELECT * FROM VideoSegment v JOIN Playlist p WHERE p.video_id = v.video_id AND p.playlist_title = ?;");
-
-		ps.setString(1, playlistName);
-		System.out.println(ps);
-		ResultSet rs_playlist = ps.executeQuery(); // return all the video_id that are in that playlist.
-		while (rs_playlist.next()) {
-			if(!rs_playlist.getString(1).equals("")) {		// if the playlist isn't empty
-				VidSeg vs = generateVidSeg(rs_playlist);
-				if(!ls.contains(vs)) {
-					ls.add(vs);
-				}
-			}
-		}
-
-		ps.close();
-		rs_playlist.close();
-
-		return ls;
-
-	}
 	/**
 	 * This function will delete a video segment that is in a certain playlist. 
 	 * 
@@ -162,7 +143,7 @@ public class PlaylistDAO {
 				System.out.println(rs1.getString("playlist_title"));
 
 				// Adds the VidSeg
-				playlists.get(rs1.getString("playlist_title")).add(generateVidSeg(rs1.getString("video_id")));
+				playlists.get(rs1.getString("playlist_title")).add(generateVidSegFromPlaylist(rs1));
 
 			}
 
@@ -173,9 +154,9 @@ public class PlaylistDAO {
 
 				// create new input in hashmap;
 				playlists.put(rs1.getString("playlist_title"), vsList);
-				String vidID = rs1.getString("video_id");
-				VidSeg vs = generateVidSeg(vidID);
-				playlists.get(rs1.getString("playlist_title")).add(vs);
+//				String vidID = rs1.getString("video_id");
+//				VidSeg vs = generateVidSeg(vidID);
+				playlists.get(rs1.getString("playlist_title")).add(generateVidSegFromPlaylist(rs1));
 
 			}
 
@@ -210,27 +191,6 @@ public class PlaylistDAO {
 
 		return new VidSeg(idNum, quote, character, isLocal, isMarked);
 
-	}
-
-	private VidSeg generateVidSeg(ResultSet rs) throws Exception {
-
-		String id = "";
-		String character = "";
-		String quote = "";
-		int isLocal = 0;
-		int isMarked = 0;
-
-		id = rs.getString(1);
-		quote = rs.getString(2);
-		character = rs.getString(3);
-		isLocal = rs.getInt(4);
-		isMarked = rs.getInt(5);
-
-
-
-		System.out.println(id + "has been pulled.");
-
-		return new VidSeg(id, character, quote, isLocal, isMarked);
 	}
 
 	private VidSeg generateVidSegFromPlaylist(ResultSet rs) throws Exception {

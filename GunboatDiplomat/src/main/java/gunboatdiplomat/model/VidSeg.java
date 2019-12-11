@@ -33,9 +33,9 @@ public class VidSeg {
 	}
 	
 	// used in DAO when getting video segments from playlist
-	public VidSeg(String id) {
+	public VidSeg(String url) {
 		
-		this.id = id;
+		this.id = url;
 		
 	}
 	

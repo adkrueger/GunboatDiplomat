@@ -52,7 +52,7 @@ public class PlaylistTestingDB {
 		List<VidSeg> lsReturned = new ArrayList<VidSeg>();
 
 		// Returns a list of video clips.
-		lsReturned = playlistDAO.getPlaylistVidSeg("TestingGetAllVidSeg");
+		lsReturned = playlistDAO.getVideoSegInPlaylist("TestingGetAllVidSeg");
 
 		vsDAO.deleteVidSeg("testingGetALLVidSeg1");
 		vsDAO.deleteVidSeg("testingGetALLVidSeg2");
@@ -92,6 +92,8 @@ public class PlaylistTestingDB {
 		vsDAO.addVidSeg(vs5);
 		vsDAO.addVidSeg(vs6);
 
+		playlistDAO.createPlaylist("TestingGetAllPlaylist");
+		
 		playlistDAO.addVidSegToPlaylist("TestingGetAllPlaylist", "testingGetALLPlaylist1");
 		playlistDAO.addVidSegToPlaylist("TestingGetAllPlaylist", "testingGetALLPlaylist2");
 		playlistDAO.addVidSegToPlaylist("TestingGetAllPlaylist", "testingGetALLPlaylist3");
@@ -112,10 +114,6 @@ public class PlaylistTestingDB {
 
 		playlistDAO.deletePlaylist("TestingGetAllPlaylist");
 
-		for(HashMap.Entry<String, List<VidSeg>> retList : allPlaylists.entrySet()) {
-			solution.entrySet().contains(retList);
-		}
-
 		vsDAO.deleteVidSeg("testingGetALLPlaylist1");
 		vsDAO.deleteVidSeg("testingGetALLPlaylist2");
 		vsDAO.deleteVidSeg("testingGetALLPlaylist3");
@@ -129,21 +127,22 @@ public class PlaylistTestingDB {
 	public void testAppendVidSeg() throws Exception {
 		String playlistName = "Funny Clips";
 
-		playlistDAO.addVidSegToPlaylist(playlistName, "testAppendVidSeg1");
-		playlistDAO.addVidSegToPlaylist(playlistName, "testAppendVidSeg2");
-		playlistDAO.addVidSegToPlaylist(playlistName, "testAppendVidSeg3");
-
-
 		VideoSegmentDAO vsDAO = new VideoSegmentDAO();		// need to add to video segment table for playlist to find it
 		vsDAO.addVidSeg(new VidSeg("testAppendVidSeg1", "", "", 1, 0));
 		vsDAO.addVidSeg(new VidSeg("testAppendVidSeg2", "", "", 1, 0));
 		vsDAO.addVidSeg(new VidSeg("testAppendVidSeg3", "", "", 1, 0));
 		
-		List<VidSeg> allVSInPlaylist = playlistDAO.getPlaylistVidSeg(playlistName);
+		playlistDAO.addVidSegToPlaylist(playlistName, "testAppendVidSeg1");
+		playlistDAO.addVidSegToPlaylist(playlistName, "testAppendVidSeg2");
+		playlistDAO.addVidSegToPlaylist(playlistName, "testAppendVidSeg3");
+
+		playlistDAO.createPlaylist(playlistName);
 		
-		assertEquals("testAppendVidSeg1", allVSInPlaylist.get(0).id);
-		assertEquals("testAppendVidSeg2", allVSInPlaylist.get(1).id);
-		assertEquals("testAppendVidSeg3", allVSInPlaylist.get(2).id);
+		List<VidSeg> allVSInPlaylist = playlistDAO.getVideoSegInPlaylist(playlistName);
+		
+		assertEquals("https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/testAppendVidSeg1", allVSInPlaylist.get(0).id);
+		assertEquals("https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/testAppendVidSeg2", allVSInPlaylist.get(1).id);
+		assertEquals("https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/testAppendVidSeg3", allVSInPlaylist.get(2).id);
 		
 		vsDAO.deleteVidSeg("testAppendVidSeg1");
 		vsDAO.deleteVidSeg("testAppendVidSeg2");
@@ -224,7 +223,7 @@ public class PlaylistTestingDB {
 		playlistDAO.createPlaylist("testPlaylist");
 		playlistDAO.addVidSegToPlaylist("testPlaylist", "testCreatePlaylistCreateVIDSEG");
 		
-		List<VidSeg> list = playlistDAO.getPlaylistVidSeg("testPlaylist");
+		List<VidSeg> list = playlistDAO.getVideoSegInPlaylist("testPlaylist");
 		
 		
 		for(int i = 0; i < list.size(); i++) {
@@ -251,7 +250,7 @@ public class PlaylistTestingDB {
 		
 		playlistDAO.deleteVidSegFromPlaylist("testingDeletePlaylist", "deleteID1");
 		
-		List<VidSeg> list = playlistDAO.getPlaylistVidSeg("testingDeletePlaylist"); //should only return 1 Video
+		List<VidSeg> list = playlistDAO.getVideoSegInPlaylist("testingDeletePlaylist"); //should only return 1 Video
 		
 		playlistDAO.deletePlaylist("testingDeletePlaylist");
 		
@@ -297,7 +296,7 @@ public class PlaylistTestingDB {
 		sol.add(vs5);
 		sol.add(vs6);
 		
-		List<VidSeg> ret = playlistDAO.getPlaylistVidSeg("testDeleteVidSegFromPlaylistWithIndexPLAYLIST");
+		List<VidSeg> ret = playlistDAO.getVideoSegInPlaylist("testDeleteVidSegFromPlaylistWithIndexPLAYLIST");
 		
 		playlistDAO.deletePlaylist("testDeleteVidSegFromPlaylistWithIndexPLAYLIST");
 		

@@ -30,7 +30,8 @@ public class AppendVidSegToPlaylistHandler implements RequestHandler<AppendVidSe
 				response =  new AppendVidSegResponse(playlistName, 200);
 			}
 			else {
-				response = new AppendVidSegResponse(playlistName, 422);
+				System.out.println("Could not find vid seg in list of vid segs.");
+				response = new AppendVidSegResponse(playlistName, 404);
 			}
 		} catch (Exception e) {
 			response = new AppendVidSegResponse(playlistName, 403, "Something has gone wrong");

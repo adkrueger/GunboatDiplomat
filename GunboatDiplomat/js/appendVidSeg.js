@@ -8,7 +8,7 @@ function requestAppendVidSeg(playlist) {
 	
 	let vsID = prompt("Please enter the ID of the video segment you would like to append.", "Video ID");
 	
-	if(vsID !== null && vsID !== "" && vsID !== "Video ID") {	// if the user didn't cancel the prompt
+	if(vsID !== null && vsID !== "" && vsID !== "Video ID") {	// if the user didn't cancel the prompt or just hit enter
 		handleAppendRequest(playlist, vsID);
 	}
 	

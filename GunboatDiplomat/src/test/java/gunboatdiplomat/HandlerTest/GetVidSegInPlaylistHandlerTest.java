@@ -53,7 +53,7 @@ public class GetVidSegInPlaylistHandlerTest extends LambdaTest{
 		GetVidSegInPlaylistRequest createReq = new GetVidSegInPlaylistRequest("ChickenNuggetsRock");
 		GetVidSegInPlaylistResponse response = new GetVidSegInPlaylistHandler().handleRequest(createReq, createContext(vs.id + " Has Been Pulled"));
 
-		List<VidSeg> ls = plDAO.getPlaylistVidSeg("ChickenNuggetsRock");
+		List<VidSeg> ls = plDAO.getVideoSegInPlaylist("ChickenNuggetsRock");
 		
 		assertTrue(ls.get(0).equals(vs));
 		

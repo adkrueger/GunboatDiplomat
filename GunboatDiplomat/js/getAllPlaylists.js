@@ -34,10 +34,9 @@ function processPlaylistListResponse(response) {
 		console.log("vidSegs length is " + vidSegs.length);
 		for(let j = 0; j < vidSegs.length; j++) {
 			let vsID = vidSegs[j]["id"];
-			if(vsID !== "") {
-				let vsURL = vs_url + vsID;
-
-				output = output + "<video width=\"350\" height=\"260\" controls><source src=\"" + vsURL + "\" type=\"video/ogg\"></video>";
+			if(vsID != null && vsID !== "") {
+				console.log(vsID);
+				output = output + "<video width=\"350\" height=\"260\" controls><source src=\"" + vsID + "\" type=\"video/ogg\"></video>";
 			}
 
 			if(j === vidSegs.length-1) {
