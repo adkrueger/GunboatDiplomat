@@ -63,27 +63,26 @@ public class RemoveVidSegFromPlaylistHandlerTest extends LambdaTest{
 		assertEquals(appendResp1.errorCode, 200); // means the test has passed. 
 		assertEquals(appendResp2.errorCode, 200); // means the test has passed. 
 		assertEquals(appendResp3.errorCode, 200);
-	
-		
-/*		
+			
 		//Attempt to remove a random segment.
-		RemoveVidSegRequest removeReq1 = new RemoveVidSegRequest(pl.name, 0);
+		RemoveVidSegRequest removeReq1 = new RemoveVidSegRequest(pl.name, 2);
 		RemoveVidSegResponse removeResp1 = new RemoveVidSegFromPlaylistHandler().handleRequest(removeReq1, createContext("Removed"));
-		RemoveVidSegRequest removeReq2 = new RemoveVidSegRequest(pl.name, 0);
+		RemoveVidSegRequest removeReq2 = new RemoveVidSegRequest(pl.name, 1);
 		RemoveVidSegResponse removeResp2 = new RemoveVidSegFromPlaylistHandler().handleRequest(removeReq2, createContext("Removed"));
 		RemoveVidSegRequest removeReq3 = new RemoveVidSegRequest(pl.name, 0);
 		RemoveVidSegResponse removeResp3 = new RemoveVidSegFromPlaylistHandler().handleRequest(removeReq3, createContext("Removed"));
-		RemoveVidSegRequest removeReq4 = new RemoveVidSegRequest(pl.name, 0);
-		RemoveVidSegResponse removeResp4 = new RemoveVidSegFromPlaylistHandler().handleRequest(removeReq4, createContext("Removed"));
 		
 		assertEquals(removeResp1.errorCode, 200);
 		assertEquals(removeResp2.errorCode, 200);
 		assertEquals(removeResp3.errorCode, 200);
-		assertEquals(removeResp4.errorCode, 200);
+		
+		//Test removing a segment that should fail.
+		RemoveVidSegRequest removeReq4 = new RemoveVidSegRequest(pl.name, 0);
+		RemoveVidSegResponse removeResp4 = new RemoveVidSegFromPlaylistHandler().handleRequest(removeReq4, createContext("Removed"));
+		
+		assertEquals(removeResp4.errorCode, 403);
 		
 		playlistDAO.deletePlaylist(pl.name);
-		
-*/		
 		
 	}
 	
