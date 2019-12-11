@@ -251,7 +251,7 @@ public class PlaylistTestingDB {
 		playlistDAO.addVidSegToPlaylist("testingDeletePlaylist", "deleteID1");
 		playlistDAO.addVidSegToPlaylist("testingDeletePlaylist", "deleteID2");
 
-		playlistDAO.deleteVidSegFromPlaylist("testingDeletePlaylist", "https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/deleteID1");
+		playlistDAO.deleteVidSegFromPlaylist("testingDeletePlaylist", "deleteID1");
 
 		List<VidSeg> list = playlistDAO.getVideoSegInPlaylist("testingDeletePlaylist"); //should only return 1 Video
 

@@ -239,7 +239,7 @@ public class PlaylistDAO {
 		System.out.println(listOfVidSeg + "\t deleting " + vidSegID);
 
 		PreparedStatement ps = conn.prepareStatement("DELETE FROM Playlist WHERE video_id=? AND playlist_title=?");
-		ps.setString(1, url+vidSegID);
+		ps.setString(1, vidSegID);
 		ps.setString(2, playlistName);
 		ps.execute();
 
