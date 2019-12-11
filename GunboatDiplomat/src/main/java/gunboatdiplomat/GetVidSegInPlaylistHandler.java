@@ -32,7 +32,7 @@ public class GetVidSegInPlaylistHandler implements RequestHandler<GetVidSegInPla
 		
 		try {
 			List<VidSeg> list = getVidSegInPlaylistFromRDS(request.playlist_id);
-			response = new GetVidSegInPlaylistResponse(request.playlist_id, 200);
+			response = new GetVidSegInPlaylistResponse(list, 200);
 		}
 		catch (Exception e) {
 			response = new GetVidSegInPlaylistResponse(403, e.getMessage());
