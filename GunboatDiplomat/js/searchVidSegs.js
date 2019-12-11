@@ -161,7 +161,7 @@ function handleSearchClick() {
 				}
 			}
 			else {
-				processSearchResponse("N/A", "N/A");
+				processSearchResponse("N/A", "N/A", "", "");
 			}
 		};
 	};

@@ -40,7 +40,7 @@ public class PlaylistDAO {
 		try {
 			if(rs.next()) {
 				PreparedStatement PSPlaylist = conn.prepareStatement("INSERT INTO Playlist (video_id,playlist_title) VALUES (?,?);");
-				PSPlaylist.setString(1, "https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/" + vidID);
+				PSPlaylist.setString(1, vidID);
 				PSPlaylist.setString(2, playlistName);
 				PSPlaylist.execute();
 
