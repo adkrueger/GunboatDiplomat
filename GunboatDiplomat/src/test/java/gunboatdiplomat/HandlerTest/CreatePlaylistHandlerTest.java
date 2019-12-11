@@ -28,7 +28,7 @@ public class CreatePlaylistHandlerTest extends LambdaTest {
     	Assert.assertEquals(resp.response, "testin' playlist creatin'");
     	
     	Map<String, List<VidSeg>> retMap = plDAO.getAllPlaylists();
-    	Assert.assertTrue((retMap.keySet().contains(pl.name)));
+    	Assert.assertTrue(plDAO.checkPlaylistExists(pl.name));
     	
     	plDAO.deletePlaylist("testin' playlist creatin'");
     	retMap = plDAO.getAllPlaylists();
