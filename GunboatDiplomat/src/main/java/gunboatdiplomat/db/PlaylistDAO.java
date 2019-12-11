@@ -246,8 +246,14 @@ public class PlaylistDAO {
 
 		// This is getting the list of VidSeg associated with a playlist. 
 		List<VidSeg> listOfVidSeg = this.getPlaylistVidSeg(playlistName);
+		String vidSegID = listOfVidSeg.get(index).id;
 		listOfVidSeg.remove(index);
 
+		PreparedStatement ps = conn.prepareStatement("DELETE FROM Playlist WHERE video_id=? AND playlist_title=?");
+		ps.setString(1, vidSegID);
+		ps.setString(2, playlistName);
+		ps.execute();
+/*		
 		//Remove the playlist from the DB. 
 		this.deletePlaylist(playlistName);
 
@@ -258,7 +264,7 @@ public class PlaylistDAO {
 		for(int i = 0; i < listOfVidSeg.size(); i++) {
 			this.addVidSegToPlaylist(playlistName, listOfVidSeg.get(i).id);
 		}
-
+*/
 		//Return true
 		return true;
 	}

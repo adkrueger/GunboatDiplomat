@@ -46,7 +46,7 @@ function processPlaylistListResponse(response) {
 
 		}
 
-		output = output + "<input class=\"button\" type=\"button\" value=\"Play\"/>"
+		output = output + "<input class=\"button\" type=\"button\" value=\"Play\" onclick=\"playPlaylist(\'" + vidSegs + "\', \'" + (vidSegs.length-1) + "\')\"/>"
 		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Append VS\" onclick=\"requestAppendVidSeg(\'" + name + "\')\"/>"
 		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Remove VS\" onclick=\"requestRemoveVidSeg(\'" + name + "\', \'" + (vidSegs.length-1) + "\')\"/>"
 		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Delete\" onclick=\"requestDeletePlaylist(\'" + name + "\')\"/></div></li>";
