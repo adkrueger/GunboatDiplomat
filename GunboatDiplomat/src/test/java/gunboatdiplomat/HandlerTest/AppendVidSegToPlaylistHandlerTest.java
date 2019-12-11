@@ -73,16 +73,14 @@ public class AppendVidSegToPlaylistHandlerTest extends LambdaTest{
 		for (int i = 0; i < listSol.size(); i++) {
 			if(listRet.get(i).id != null && !listRet.get(i).id.equals("")) {
 				assertTrue(listSol.get(i).equals(listRet.get(i)));
-			}
-			
-			playlistDAO.deletePlaylist(pl.name);
-			
-			vsDAO.deleteVidSeg(vs1.id);
-			vsDAO.deleteVidSeg(vs2.id);
-			vsDAO.deleteVidSeg(vs3.id);
-			
-			
+			}			
 		}
+		
+		playlistDAO.deletePlaylist(pl.name);
+		
+		vsDAO.deleteVidSeg(vs1.id);
+		vsDAO.deleteVidSeg(vs2.id);
+		vsDAO.deleteVidSeg(vs3.id);
 		
 	}
 	

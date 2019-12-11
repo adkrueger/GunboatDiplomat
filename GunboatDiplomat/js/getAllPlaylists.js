@@ -48,7 +48,7 @@ function processPlaylistListResponse(response) {
 
 		output = output + "<input class=\"button\" type=\"button\" value=\"Play\"/>"
 		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Append VS\" onclick=\"requestAppendVidSeg(\'" + name + "\')\"/>"
-		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Remove VS\"/>"
+		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Remove VS\" onclick=\"requestRemoveVidSeg(\'" + name + "\', \'" + (vidSegs.length-1) + "\')\"/>"
 		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Delete\" onclick=\"requestDeletePlaylist(\'" + name + "\')\"/></div></li>";
 
 		if(i === Object.keys(js.playlists).length-1) {

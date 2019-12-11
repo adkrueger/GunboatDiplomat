@@ -49,6 +49,6 @@ function processDelete(vs, isAdmin) {
 		else {
 			processDeleteResponse("N/A", isAdmin);
 		}
-	}
+	};
 
 }
