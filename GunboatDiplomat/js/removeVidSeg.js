@@ -14,10 +14,10 @@ function requestRemoveVidSeg(playlist, pLength) {
 	console.log("requesting remove for " + playlist + " of length " + pLength)
 	let vIndex = prompt("Please insert the vIndex of the video segment you would like to remove (first video segment is vIndex 0)", "Index");
 	console.log(vIndex);
-	if(!isNaN(vIndex) && vIndex < pLength && vIndex >= 0) {		// check if the user entered a number
+	if(!isNaN(vIndex) && vIndex < pLength && vIndex >= 0 && vIndex != null) {		// check if the user entered a number
 		processRemove(playlist, vIndex);
 	}
-	else {
+	else if(vIndex != null) {
 		alert("Please enter an integer within range of the playlist.");
 	}
 }

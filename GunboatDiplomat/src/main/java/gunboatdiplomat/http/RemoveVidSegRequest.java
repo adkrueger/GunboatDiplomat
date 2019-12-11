@@ -14,10 +14,6 @@ public class RemoveVidSegRequest {
 		
 	}
 	
-	public String toString() {
-		return playlistName + " removed a video segment with index " + videoIndex;
-	}
-	
 	public String getPlaylistName() {
 		return playlistName;
 	}
@@ -32,5 +28,10 @@ public class RemoveVidSegRequest {
 	
 	public void setVideoIndex(int videoIndex) {
 		this.videoIndex = videoIndex;
+	}
+	
+	@Override
+	public String toString() {
+		return playlistName + " removing index " + videoIndex;
 	}
 }

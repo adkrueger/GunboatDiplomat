@@ -64,7 +64,7 @@ public class RemoveVidSegFromPlaylistHandlerTest extends LambdaTest{
 		//Attempt to remove a random segment.
 		RemoveVidSegResponse removeResp1 = new RemoveVidSegFromPlaylistHandler().handleRequest(new RemoveVidSegRequest("testingRemoveVidSeg", 2), createContext("removing"));	// testingRemoveVidSegHandler3
 		assertEquals(removeResp1.errorCode, 200);
-		List<VidSeg> currPlaylist = playlistDAO.getPlaylistVidSeg("testingRemoveVidSeg");
+		List<VidSeg> currPlaylist = playlistDAO.getVideoSegInPlaylist("testingRemoveVidSeg");
 		System.out.println(currPlaylist);
 		assertTrue(currPlaylist.get(0).id.equals("testingRemoveVidSegHandler1"));
 		assertTrue(currPlaylist.get(1).id.equals("testingRemoveVidSegHandler2"));
@@ -72,20 +72,20 @@ public class RemoveVidSegFromPlaylistHandlerTest extends LambdaTest{
 		
 		RemoveVidSegResponse removeResp2 = new RemoveVidSegFromPlaylistHandler().handleRequest(new RemoveVidSegRequest("testingRemoveVidSeg", 1), createContext("removing"));	// testingRemoveVidSegHandler2
 		assertEquals(removeResp2.errorCode, 200);
-		currPlaylist = playlistDAO.getPlaylistVidSeg("testingRemoveVidSeg");
+		currPlaylist = playlistDAO.getVideoSegInPlaylist("testingRemoveVidSeg");
 		System.out.println(currPlaylist);
 		assertTrue(currPlaylist.get(0).id.equals("testingRemoveVidSegHandler1"));
 		assertTrue(currPlaylist.get(1).id.equals("testingRemoveVidSegHandler4"));
 		
 		RemoveVidSegResponse removeResp3 = new RemoveVidSegFromPlaylistHandler().handleRequest(new RemoveVidSegRequest("testingRemoveVidSeg", 1), createContext("removing"));	// testingRemoveVidSegHandler4
 		assertEquals(removeResp3.errorCode, 200);
-		currPlaylist = playlistDAO.getPlaylistVidSeg("testingRemoveVidSeg");
+		currPlaylist = playlistDAO.getVideoSegInPlaylist("testingRemoveVidSeg");
 		System.out.println(currPlaylist);
 		assertTrue(currPlaylist.get(0).id.equals("testingRemoveVidSegHandler1"));
 		
 		RemoveVidSegResponse removeResp4 = new RemoveVidSegFromPlaylistHandler().handleRequest(new RemoveVidSegRequest("testingRemoveVidSeg", 0), createContext("removing"));	// testingRemoveVidSegHandler1
 		assertEquals(removeResp4.errorCode, 200);		
-		currPlaylist = playlistDAO.getPlaylistVidSeg("testingRemoveVidSeg");
+		currPlaylist = playlistDAO.getVideoSegInPlaylist("testingRemoveVidSeg");
 		assertTrue(currPlaylist.size() == 0);
 		
 		RemoveVidSegResponse removeResp5 = new RemoveVidSegFromPlaylistHandler().handleRequest(new RemoveVidSegRequest("testingRemoveVidSeg", 0), createContext("removing"));	// testingRemoveVidSegHandler1

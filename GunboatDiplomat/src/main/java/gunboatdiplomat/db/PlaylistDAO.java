@@ -17,7 +17,7 @@ public class PlaylistDAO {
 		try {
 			conn = DatabaseUtil.connect();
 			System.out.println("Connection has passed!");
-			
+
 			PreparedStatement ps = conn.prepareStatement("SET SQL_SAFE_UPDATES = 0");
 			ps.execute();
 		}
@@ -30,13 +30,13 @@ public class PlaylistDAO {
 	}
 
 	public boolean addVidSegToPlaylist(String playlistName, String vidID) throws Exception {
-		
+
 		//Check to see if it exits in VSTable
 		PreparedStatement VSPlaylist = conn.prepareStatement("SELECT * FROM VideoSegment WHERE video_id = ?");
-		
+
 		VSPlaylist.setString(1, vidID);
 		ResultSet rs = VSPlaylist.executeQuery();
-		
+
 		if(rs.next()) {
 			PreparedStatement PSPlaylist = conn.prepareStatement("INSERT INTO Playlist (video_id,playlist_title) VALUES (?,?);");
 			PSPlaylist.setString(1, vidID);
@@ -45,11 +45,11 @@ public class PlaylistDAO {
 
 			return true;
 		}
-		
+
 		return false;
-		
-		
-		
+
+
+
 
 	}
 
@@ -233,8 +233,18 @@ public class PlaylistDAO {
 		return new VidSeg(id, character, quote, isLocal, isMarked);
 	}
 
-	//TODO: this method takes in the playlist name and returns all the video segments in
-	//		that given playlist
+	private VidSeg generateVidSegFromPlaylist(ResultSet rs) throws Exception {
+
+		String id = "";
+
+		id = rs.getString("video_id");
+
+		System.out.println(id + "has been pulled.");
+
+		return new VidSeg(id);
+
+	}
+
 	public List<VidSeg> getVideoSegInPlaylist(String playlistName) throws Exception {	//one parameter should be the playlist name
 		//Just did this because there were errors in the other handler...oops
 		List<VidSeg> vsList = new ArrayList<>();
@@ -244,28 +254,33 @@ public class PlaylistDAO {
 		ResultSet rs = ps.executeQuery();
 
 		while(rs.next()) {
-			VidSeg vs = generateVidSeg(rs.getString("video_id"));
-			vsList.add(vs);
-
+			VidSeg vs = generateVidSegFromPlaylist(rs);
+			if(vs.id != null) {
+				vsList.add(vs);
+			}
 		}
-
-
 
 		return vsList;
 	}
 
 	public boolean deleteVidSegFromPlaylistWithIndex(String playlistName, int index) throws Exception {
 
+		System.out.println(index);
 		// This is getting the list of VidSeg associated with a playlist. 
-		List<VidSeg> listOfVidSeg = this.getPlaylistVidSeg(playlistName);
-		String vidSegID = listOfVidSeg.get(index).id;
-		listOfVidSeg.remove(index);
+		List<VidSeg> listOfVidSeg = this.getVideoSegInPlaylist(playlistName);
+		/*		for(VidSeg vs: listOfVidSeg) {
+			if(vs.id == null || vs.id.equals("")) {
+				listOfVidSeg.remove(vs);
+			}
+		}
+		 */		String vidSegID = listOfVidSeg.get(index).id;
+		 System.out.println(listOfVidSeg + "\t deleting " + vidSegID);
 
-		PreparedStatement ps = conn.prepareStatement("DELETE FROM Playlist WHERE video_id=? AND playlist_title=?");
-		ps.setString(1, vidSegID);
-		ps.setString(2, playlistName);
-		ps.execute();
-/*		
+		 PreparedStatement ps = conn.prepareStatement("DELETE FROM Playlist WHERE video_id=? AND playlist_title=?");
+		 ps.setString(1, vidSegID);
+		 ps.setString(2, playlistName);
+		 ps.execute();
+		 /*		
 		//Remove the playlist from the DB. 
 		this.deletePlaylist(playlistName);
 
@@ -276,9 +291,9 @@ public class PlaylistDAO {
 		for(int i = 0; i < listOfVidSeg.size(); i++) {
 			this.addVidSegToPlaylist(playlistName, listOfVidSeg.get(i).id);
 		}
-*/
-		//Return true
-		return true;
+		  */
+		 //Return true
+		 return true;
 	}
 
 
