@@ -35,7 +35,8 @@ public class VidSeg {
 	// used in DAO when getting video segments from playlist
 	public VidSeg(String url) {
 		
-		this.id = url;
+		this.id = url.substring(url.lastIndexOf("/")+1);
+		this.url = url;
 		
 	}
 	
