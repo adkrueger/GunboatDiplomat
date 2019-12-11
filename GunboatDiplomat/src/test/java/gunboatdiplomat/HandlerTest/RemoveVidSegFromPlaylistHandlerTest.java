@@ -83,8 +83,8 @@ public class RemoveVidSegFromPlaylistHandlerTest extends LambdaTest{
 		System.out.println(currPlaylist);
 		assertTrue(currPlaylist.get(0).id.equals("testingRemoveVidSegHandler1"));
 		
-		RemoveVidSegResponse removeResp4 = new RemoveVidSegFromPlaylistHandler().handleRequest(new RemoveVidSegRequest("testingRemoveVidSeg", 1), createContext("removing"));	// testingRemoveVidSegHandler1
-		assertEquals(removeResp4.errorCode, 403);		// should "fail" because there's nothing left to remove
+		RemoveVidSegResponse removeResp4 = new RemoveVidSegFromPlaylistHandler().handleRequest(new RemoveVidSegRequest("testingRemoveVidSeg", 0), createContext("removing"));	// testingRemoveVidSegHandler1
+		assertEquals(removeResp4.errorCode, 200);		// should "fail" because there's nothing left to remove
 		currPlaylist = playlistDAO.getPlaylistVidSeg("testingRemoveVidSeg");
 		assertTrue(currPlaylist.size() == 0);
 

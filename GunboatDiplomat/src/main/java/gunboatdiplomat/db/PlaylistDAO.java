@@ -32,7 +32,7 @@ public class PlaylistDAO {
 	public boolean addVidSegToPlaylist(String playlistName, String vidID) throws Exception {
 		
 		//Check to see if it exits in VSTable
-		PreparedStatement VSPlaylist = conn.prepareStatement("SELECT FROM VideoSegment WHERE video_id = ?");
+		PreparedStatement VSPlaylist = conn.prepareStatement("SELECT * FROM VideoSegment WHERE video_id = ?");
 		
 		VSPlaylist.setString(1, vidID);
 		ResultSet rs = VSPlaylist.executeQuery();
