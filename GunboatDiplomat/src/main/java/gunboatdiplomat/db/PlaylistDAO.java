@@ -38,14 +38,14 @@ public class PlaylistDAO {
 		ResultSet rs = VSPlaylist.executeQuery();
 
 		try {
-		if(rs.next()) {
-			PreparedStatement PSPlaylist = conn.prepareStatement("INSERT INTO Playlist (video_id,playlist_title) VALUES (?,?);");
-			PSPlaylist.setString(1, "https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/" + vidID);
-			PSPlaylist.setString(2, playlistName);
-			PSPlaylist.execute();
+			if(rs.next()) {
+				PreparedStatement PSPlaylist = conn.prepareStatement("INSERT INTO Playlist (video_id,playlist_title) VALUES (?,?);");
+				PSPlaylist.setString(1, "https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/" + vidID);
+				PSPlaylist.setString(2, playlistName);
+				PSPlaylist.execute();
 
-			return true;
-		}
+				return true;
+			}
 		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());
@@ -154,8 +154,8 @@ public class PlaylistDAO {
 
 				// create new input in hashmap;
 				playlists.put(rs1.getString("playlist_title"), vsList);
-//				String vidID = rs1.getString("video_id");
-//				VidSeg vs = generateVidSeg(vidID);
+				//				String vidID = rs1.getString("video_id");
+				//				VidSeg vs = generateVidSeg(vidID);
 				playlists.get(rs1.getString("playlist_title")).add(generateVidSegFromPlaylist(rs1));
 
 			}
@@ -214,9 +214,11 @@ public class PlaylistDAO {
 		ResultSet rs = ps.executeQuery();
 
 		while(rs.next()) {
-			VidSeg vs = generateVidSegFromPlaylist(rs);
-			if(vs.id != null) {
-				vsList.add(vs);
+			if(rs.getString("video_id") != null) {
+				VidSeg vs = generateVidSegFromPlaylist(rs);
+				if(vs.id != null) {
+					vsList.add(vs);
+				}
 			}
 		}
 

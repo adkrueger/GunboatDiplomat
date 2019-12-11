@@ -132,11 +132,11 @@ public class PlaylistTestingDB {
 		vsDAO.addVidSeg(new VidSeg("testAppendVidSeg2", "", "", 1, 0));
 		vsDAO.addVidSeg(new VidSeg("testAppendVidSeg3", "", "", 1, 0));
 		
+		playlistDAO.createPlaylist(playlistName);
+		
 		playlistDAO.addVidSegToPlaylist(playlistName, "testAppendVidSeg1");
 		playlistDAO.addVidSegToPlaylist(playlistName, "testAppendVidSeg2");
 		playlistDAO.addVidSegToPlaylist(playlistName, "testAppendVidSeg3");
-
-		playlistDAO.createPlaylist(playlistName);
 		
 		List<VidSeg> allVSInPlaylist = playlistDAO.getVideoSegInPlaylist(playlistName);
 		
