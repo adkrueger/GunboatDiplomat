@@ -3,11 +3,6 @@ package gunboatdiplomat.HandlerTest;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.Assert;
-
 import org.junit.Test;
 
 import gunboatdiplomat.AppendVidSegToPlaylistHandler;
@@ -62,7 +57,7 @@ public class RemoveVidSegFromPlaylistHandlerTest extends LambdaTest{
 		assertEquals(appendResp1.playlistName, pl.name);		// check that everything was appended properly
 		assertEquals(appendResp2.playlistName, pl.name);
 		assertEquals(appendResp3.playlistName, pl.name);
-
+		
 		//Attempt to remove a random segment.
 		RemoveVidSegRequest removeReq1 = new RemoveVidSegRequest(pl.name, 1);	// testingRemoveVidSegHandler2
 		RemoveVidSegResponse removeResp1 = new RemoveVidSegFromPlaylistHandler().handleRequest(removeReq1, createContext("removing"));
@@ -81,10 +76,10 @@ public class RemoveVidSegFromPlaylistHandlerTest extends LambdaTest{
 		assertTrue(playlistDAO.getPlaylistVidSeg("testingRemoveVidSeg").size() == 0);
 
 		playlistDAO.deletePlaylist(pl.name);
+
 		vsDAO.deleteVidSeg("testingRemoveVidSegHandler1");
 		vsDAO.deleteVidSeg("testingRemoveVidSegHandler2");
 		vsDAO.deleteVidSeg("testingRemoveVidSegHandler3");
-
 	}
 
 
