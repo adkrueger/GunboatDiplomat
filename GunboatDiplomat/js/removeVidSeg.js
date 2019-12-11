@@ -12,27 +12,27 @@ function requestRemoveVidSeg(playlist, pLength) {
 	}
 
 	console.log("requesting remove for " + playlist + " of length " + pLength)
-	let index = prompt("Please insert the index of the video segment you would like to remove (first video segment is index 0)", "Index");
-
-	if(!isNaN(index) && index < pLength && index >= 0) {		// check if the user entered a number
-		processRemove(playlist, pLength-index-1);
+	let vIndex = prompt("Please insert the vIndex of the video segment you would like to remove (first video segment is vIndex 0)", "Index");
+	console.log(vIndex);
+	if(!isNaN(vIndex) && vIndex < pLength && vIndex >= 0) {		// check if the user entered a number
+		processRemove(playlist, vIndex);
 	}
 	else {
 		alert("Please enter an integer within range of the playlist.");
 	}
 }
 
-function processRemove(playlist, index) {
+function processRemove(playlist, vIndex) {
 
 	let data = {};
 	data["playlistName"] = playlist;
-	data["videoIndex"] = index;
+	data["videoIndex"] = Math.floor(vIndex);
 
 	let js = JSON.stringify(data);
 	console.log("Remove JS: " + js);
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", removeVidSeg_url, true);
-
+	console.log("going to remove index " + data["videoIndex"]);
 	xhr.send(js);
 
 	xhr.onloadend = function() {

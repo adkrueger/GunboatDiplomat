@@ -21,7 +21,7 @@ function processPlaylistListResponse(response) {
 	let playlistList = document.getElementById("playlistList");
 
 	let output = "<h3>Playlists</h3><ul class=\"itemList\">";
-	console.log(Object.keys(js.playlists).length + " is the length");
+
 	for(let i = 0; i < Object.keys(js.playlists).length; i++) {
 		let name = Object.keys(js.playlists)[i];
 		console.log("name: " + name);
