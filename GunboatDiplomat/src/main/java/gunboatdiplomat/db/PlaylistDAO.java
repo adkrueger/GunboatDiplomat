@@ -56,21 +56,21 @@ public class PlaylistDAO {
 
 	public boolean deletePlaylist(String playlistName) throws Exception {
 
-		// Deleting all songs associated with playlist_title <playlistName>
-		PreparedStatement ps = conn.prepareStatement("DELETE FROM Playlist WHERE playlist_title = ?;");
-		ps.setString(1, playlistName);
-		ps.executeUpdate();
-
-		// Checking to see if the playlist still exists.
 		PreparedStatement ps1 = conn.prepareStatement("SELECT * FROM Playlist WHERE playlist_title = ?;");
 		ps1.setString(1, playlistName);
-		ResultSet rs2 = ps1.executeQuery();
+		ResultSet rs = ps1.executeQuery();
 
-		while (rs2.next()) {
-			return false;
+		if(rs.next()) {
+			// Deleting all video segments associated with playlist_title <playlistName>
+			PreparedStatement ps = conn.prepareStatement("DELETE FROM Playlist WHERE playlist_title = ?;");
+			ps.setString(1, playlistName);
+			ps.executeUpdate();
+			return true;
 		}
+		
+		// Checking to see if the playlist still exists.
 		ps1.close();
-		return true;
+		return false;
 	} 
 
 	/**

@@ -46,7 +46,7 @@ public class DeletePlaylistHandlerTest extends LambdaTest {
 		
 		//try again and this should fail
 		deleteResponse = new DeletePlaylistHandler().handleRequest(dpr, createContext("delete"));
-		Assert.assertEquals(200, deleteResponse.statusCode);
+		Assert.assertEquals(422, deleteResponse.statusCode);
 	}
 	
 }

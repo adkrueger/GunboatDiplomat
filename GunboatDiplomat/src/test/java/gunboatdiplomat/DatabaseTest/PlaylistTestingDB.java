@@ -159,9 +159,16 @@ public class PlaylistTestingDB {
 	@Test
 	public void testDeletePlaylist() throws Exception {
 
+		playlistDAO.createPlaylist("testingDeletePlaylistDAO");
+		
 		//Checking to see if its there.
-
-		assertEquals(playlistDAO.deletePlaylist("Funny Clips"), true);
+		assertEquals(playlistDAO.deletePlaylist("testingDeletePlaylistDAO"), true);
+		
+		playlistDAO.createPlaylist("testingDeletePlaylistDAO2");
+		playlistDAO.addVidSegToPlaylist("testingDeletePlaylistDAO2", "https://testingDeletePlaylist2.com");
+		
+		//Checking to see if its there.
+		assertEquals(playlistDAO.deletePlaylist("testingDeletePlaylistDAO2"), true);
 
 	}
 
