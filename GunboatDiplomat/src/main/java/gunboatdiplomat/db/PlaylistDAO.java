@@ -28,6 +28,19 @@ public class PlaylistDAO {
 		}
 
 	}
+	
+	public boolean checkPlaylistExists(String playlistName) throws SQLException {
+		PreparedStatement vsPlaylist = conn.prepareStatement("SELECT * FROM Playlist WHERE playlist_title = ?");
+		vsPlaylist.setString(1, playlistName);
+		
+		ResultSet rs = vsPlaylist.executeQuery();
+		
+		if(rs.next()) {
+			return true;
+		}
+		
+		return false;
+	}
 
 	public boolean addVidSegToPlaylist(String playlistName, String vidID) throws Exception {
 

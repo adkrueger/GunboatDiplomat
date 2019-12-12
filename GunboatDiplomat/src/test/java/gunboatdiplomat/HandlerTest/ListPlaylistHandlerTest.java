@@ -31,10 +31,10 @@ public class ListPlaylistHandlerTest extends LambdaTest {
 
 		HashMap<String, List<VidSeg>> plist = resp.playlists;
 
-		Assert.assertTrue(plist.containsKey("Almost..."));
-		Assert.assertTrue(plist.containsKey("Done..."));
-		Assert.assertTrue(plist.containsKey("With..."));
-		Assert.assertTrue(plist.containsKey("Project!"));
+		Assert.assertTrue(dao.checkPlaylistExists("Almost..."));
+		Assert.assertTrue(dao.checkPlaylistExists("Done..."));
+		Assert.assertTrue(dao.checkPlaylistExists("With..."));
+		Assert.assertTrue(dao.checkPlaylistExists("Project!"));
 
 		dao.deletePlaylist("Almost...");
 		dao.deletePlaylist("Done...");
