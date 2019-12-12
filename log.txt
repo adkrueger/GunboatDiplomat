@@ -1,3 +1,27 @@
+commit 245cc49917a91a6428a354353d748485e91a0561
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Thu Dec 12 14:32:12 2019 -0500
+
+    finished README.txt
+
+commit 2cab338e31e5f8e96107782b5e3813eceffdee14
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Thu Dec 12 14:16:47 2019 -0500
+
+    removed warnings
+
+commit b86b236de1698f186c8b8055c5e326c31ae3bffd
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Thu Dec 12 14:08:01 2019 -0500
+
+    fixed test cases to get above 80%
+
+commit c0b904757ba950876750c4bfc85509561aa16e33
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Thu Dec 12 12:08:02 2019 -0500
+
+    WHOOP WHOOP Project is done!
+
 commit 550f0f0826855ba7832b32e9739e343bfb43bf42
 Author: adkrueger <adkrueger@wpi.edu>
 Date:   Thu Dec 12 11:04:25 2019 -0500
