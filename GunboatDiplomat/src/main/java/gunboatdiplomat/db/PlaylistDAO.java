@@ -32,30 +32,13 @@ public class PlaylistDAO {
 	public boolean addVidSegToPlaylist(String playlistName, String vidID) throws Exception {
 
 		//Check to see if it exits in VSTable
-		PreparedStatement VSPlaylist = conn.prepareStatement("SELECT * FROM VideoSegment WHERE video_id = ?");
+		PreparedStatement PSPlaylist = conn.prepareStatement("INSERT INTO Playlist (video_id,playlist_title) VALUES (?,?);");
+		PSPlaylist.setString(1, vidID);
+		PSPlaylist.setString(2, playlistName);
+		PSPlaylist.execute();
 
-		VSPlaylist.setString(1, vidID);
-		ResultSet rs = VSPlaylist.executeQuery();
-
-		try {
-			if(rs.next()) {
-				PreparedStatement PSPlaylist = conn.prepareStatement("INSERT INTO Playlist (video_id,playlist_title) VALUES (?,?);");
-				PSPlaylist.setString(1, vidID);
-				PSPlaylist.setString(2, playlistName);
-				PSPlaylist.execute();
-
-				return true;
-			}
-		}
-		catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
-
-		return false;
-
-
-
-
+		return true;
+		
 	}
 
 	public boolean deletePlaylist(String playlistName) throws Exception {
