@@ -29,7 +29,7 @@ function processPlaylistListResponse(response) {
 		output = output + "<br/><li><div id=\"playlist-" + name + "\"><b>" + name + "</b><br/>";
 
 		let vidSegs = js.playlists[name];
-		console.log("its vidSegs: " + JSON.stringify(vidSegs));
+		//console.log("its vidSegs: " + JSON.stringify(vidSegs));
 
 		console.log("vidSegs length is " + vidSegs.length);
 		for(let j = 0; j < vidSegs.length; j++) {
@@ -46,7 +46,6 @@ function processPlaylistListResponse(response) {
 		}
 
 		output = output + "<input class=\"button\" type=\"button\" value=\"Play\" onclick=\"playPlaylist(\'" + vidSegs + "\', \'" + (vidSegs.length-1) + "\')\"/>"
-		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Append VS\" onclick=\"requestAppendVidSeg(\'" + name + "\')\"/>"
 		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Remove VS\" onclick=\"requestRemoveVidSeg(\'" + name + "\', \'" + (vidSegs.length-1) + "\')\"/>"
 		+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Delete\" onclick=\"requestDeletePlaylist(\'" + name + "\')\"/></div></li>";
 

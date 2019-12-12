@@ -32,7 +32,7 @@ public class DeletePlaylistHandlerTest extends LambdaTest {
     	Assert.assertEquals(resp.response, "testing delete playlist");
     	
     	Map<String, List<VidSeg>> retMap = dao.getAllPlaylists();
-    	Assert.assertTrue((retMap.keySet().contains(playlist.name)));
+    	Assert.assertFalse((retMap.keySet().contains(playlist.name)));
     	
     	//now delete
     	DeletePlaylistRequest dpr = new DeletePlaylistRequest("testing delete playlist");

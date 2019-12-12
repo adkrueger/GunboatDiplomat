@@ -8,7 +8,10 @@ function processSearchResponse(response, remoteResponse, characterKeyword, quote
 	let output = "<h3>Search Results</h3><ul class=\"itemList\">";
 
 	let remoteJS = JSON.parse(remoteResponse);
-	for(let m = 0; m < remoteJS.remotes.length; m++) {		// go through each remote site
+	let remotesFound = 0;
+	let m = 0;
+	for(m = 0; m < remoteJS.remotes.length; m++) {		// go through each remote site
+		console.log("in thing");
 		let url = remoteJS.remotes[m].url;
 		let qIndex = url.indexOf("?apikey=");
 		let search_remote_url = url.substring(0, qIndex);
@@ -32,38 +35,40 @@ function processSearchResponse(response, remoteResponse, characterKeyword, quote
 						remoteVidSegs.push(pulledRemotes[n]);
 					}
 
-					if(remoteVidSegs.length === 0) {		// usually if there are no remotes registered
-						ouput = output + "<p>No remote results found.</p>";
+
+					for(let x = 0; x < remoteVidSegs.length; x++) {		// go through each returned remote
+						console.log("here we go " + x);
+						let pulledURL = remoteVidSegs[x]["url"];
+						let pulledCharacter = remoteVidSegs[x]["character"];
+						let pulledText = remoteVidSegs[x]["text"];
+						let pulledID = pulledURL.substring(pulledURL.lastIndexOf("/")+1);
+
+						if(characterKeyword !== "" && quoteKeyword !== "") {		// searching through both character and quote
+							if(pulledCharacter.toLowerCase().indexOf(characterKeyword.toLowerCase()) !== -1 && pulledText.toLowerCase().indexOf(quoteKeyword.toLowerCase()) !== -1) {		// check if our keyword is in the string
+								output = output + "<li><b>" + pulledID + "</b><div class=\"vertSpace\"></div>"
+								+ "<span>" + pulledCharacter + ": \"" + pulledText + "\"</span>"
+								+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Append to Playlist\" onclick=\"requestAppendVidSeg(\'" + pulledURL + "\')\"/></li><br/>";
+								remotesFound++;
+							}
+						}
+						else if(characterKeyword !== "") {		// searching through character, not quote
+							if(pulledCharacter.toLowerCase().indexOf(characterKeyword.toLowerCase()) !== -1) {		// check if our keyword is in the string
+								output = output + "<li><b>" + pulledID + "</b><div class=\"vertSpace\"></div>"
+								+ "<span>" + pulledCharacter + ": \"" + pulledText + "\"</span>"
+								+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Append to Playlist\" onclick=\"requestAppendVidSeg(\'" + pulledURL + "\')\"/></li><br/>";
+								remotesFound++;
+							}
+						}
+						else if(quoteKeyword !== "") {		// searching through quote, not character (need if statement here because otherwise it'll add everything by default)
+							if(pulledText.toLowerCase().indexOf(quoteKeyword.toLowerCase()) !== -1) {		// check if our keyword is in the string
+								output = output + "<li><b>" + pulledID + "</b><div class=\"vertSpace\"></div>"
+								+ "<span>" + pulledCharacter + ": \"" + pulledText + "\"</span>"
+								+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Append to Playlist\" onclick=\"requestAppendVidSeg(\'" + pulledURL + "\')\"/></li><br/>";
+								remotesFound++;
+							}
+						}
 
 						searchResults.innerHTML = output;
-					}
-					else {
-						for(let x = 0; x < remoteVidSegs.length; x++) {		// go through each returned remote
-							let pulledURL = remoteVidSegs[x]["url"];
-							let pulledCharacter = remoteVidSegs[x]["character"];
-							let pulledText = remoteVidSegs[x]["text"];
-
-							if(characterKeyword !== "" && quoteKeyword !== "") {		// searching through both character and quote
-								if(pulledCharacter.toLowerCase().indexOf(characterKeyword.toLowerCase()) !== -1 && pulledText.toLowerCase().indexOf(quoteKeyword.toLowerCase()) !== -1) {		// check if our keyword is in the string
-									output = output + "<li><b>" + pulledURL + "</b><div class=\"vertSpace\"></div>"
-									+ "<span>" + pulledCharacter + ": \"" + pulledText + "\"</span></li><br/>";
-								}
-							}
-							else if(characterKeyword !== "") {		// searching through character, not quote
-								if(pulledCharacter.toLowerCase().indexOf(characterKeyword.toLowerCase()) !== -1) {		// check if our keyword is in the string
-									output = output + "<li><b>" + pulledURL + "</b><div class=\"vertSpace\"></div>"
-									+ "<span>" + pulledCharacter + ": \"" + pulledText + "\"</span></li><br/>";
-								}
-							}
-							else if(quoteKeyword !== "") {		// searching through quote, not character (need if statement here because otherwise it'll add everything by default)
-								if(pulledText.toLowerCase().indexOf(quoteKeyword.toLowerCase()) !== -1) {		// check if our keyword is in the string
-									output = output + "<li><b>" + pulledURL + "</b><div class=\"vertSpace\"></div>"
-									+ "<span>" + pulledCharacter + ": \"" + pulledText + "\"</span></li><br/>";
-								}
-							}
-
-							searchResults.innerHTML = output;
-						}
 					}
 
 				}
@@ -78,12 +83,16 @@ function processSearchResponse(response, remoteResponse, characterKeyword, quote
 				console.log("N/A");
 			}
 		};
+
 	}
 
 	let js = JSON.parse(response);
 
+
+	
 	if(js.vidSegs.length === 0) {
-		output = output + "<p>No results found.</p>";
+		output = output + "<p>No local results found.</p>";
+		searchResults.innerHTML = output;
 	}
 	else {
 		for(let i = 0; i < js.vidSegs.length; i++) {
@@ -93,16 +102,10 @@ function processSearchResponse(response, remoteResponse, characterKeyword, quote
 			let id = resultJson["id"];
 			let charSpeaking = resultJson["character"];
 			let quote = resultJson["text"];
-			let isLocal = resultJson["isLocal"];
 
-			if(isLocal) {
-				output = output + "<li><a href=\"#vidSeg-" + id + "\"><b>" + id + "</b></a><div class=\"vertSpace\"></div>"
-				+ "<span>" + charSpeaking + ": \"" + quote + "\"</span></li><br/>";
-			}
-			else {
-				output = output + "<li><b>" + id + "</b><div class=\"vertSpace\"></div>"
-				+ "<span>" + charSpeaking + ": \"" + quote + "\"</span></li><br/>";
-			}
+			output = output + "<li><a href=\"#vidSeg-" + id + "\"><b>" + id + "</b></a><div class=\"vertSpace\"></div>"
+			+ "<span>" + charSpeaking + ": \"" + quote + "\"</span>"
+			+ "<div class=\"divider\"></div><input class=\"button\" type=\"button\" value=\"Append to Playlist\" onclick=\"requestAppendVidSeg(\'" + vs_url + id + "\')\"/></li><br/>";
 		}
 	}
 	// vidSegs is in response https class of search
@@ -161,7 +164,7 @@ function handleSearchClick() {
 				}
 			}
 			else {
-				processSearchResponse("N/A", "N/A");
+				processSearchResponse("N/A", "N/A", "", "");
 			}
 		};
 	};

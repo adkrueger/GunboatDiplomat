@@ -4,54 +4,44 @@ function processAppendResponse(result) {
 	refreshPlaylistList();
 }
 
-function requestAppendVidSeg(playlist) {
+function requestAppendVidSeg(vsURL) {
 
-	let vsID = prompt("Please enter the ID of the video segment you would like to append.", "Video ID");
+	let pName = prompt("Please enter the name of the playlist you would like to append this video segment to.", "Playlist Name");
 
-	if(vsID !== null && vsID !== "" && vsID !== "Video ID") {	// if the user didn't cancel the prompt or just hit enter
-		handleAppendRequest(playlist, vsID);
+	if(pName !== null && pName !== "" && pName !== "Playlist Name") {	// if the user didn't cancel the prompt or just hit enter
+		handleAppendRequest(pName, vsURL);
 	}
 
 }
 
-function handleAppendRequest(playlist, vsID) {
+function handleAppendRequest(playlist, vsURL) {
 
-	let pData = {};
-	pData["playlistName"] = playlist;
-	pData["videoID"] = vsID;
+	let appendData = {};
+	appendData["playlistName"] = playlist;
+	appendData["videoID"] = vsURL;
+	
+	let js = JSON.stringify(appendData);
+	console.log("Append JS: " + js);
+	let appendXHR = new XMLHttpRequest();
+	appendXHR.open("POST", appendVidSeg_url, true);
+	appendXHR.send(js);
+	console.log("sent append");
 
-	if(pData["videoID"] === "") {
-		alert("Please enter a video ID.");
-	}
-	else {
-		let js = JSON.stringify(pData);
-		console.log("Append JS: " + js);
-		let xhr = new XMLHttpRequest();
-		xhr.open("POST", appendVidSeg_url, true);
-		xhr.send(js);
-		console.log("sent append");
-
-		xhr.onloadend = function() {
-			console.log(xhr);
-
-			if(xhr.readyState === XMLHttpRequest.DONE) {
-				if(xhr.status === 200) {
-					console.log("XHR: " + xhr.responseText);
-					processAppendResponse(xhr.responseText);
-				}
-				else if(xhr.status === 404) {
-					console.log("not found feller!");
-				}
-				else {
-					console.log("actual: " + xhr.responseText);
-					let newJS = JSON.parse(xhr.responseText);
-					let err = newJS["message"];
-					alert(err);
-				}
+	appendXHR.onloadend = function() {
+		if(appendXHR.readyState === XMLHttpRequest.DONE) {
+			if(appendXHR.status === 200) {
+				console.log("Remote XHR: " + appendXHR.responseText);
+				processAppendResponse(appendXHR.responseText);
 			}
 			else {
-				processAppendResponse("N/A");
+				console.log("remote actual: " + appendXHR.responseText);
+				let newJS = JSON.parse(appendXHR.responseText);
+				let err = newJS["error"];
+				alert(err);
 			}
+		}
+		else {
+			processAppendResponse("N/A");
 		}
 	}
 

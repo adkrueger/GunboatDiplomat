@@ -28,34 +28,30 @@ public class PlaylistDAO {
 		}
 
 	}
+	
+	public boolean checkPlaylistExists(String playlistName) throws SQLException {
+		PreparedStatement vsPlaylist = conn.prepareStatement("SELECT * FROM Playlist WHERE playlist_title = ?");
+		vsPlaylist.setString(1, playlistName);
+		
+		ResultSet rs = vsPlaylist.executeQuery();
+		
+		if(rs.next()) {
+			return true;
+		}
+		
+		return false;
+	}
 
 	public boolean addVidSegToPlaylist(String playlistName, String vidID) throws Exception {
 
 		//Check to see if it exits in VSTable
-		PreparedStatement VSPlaylist = conn.prepareStatement("SELECT * FROM VideoSegment WHERE video_id = ?");
+		PreparedStatement PSPlaylist = conn.prepareStatement("INSERT INTO Playlist (video_id,playlist_title) VALUES (?,?);");
+		PSPlaylist.setString(1, vidID);
+		PSPlaylist.setString(2, playlistName);
+		PSPlaylist.execute();
 
-		VSPlaylist.setString(1, vidID);
-		ResultSet rs = VSPlaylist.executeQuery();
-
-		try {
-			if(rs.next()) {
-				PreparedStatement PSPlaylist = conn.prepareStatement("INSERT INTO Playlist (video_id,playlist_title) VALUES (?,?);");
-				PSPlaylist.setString(1, vidID);
-				PSPlaylist.setString(2, playlistName);
-				PSPlaylist.execute();
-
-				return true;
-			}
-		}
-		catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
-
-		return false;
-
-
-
-
+		return true;
+		
 	}
 
 	public boolean deletePlaylist(String playlistName) throws Exception {
@@ -92,34 +88,6 @@ public class PlaylistDAO {
 		ps.setString(1, video_id);
 		ps.setString(2, playlistName);
 		ps.executeUpdate();
-
-		return true;
-
-	}
-	/**
-	 * This function will delete a video segment from all playlists that contain it. 
-	 * 
-	 * @param video_id
-	 * @return
-	 * @throws Exception
-	 */
-	public boolean deleteVidSegFromAllPlaylists(String video_id) throws Exception {
-
-		// Deleting VidSeg from Playlist.
-		PreparedStatement ps = conn.prepareStatement("DELETE FROM Playlist WHERE video_id = ?");
-		ps.setString(1, video_id);
-		ps.executeUpdate();
-
-		// Check to see if VidSeg is still there
-		PreparedStatement checkForVidSeg = conn.prepareStatement("SELECT * FROM Playlist WHERE video_id = ?;");
-		ResultSet rs = checkForVidSeg.executeQuery();
-
-		while (rs.next()) {
-			return false;
-		}
-
-		rs.close();
-		ps.close();
 
 		return true;
 
@@ -166,33 +134,6 @@ public class PlaylistDAO {
 		}
 
 		return playlists;
-
-	}
-
-	private VidSeg generateVidSeg(String id) throws Exception {
-
-		PreparedStatement ps = conn.prepareStatement("SELECT * FROM VideoSegment WHERE video_id = ?;");
-		ps.setString(1, id);
-		ResultSet rs5 = ps.executeQuery();
-
-		String idNum = "";
-		String character = "";
-		String quote = "";
-		int isLocal = 0;
-		int isMarked = 0;
-
-		while (rs5.next()) {
-			if(!(rs5.getString(1).equals(null))) {
-				idNum = rs5.getString(1);
-				quote = rs5.getString(3);
-				character = rs5.getString(2);
-				isLocal = rs5.getInt(4);
-				isMarked = rs5.getInt(5);
-			}
-
-		}
-
-		return new VidSeg(idNum, quote, character, isLocal, isMarked);
 
 	}
 

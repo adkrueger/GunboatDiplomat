@@ -17,6 +17,8 @@ let unmarkVidSeg_url = api_url + "unmarkVidSeg";			// POST
 let unregisterRemote_url = api_url + "unregisterRemote";	// POST
 let uploadVidSeg_url = api_url + "uploadVidSeg";			// POST
 
+let vs_url = "https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/";
+
 let remote_url =  "https://5uoy8u1hhh.execute-api.us-east-2.amazonaws.com/RemoteSite/";
 	
 let search_remote_url = remote_url + "publicSegments";

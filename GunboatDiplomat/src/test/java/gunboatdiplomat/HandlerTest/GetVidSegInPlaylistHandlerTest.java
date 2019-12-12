@@ -55,7 +55,7 @@ public class GetVidSegInPlaylistHandlerTest extends LambdaTest{
 
 		List<VidSeg> ls = plDAO.getVideoSegInPlaylist("ChickenNuggetsRock");
 		
-		assertTrue(ls.get(0).equals(vs));
+		assertTrue(ls.get(0).id.equals(vs.id));
 		
 
 		plDAO.deletePlaylist("ChickenNuggetsRock");
