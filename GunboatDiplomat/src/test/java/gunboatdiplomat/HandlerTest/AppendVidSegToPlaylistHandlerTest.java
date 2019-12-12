@@ -6,8 +6,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
-
 import org.junit.Test;
 
 import gunboatdiplomat.AppendVidSegToPlaylistHandler;
@@ -31,7 +29,7 @@ public class AppendVidSegToPlaylistHandlerTest extends LambdaTest{
 	
 	@Test
 	public void testAppendVidSegToPlaylistHandlerTest() throws Exception {
-		VidSeg vs1 = new VidSeg("", "", "", 0, 0);
+
 		VidSeg vs2 = new VidSeg("testingAppendVidSegHandler1", "This is a test 2", "President Barack Obama", 1, 0);
 		VidSeg vs3 = new VidSeg("testingAppendVidSegHandler2", "This is a test 1", "President Donald Trump", 1, 0);
 		

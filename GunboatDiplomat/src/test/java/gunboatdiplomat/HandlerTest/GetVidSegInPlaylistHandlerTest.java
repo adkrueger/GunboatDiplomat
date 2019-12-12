@@ -3,7 +3,6 @@ package gunboatdiplomat.HandlerTest;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +51,7 @@ public class GetVidSegInPlaylistHandlerTest extends LambdaTest{
 		plDAO.addVidSegToPlaylist("ChickenNuggetsRock", vs.id);
 		GetVidSegInPlaylistRequest createReq = new GetVidSegInPlaylistRequest("ChickenNuggetsRock");
 		GetVidSegInPlaylistResponse response = new GetVidSegInPlaylistHandler().handleRequest(createReq, createContext(vs.id + " Has Been Pulled"));
-
+		System.out.println(response);
 		List<VidSeg> ls = plDAO.getVideoSegInPlaylist("ChickenNuggetsRock");
 		
 		assertTrue(ls.get(0).id.equals(vs.id));

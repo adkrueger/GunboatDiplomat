@@ -3,12 +3,10 @@ package gunboatdiplomat;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.amazonaws.services.s3.AmazonS3;
 
 import gunboatdiplomat.db.RemoteSiteDAO;
 import gunboatdiplomat.http.UnregisterRemoteRequest;
 import gunboatdiplomat.http.UnregisterRemoteResponse;
-import gunboatdiplomat.model.RemoteSite;
 
 public class UnregisterRemoteHandler implements RequestHandler<UnregisterRemoteRequest, UnregisterRemoteResponse> {
 

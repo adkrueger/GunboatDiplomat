@@ -3,12 +3,10 @@ package gunboatdiplomat;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.amazonaws.services.s3.AmazonS3;
 
 import gunboatdiplomat.db.PlaylistDAO;
 import gunboatdiplomat.http.CreatePlaylistRequest;
 import gunboatdiplomat.http.CreatePlaylistResponse;
-import gunboatdiplomat.model.Playlist;
 
 public class CreatePlaylistHandler implements RequestHandler<CreatePlaylistRequest, CreatePlaylistResponse> {
 

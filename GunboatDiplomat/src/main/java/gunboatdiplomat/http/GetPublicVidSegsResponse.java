@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gunboatdiplomat.model.MarkedSegment;
-import gunboatdiplomat.model.VidSeg;
 
 public class GetPublicVidSegsResponse {
 	

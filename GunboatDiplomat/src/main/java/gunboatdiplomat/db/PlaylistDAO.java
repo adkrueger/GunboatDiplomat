@@ -171,7 +171,6 @@ public class PlaylistDAO {
 
 	public boolean deleteVidSegFromPlaylistWithIndex(String playlistName, int index) throws Exception {
 
-		String url = "https://gd3733.s3.us-east-2.amazonaws.com/videoSegments/";
 		System.out.println(index);
 		// This is getting the list of VidSeg associated with a playlist. 
 		List<VidSeg> listOfVidSeg = this.getVideoSegInPlaylist(playlistName);

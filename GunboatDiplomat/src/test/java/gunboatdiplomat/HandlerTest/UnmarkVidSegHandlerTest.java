@@ -6,13 +6,11 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import gunboatdiplomat.LambdaTest;
-import gunboatdiplomat.MarkVidSegHandler;
 import gunboatdiplomat.UnmarkVidSegHandler;
 import gunboatdiplomat.db.VideoSegmentDAO;
 import gunboatdiplomat.http.UnmarkVidSegRequest;
 import gunboatdiplomat.http.UnmarkVidSegResponse;
 import gunboatdiplomat.model.VidSeg;
-import junit.framework.Assert;
 
 public class UnmarkVidSegHandlerTest extends LambdaTest{
 	

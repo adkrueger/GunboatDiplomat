@@ -11,7 +11,6 @@ import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import gunboatdiplomat.db.VideoSegmentDAO;
 import gunboatdiplomat.http.DeleteVidSegRequest;
 import gunboatdiplomat.http.DeleteVidSegResponse;
-import gunboatdiplomat.model.VidSeg;
 
 public class DeleteVidSegHandler implements RequestHandler<DeleteVidSegRequest, DeleteVidSegResponse> {
 

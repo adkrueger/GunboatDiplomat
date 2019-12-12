@@ -19,7 +19,6 @@ import gunboatdiplomat.http.CreatePlaylistRequest;
 import gunboatdiplomat.http.CreatePlaylistResponse;
 import gunboatdiplomat.http.RemoveVidSegRequest;
 import gunboatdiplomat.http.RemoveVidSegResponse;
-import gunboatdiplomat.model.Playlist;
 import gunboatdiplomat.model.VidSeg;
 
 
