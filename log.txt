@@ -1,0 +1,1814 @@
+commit 550f0f0826855ba7832b32e9739e343bfb43bf42
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Thu Dec 12 11:04:25 2019 -0500
+
+    changed playlist dao to return false if the playlist is already deleted
+
+commit cab7443aa8c89c5eb0eeb2a4d4e4b47661649306
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Thu Dec 12 00:47:39 2019 -0500
+
+    play playlist fully operational
+
+commit db28a81c5cee727f566a3a04c9d5077587269c96
+Merge: 3a74e3e 7ac3757
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Wed Dec 11 22:39:07 2019 -0500
+
+    Merge branch 'Shannon'
+
+commit 3a74e3e3582f6fe5c75b5a90f8fd5b888fccb864
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Wed Dec 11 22:38:58 2019 -0500
+
+    GitHub is so temperamental
+
+commit 7ac3757220849e7fb468bb55408da7699f59213d
+Merge: 648fa51 d9e5ec7
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Wed Dec 11 22:25:20 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat
+    into Shannon
+    
+    Conflicts:
+            GunboatDiplomat/src/test/java/gunboatdiplomat/HandlerTest/AppendVidSegToPlaylistHandlerTest.java
+
+commit 648fa51eec05164deeafd41a6ec4da68530ca70d
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Wed Dec 11 21:55:25 2019 -0500
+
+    something is wrong...
+
+commit d9e5ec7aea7ffe425fabb7d647215f9e6d4966b4
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 11 21:09:45 2019 -0500
+
+    removed a couple of methods we never ended up using
+
+commit a059ecf050909ee9907acda1f2356a132204ef67
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 11 20:56:50 2019 -0500
+
+    got append to work. ended up changing the buttons to be elsewhere
+
+commit 5202bc0f98747bd601853a63ca209703491f9665
+Merge: e6565f5 69403bf
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 11 20:04:13 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat.git into aaron
+
+commit e6565f5783eb90f445a75317b68f4795a76eb3a1
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 11 20:04:08 2019 -0500
+
+    removed URL
+
+commit 69403bf0424762e49fedcba6f5cb289957f2ce80
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Dec 11 18:54:58 2019 -0500
+
+    Fixed Handlers and Test Cases that were breaking.
+    
+    As of right now all test cases for lambda functions and DB stuff pass!
+    
+    Big yay!
+
+commit 5270c3c9e79c1af9463362de5e3ac227d69ee331
+Merge: bebe687 2cc1a0d
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 11 17:13:42 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat.git into aaron
+
+commit 2cc1a0d1f0fac7f2c8ec03c2e37867dddb1bc8cf
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Dec 11 17:13:01 2019 -0500
+
+    Refixed TC p2
+
+commit bebe687090ffda5073b850016d2766bd3e58c2b8
+Merge: ee4079b f34aec7
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 11 17:01:37 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat.git into aaron
+
+commit ee4079b5fa9d4871ed2d92034d143218d38146c7
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 11 17:01:31 2019 -0500
+
+    partially implemented JS, fixed part of DAO
+
+commit f34aec7e9119f8218c53b3afbba7b39bd1a4ecf2
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Dec 11 17:00:38 2019 -0500
+
+    Fixed some TC
+
+commit a4e9dd459d968650ee99984d177fab513286cfa8
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 11 14:51:07 2019 -0500
+
+    fixed an issue with null fields
+
+commit 99f3141e13701a98d9a3e4b633b7efd5760f310e
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 11 14:35:09 2019 -0500
+
+    fixed a constructor
+
+commit 12617674caacbdf85897827fbc31a8a727e8c5de
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 11 14:26:33 2019 -0500
+
+    fixed some test cases, need to add url to some id's so others pass
+
+commit c1a37d7942cfe1a37481a4b1d9a59ae3ecb956b8
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 11 01:33:38 2019 -0500
+
+    removed extra comments
+
+commit 917d72fb65e81014b92fc110595c222d409bff59
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 11 01:32:29 2019 -0500
+
+    finally got removeVidSeg.js working, added new sorted pl return to dao
+
+commit eecfa1fbde2138f63cde4275786f7b9a2b3136e2
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 11 01:22:35 2019 -0500
+
+    fixed GetVidSegInPlaylistHandler and response class
+
+commit ac7c0fd8df2ed209951c0cd039ff688ea0afedb3
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 22:44:22 2019 -0500
+
+    working on removeVidSegs.js
+
+commit 8e9ce3be04ab70dfc76656534d62b63b139a7797
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 22:22:45 2019 -0500
+
+    fixed query in append, expanded remove test case
+
+commit 6414731f6474e87721950584e55113ca34ff9038
+Merge: 9001942 3ef048c
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 22:03:43 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat.git into aaron
+
+commit 90019421f86a3326849f0666b24abb0e367d41d8
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 22:03:34 2019 -0500
+
+    various fixes, near working remove.js
+
+commit 3ef048c1858e6246000ec41e58ae2c9f52919109
+Author: Ashpai24 <53979314+Ashpai24@users.noreply.github.com>
+Date:   Tue Dec 10 21:49:59 2019 -0500
+
+    completed the fix for append in playlistDAO
+
+commit bce4ba0bb4de8930828c8422b3c2d302e83667dd
+Merge: 5f58361 49e1b6e
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 21:34:57 2019 -0500
+
+    fixed test case
+
+commit 49e1b6eecaefe9d0329d558c8333d221c47dd74e
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Tue Dec 10 21:29:06 2019 -0500
+
+    fixed Remove
+
+commit 5f58361ced29bf8c82c0edc85cbfebc36bf99216
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 21:01:24 2019 -0500
+
+    fixed test case
+
+commit 0710c3debf4971db50fc90b5cdca8b8a0727658b
+Merge: c178eed 720ea98
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 20:41:44 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat.git into aaron
+
+commit 720ea984df51b7469013b1653c332a14ef4695e2
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Tue Dec 10 20:38:47 2019 -0500
+
+    remove vid seg stuff
+
+commit c178eedbd5d19f9164a569eeab867b89dde913be
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 20:20:50 2019 -0500
+
+    syntax fixes, implemented removeVidSeg.js (need to test when ready)
+
+commit b66707d18aedca3432b96c9978c12d9cdbcdbd06
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Tue Dec 10 17:58:34 2019 -0500
+
+    Finished testing ListPlaylistHandlerTest
+
+commit dcfbf0c8c620fba71622862fdc0df236f9d1f946
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 17:37:27 2019 -0500
+
+    fixed a couple of syntax errors
+
+commit 40135a2c6e40c97d923cb57394a0162b276d4387
+Merge: 23b853f 6b7378f
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Tue Dec 10 17:26:34 2019 -0500
+
+    Merge branch 'master' of http://github.com/adkrueger/GunboatDiplomat
+
+commit 23b853fdfbb7e810c68704c64f2bd7c957d6200d
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Tue Dec 10 17:25:40 2019 -0500
+
+    unmark.js
+
+commit 6b7378f96a009c5a3486b64f0d5922991ce432b6
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Tue Dec 10 17:23:40 2019 -0500
+
+    created the class for ListPlaylistHandlerTest
+
+commit 6c43c9ca6f60ca66967f74c6f623730b2eb209bc
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 17:12:04 2019 -0500
+
+    added check for ?apikey= in register remote
+
+commit 7b43ca2177265b0185a2ceb929c0cc18f85dea9f
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 16:51:30 2019 -0500
+
+    added comments and fixed output addition in search
+
+commit 79f9901e1abc03228731a7e0eceaa4632fca0ba8
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 16:30:54 2019 -0500
+
+    search vid segs operational in webapp
+
+commit 0025a7fa432e110fd9ff9048f117aa83c7b67ade
+Merge: 1b3a404 78f5796
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 15:51:46 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat.git into aaron
+
+commit 78f5796d3aae5897c19c2590a35577488b532542
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Tue Dec 10 15:50:02 2019 -0500
+
+    Completed testing for GetVidSegInPlaylistHandler
+
+commit 1b3a404914d15ebc9e0125f781b826f877d3099d
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 14:47:28 2019 -0500
+
+    removed aws default handler and tests
+
+commit 63d644614803a6c531cb77c7c8d4abcaf07b95f3
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 14:02:06 2019 -0500
+
+    got call working for remote vid segs
+
+commit 606110f6bbd1eca8eb23fb16fa89e6ba8b0b314b
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 12:37:56 2019 -0500
+
+    made light fixes to js files, added remote get to search
+
+commit 8805a92bbd9d7bfeaee8cc29d318368027249148
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 11:40:48 2019 -0500
+
+    actually finished and uploaded get public vid segs (for real this time)
+
+commit d3b972e28ea3a2299088e797266c2835c48d430b
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 11:05:10 2019 -0500
+
+    fixed response in get publics, uploaded get publics
+
+commit f52a9e1c59cbb8cf7a0b5c9627ab18a15b3f1382
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 10:55:10 2019 -0500
+
+    fixed public vid segs response, uploaded append to correct lambda
+
+commit e2f56e5e5ff1a51eaef3ec1b722a073b073d3188
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 00:46:35 2019 -0500
+
+    "quality of life" fixes for multiple js classes
+    
+    delete vid seg now states a character and their quote when confirming
+    
+    search now does not provide a link when a video is not lcoal
+
+commit 63a2a7b621a346f56bf10b6df0397c8e3a7d2e07
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 00:38:09 2019 -0500
+
+    search updates properly if no results are found
+
+commit b016a9affa991b2cf9dced9594f1a103a0bc25b3
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 10 00:14:07 2019 -0500
+
+    uploaded search, implemented mark.js
+
+commit b1dc0faf98f4c032fb63c46d782a1d67c32b06fa
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Dec 9 23:46:37 2019 -0500
+
+    added nice comment for ashwin
+
+commit 8f6b3a9356442764fb38c5a0050d373177b4f0b4
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Dec 9 22:04:16 2019 -0500
+
+    got remote segments url working
+
+commit 06d08d2339d293420f23da5fbf42c67745015838
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Mon Dec 9 19:45:14 2019 -0500
+
+    implemented DeletePlaylistHandlerTest and got it to pass! :)
+
+commit 84839c3dd2922eeefdc7b113b3d18e4d51722468
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Dec 9 19:20:57 2019 -0500
+
+    made it so searching searches substrings
+
+commit 8663aeeb1ca55c13d6e0a0b214b31600d8bbecc7
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Mon Dec 9 19:18:13 2019 -0500
+
+    UnmarkVidSeg handler with test Case
+
+commit a7aae35d8947836419a0e8bb1aebd188d008ad7a
+Merge: 40c57ce 892e6ea
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Mon Dec 9 18:43:33 2019 -0500
+
+    Merge branch 'master' of http://github.com/adkrueger/GunboatDiplomat
+    into ashwin
+    
+    Conflicts:
+            GunboatDiplomat/.settings/com.amazonaws.eclipse.lambda.project.json
+
+commit 40c57cea6950721a1f118f18e97e275513285c8d
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Mon Dec 9 18:41:30 2019 -0500
+
+    MarkVidSeg handler with test
+
+commit 892e6ea609a6e820ea787a1c0d01cce65429c631
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Dec 9 18:31:17 2019 -0500
+
+    made fixes to getPublicVidSegsHandler and test
+
+commit 33a73ec3dcc98f506d6ae3604e75706cfa5810b2
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Dec 9 17:17:17 2019 -0500
+
+    added small fixes to html upload size and implemented listremotesegments
+
+commit 2a8f8de73e3e99ca18ac5230b16f22bd1c51f560
+Author: Ashpai24 <53979314+Ashpai24@users.noreply.github.com>
+Date:   Sat Dec 7 15:44:08 2019 -0500
+
+    Made sure to set SQL Safe Updates to 0.
+
+commit da6e203d58a54751a89f276472cbbcfe0e18c28e
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sat Dec 7 13:49:04 2019 -0500
+
+    made some fixes to the DAO and test cases
+
+commit 901f2dad779412239dea02b1bf35f77ac0df8b78
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sat Dec 7 13:05:48 2019 -0500
+
+    fixed generate vid seg when using a result set
+
+commit 725c888d5c9a2834a7d917c5456d6d7d5e22ce00
+Merge: d00da15 e44b69e
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Fri Dec 6 16:13:02 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat.git into aaron
+
+commit d00da150708195e7897dad6b5fe757e39e1da6a9
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Fri Dec 6 16:12:17 2019 -0500
+
+    fixed test case
+
+commit 934ab151e3c8ff8e89cf62473f224b0460b3f3ce
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Fri Dec 6 16:04:30 2019 -0500
+
+    append fully functional within webapp :)
+
+commit e44b69e03e6285a09e02a4885aa4b7f41ffad891
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Fri Dec 6 15:54:56 2019 -0500
+
+    Made sure to delete stuff after testing.
+
+commit 7199b0eba7d36e8e546d265534d60917d10f391b
+Merge: a241f10 1bbcd99
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Fri Dec 6 15:48:35 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat.git into aaron
+
+commit 1bbcd990684d9bb794781d9336c87bb485691c51
+Merge: 7f2e5b7 9209d49
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Fri Dec 6 15:47:40 2019 -0500
+
+    Merge branch 'master' of http://github.com/adkrueger/GunboatDiplomat into ashwin
+
+commit 7f2e5b7fe5bc4ff94ebd37e5633908c8c7832d74
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Fri Dec 6 15:46:52 2019 -0500
+
+    Completed AppendVidSeg Handler test.
+
+commit a241f10d6b9732808e4f5896bbaee0c236966c67
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Fri Dec 6 15:11:16 2019 -0500
+
+    changed == to === and != to !==
+
+commit c99cd5ebef36d1e921a9d1480a105d9a8f36e6fc
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Fri Dec 6 13:43:07 2019 -0500
+
+    create playlist implemented into js
+
+commit 9209d49c1d82b8a6a12d98143a63d4acae68549e
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Fri Dec 6 13:42:18 2019 -0500
+
+    created test for testing RemoteSiteModel
+
+commit 83a1ee83b6abb06183ae61972b0df2a714de5017
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Fri Dec 6 13:33:56 2019 -0500
+
+    tested video segment model
+
+commit efccf09245f719fd4ef574ce8f65206be2fb79d7
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Fri Dec 6 13:13:11 2019 -0500
+
+    created test for playlist model class
+
+commit e275fd65c26f6174e768afccf88d91cc09c2798e
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Fri Dec 6 13:02:56 2019 -0500
+
+    uploaded create playlist to AWS
+
+commit 1f32e4d45cc9745be93f9443c0eb2cb6c2cb934b
+Merge: b2766e0 4f172eb
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Fri Dec 6 13:00:36 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat.git into aaron
+
+commit b2766e09237196efc254f865a8acbce5f4ac2073
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Fri Dec 6 13:00:14 2019 -0500
+
+    implemented create playlist test
+
+commit b35afa021a8fe9e190ec6bfe3a3b6ea882111aad
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Fri Dec 6 12:38:58 2019 -0500
+
+    got getAllPlaylists.js working
+
+commit 4f172eb370b0cd9c51b4ed9e6d6e0ba96e4ffc7a
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Fri Dec 6 12:21:28 2019 -0500
+
+    Minor details
+
+commit 02fc6f037aca463bf2483566c07095dcd30c31cb
+Merge: b492870 856ee26
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Fri Dec 6 12:09:46 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat.git into aaron
+
+commit 856ee26310f99a493024d10cd96ba3aab8b90cd1
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Fri Dec 6 12:04:51 2019 -0500
+
+    Create Playlist stuff
+
+commit 254d269c4bf102d8c14dd30185015b8a2b26c10c
+Merge: f68cb34 4940c7f
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Fri Dec 6 11:59:44 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat into Nicole
+
+commit b492870711b31cee977951c65f6e7b1272fd2318
+Merge: 5e277c1 4940c7f
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Fri Dec 6 11:34:26 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat.git into aaron
+
+commit 4940c7f708ed89d562216c2643d125ad2843e150
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Fri Dec 6 11:30:52 2019 -0500
+
+    Added a new function in playlistDAO that can remove a VidSeg from a
+    playlist with an index.
+    
+    Has been tested.
+
+commit e6996c564e4749e76f88337da3abd4da0e981f06
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Fri Dec 6 11:18:19 2019 -0500
+
+    made a package for testing the model classes
+
+commit f68cb3482bf6c3ab860ba59ff56aee14b0e741da
+Merge: 9b32a42 db3676b
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Fri Dec 6 10:13:24 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat into Nicole
+
+commit 5e277c15e613bb7f0c9f103d725d9f1c76d2ea33
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Thu Dec 5 22:27:42 2019 -0500
+
+    added some test cases for HTTPS of some handlers
+
+commit db3676b4680c748886a775dd23e419ad22058a2b
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Thu Dec 5 21:17:14 2019 -0500
+
+    created tests for getPublicVidSeg, edited other tests
+    
+     , edited remote DAO to use strings when deleting
+
+commit 9ffd04789abd476b527c63fef7230890261a170b
+Merge: 1228d4e bd4af4c
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Thu Dec 5 20:29:15 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat.git into aaron
+
+commit 1228d4ee8919cdc62ca6de153cbf55c343351095
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Thu Dec 5 20:29:08 2019 -0500
+
+    fixed query in getPlaylistVidSeg
+
+commit bd4af4c1893d807fbe55641da281409611e06ce7
+Merge: 618bbf6 fba3af1
+Author: Ashpai24 <53979314+Ashpai24@users.noreply.github.com>
+Date:   Thu Dec 5 18:47:06 2019 -0500
+
+    Merge branch 'ashwin_desktop'
+
+commit 618bbf6cbb44e88ce67c44d7ed7cfb38466ba72d
+Author: Ashpai24 <53979314+Ashpai24@users.noreply.github.com>
+Date:   Thu Dec 5 18:46:55 2019 -0500
+
+    Testing stuff
+
+commit fba3af1f0eb6c730f0ce0ab9af379c89fe62b76a
+Author: Ashpai24 <53979314+Ashpai24@users.noreply.github.com>
+Date:   Thu Dec 5 18:44:21 2019 -0500
+
+    Completed 3 methods in playlistDAO.
+    
+    1. deleteVidSegFromAllPlaylists
+    2. deleteVidSegFromPlaylist
+    3. createPlaylist
+    
+    All test cases should be completed for everything.
+
+commit ee67b5fb83a9bbe25184cf18dc400e1d14de4f3c
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Thu Dec 5 15:53:17 2019 -0500
+
+    various remote tests and fixes to remote DAO
+
+commit b06b80922a89c7465a404f99ab6485305bec91f5
+Merge: e8b91be 0dba0f3
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Thu Dec 5 14:05:41 2019 -0500
+
+    merged through conflicts
+
+commit e8b91be491b4f40ee9858fb3a9cd0dcd26cc8021
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Thu Dec 5 13:37:57 2019 -0500
+
+    Commiting to merge
+
+commit 0dba0f33656bd642dae25975de7d4314c26b94d1
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Thu Dec 5 13:35:02 2019 -0500
+
+    finished GetPublicVidSegsHandler
+
+commit aa62bd067348cb61a4d7d731ae57d17fbf8f8253
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Thu Dec 5 13:13:56 2019 -0500
+
+    finished method to get video segments from the s3 bucket
+
+commit 4492978f65a22a52dbc0027546dd6d291f5c14aa
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Thu Dec 5 12:02:47 2019 -0500
+
+    add method to get video segments from the RDS
+
+commit 146a85cc4ab2695d43babc12b6bf0ec29fe57784
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Thu Dec 5 11:56:07 2019 -0500
+
+    add method to ret list of video segments in a playlist that is marked
+
+commit 7c4903618937d24f7d6e0d552c5d52a6706b25b7
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 4 23:35:26 2019 -0500
+
+    fixed playlist test cases, had a mid-life crisis about search handler
+    
+     (need to resolve search with heineman - leaving as is for now)
+
+commit f3d6056e9898f835540345f7bd6b9500bceaa239
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 4 21:10:14 2019 -0500
+
+    refactored search to search for substrings and both char and quote
+    
+     (in some cases)
+
+commit 11d66972af3e2e90ce44808f6e6633382edcefcc
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 4 20:33:47 2019 -0500
+
+    register remote now operational on webapp
+
+commit 9b32a4279f1f0c43b457f36c8511807c12828f2e
+Merge: f0b792b ce9bb4e
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Wed Dec 4 20:12:45 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat into Nicole
+
+commit ce9bb4e12469129312eb1c3e27dc49bdb8dea10a
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 4 15:49:17 2019 -0500
+
+    list and unregister functional on webapp
+
+commit 11ce6fbedb94abb57909d442c271424dd199e786
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Wed Dec 4 15:43:35 2019 -0500
+
+    finished GetPublicVidSegsResponse
+
+commit f0b792bf383d691abe9dd71aaedbfb0a6ba4887a
+Merge: 2a0f758 c846606
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Wed Dec 4 15:13:35 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat into Nicole
+
+commit c846606de82a527f87f756607cd91ccf84b89d13
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Wed Dec 4 15:07:04 2019 -0500
+
+    finished GetVidSegInPlaylistHandler and made edits in reponse class
+
+commit 5ef133da6f6b95e2c6f91309c0f08b8a4ba6b6f3
+Merge: eff6270 eff118c
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Dec 4 15:04:53 2019 -0500
+
+    Merge branch 'ashwin'
+
+commit eff118c42abb6725128f7994885b7d06b8e4913a
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Dec 4 15:04:00 2019 -0500
+
+    getAllVidSegFrom playlist DAO with test cases
+
+commit 2a0f758d392c275f00450de306582b19f8f0997f
+Merge: e9f00fd eff6270
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Wed Dec 4 14:39:23 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat into Nicole
+
+commit eff62709876a4653b159aaa331c0ff8237075a4e
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 4 14:35:35 2019 -0500
+
+    uploaded everything to aws
+
+commit 8b91761daba9624aae5d1886284af372cb417c20
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 4 14:30:54 2019 -0500
+
+    fixed some test cases, tested and implemented list remotes handler
+
+commit e9f00fd525f3e1ce0f8d442f653cd68a31a3551c
+Merge: 2e1d995 0cf08dd
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Wed Dec 4 14:29:06 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat into Nicole
+
+commit 0cf08dd33737e0ae740a2394cb1b21c805e60ff2
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Wed Dec 4 14:22:56 2019 -0500
+
+    created method getVidSegInPlaylistFromRDS
+
+commit 7c4ce549366e182cee66dd9ed9003cf1be9f7fb5
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Dec 4 14:20:27 2019 -0500
+
+    Response for AppendVidSegHandler
+
+commit b96b6bb7a9032a518ea6fddb0617116790d53ce6
+Merge: 8d16958 1537f05
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Dec 4 14:20:02 2019 -0500
+
+    Merge branch 'master' of http://github.com/adkrueger/GunboatDiplomat into ashwin
+
+commit 8d16958ae9d8b93f9fbb095f57f70ca4ab949700
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Dec 4 14:19:54 2019 -0500
+
+    Worked on AppendVidSegRequest (Handler and Response)
+
+commit 1537f05f6fa3d408f08501c56dbc97cfc44247c0
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 4 13:59:02 2019 -0500
+
+    refactored list playlists to use hashmap instead of list
+
+commit 2e1d995164af186f341eaa696331798e996e4fca
+Merge: a7195c7 1c96d43
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Wed Dec 4 13:39:40 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat into Nicole
+
+commit 1c96d434b6073886293a95775327704c39efe914
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 4 13:36:36 2019 -0500
+
+    uploaded register/unregister to AWS
+
+commit b083c38655118f6ee3f9e193124e1580db2c3cad
+Merge: b471daf 465ef3c
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 4 13:33:20 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat.git into aaron
+
+commit b471daf3ff95fa9e5bee5b0c3322e7c508013418
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 4 13:33:14 2019 -0500
+
+    tested unregister remote handler
+
+commit 465ef3cd7c91e0e8ce4dc42778c27597dbee5656
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Wed Dec 4 13:26:26 2019 -0500
+
+    deleted s3 stuff from DeletePlaylistHandler
+
+commit 290921608e1dbf0de11c9775002f1f4cbe067d0e
+Merge: 6401b7a 056074f
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Wed Dec 4 13:21:13 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat
+
+commit 6401b7a4277ca5ea0dc07bc501fc4f0fec915cc5
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Wed Dec 4 13:20:31 2019 -0500
+
+    made a few adjustments to DeletePlaylistHandler
+
+commit 056074fc1f70bf6f2f7baa582b1064a78cbb7392
+Merge: 00349fd 6e630d9
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Dec 4 12:31:59 2019 -0500
+
+    Merge branch 'master' of http://github.com/adkrueger/GunboatDiplomat into ashwin
+
+commit 00349fda0296e77e87b3041b3a4f6325c024d805
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Dec 4 12:31:45 2019 -0500
+
+    Changed test cases to make sure that it deletes data after being
+    entered.
+    
+    Changed getAllPlaylist test cases to correctly compare two HM.
+    
+    Fixed mistake in generateVidSeg in VidSegDAO.
+
+commit 6e630d9bd92803d61ed7f47521eb8a03a6dd7426
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 4 12:12:22 2019 -0500
+
+    tested register remote handler, implemented unregister remote handler
+
+commit bf0e34f0780972bf8bece5c766a59f06233ccf14
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 4 11:45:50 2019 -0500
+
+    implemented register remote
+
+commit a117dc32c874633f4f3a013a3fb0716582333607
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 4 11:25:12 2019 -0500
+
+    fixed request and response for getVidSegInPlaylist
+
+commit 9c2a3b45d8b64169cd90b59b0a6447fe0bd3daf5
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Dec 4 11:10:48 2019 -0500
+
+    changed and added tests in VidSegTestingDB
+
+commit a7195c75fd693134c8ff16e9a0fe82b15105f96d
+Merge: 21a2ab0 045ddde
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Wed Dec 4 09:44:00 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat into Nicole
+
+commit 045ddde48a28edde216c093e21f10663e1e43c06
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Wed Dec 4 09:35:34 2019 -0500
+
+    made a few changes to GetVidSegInPlaylistResponse
+
+commit 3cce0bdebc51fc96768f1442d8916f0f05eac620
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Dec 4 09:24:03 2019 -0500
+
+    Fixed previous test cases.
+
+commit d72cc1840bebf9d4f72047625a041a77f29426b3
+Author: Ashpai24 <53979314+Ashpai24@users.noreply.github.com>
+Date:   Wed Dec 4 00:06:54 2019 -0500
+
+    Added unmarkvid seg and markseg with testing.
+
+commit 8f58af841b3097bfd9a38197848666bb8ebdc859
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 3 23:17:38 2019 -0500
+
+    delete playlist now fully operational (had to re-upload handler)
+
+commit 44853ad43acea83e4017b39e71845ec223e6eca9
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 3 23:03:32 2019 -0500
+
+    reorganized layout of search results
+
+commit 4fb0058f6622f640ff8931f2a3924b42360032a8
+Author: Ashpai24 <53979314+Ashpai24@users.noreply.github.com>
+Date:   Tue Dec 3 22:51:57 2019 -0500
+
+    Completed testing on RemoteSiteDAO
+    Fixed some query's in RemoteSiteDAO
+    Added equals method in RemoteSiteDAO
+
+commit 67d47bc952f9aa14aa09909c63cff3a2935b058c
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 3 22:10:57 2019 -0500
+
+    search functionality fully operational
+
+commit 273ef19e0f4aab73b8126e7ad4c7ef6f3fb03f87
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 3 21:10:56 2019 -0500
+
+    implemented and tested search vid seg and uploaded to aws
+
+commit df4f1671f6a91594a65d1a60f1dc7161f30f35d6
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 3 21:02:51 2019 -0500
+
+    changed delete vid seg to use a string instead of a vid seg as a param
+
+commit a341b9981ef667360923c9c1d822c6687999f888
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 3 18:41:11 2019 -0500
+
+    started testing of search
+
+commit 69e22dc0aa1502c194b511bdae6a59d2ba4c3ecd
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Tue Dec 3 18:38:05 2019 -0500
+
+    AppendVidSeg handler
+    
+    Worked some more on PlaylistDAO
+
+commit 21a2ab05777ff04a19b4fc15d87a7e44a8451acf
+Merge: 5d2010c eed762d
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Tue Dec 3 18:30:24 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat into Nicole
+
+commit eed762de63dabe9205d77924b9d9790885b51fce
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Tue Dec 3 18:29:23 2019 -0500
+
+    upload lambda to AWS
+
+commit 0435d5e88d987fe0f08fec2efc1ab2f5dedc201a
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Tue Dec 3 18:24:06 2019 -0500
+
+    re-edit the DeletePlaylistHandler with very minor details
+
+commit 331cce6af66c1ad23e4c554a182b9846c616be8e
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Tue Dec 3 17:59:34 2019 -0500
+
+    finished DeletePlaylistHandler to delete from S3 and RDS!!
+
+commit 5d2010c85bf0b246186c1d775e626a464c69ea5e
+Merge: c3b7a56 82251fc
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Tue Dec 3 17:43:35 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat into Nicole
+
+commit 82251fc98eee400cf1a8ae5f0dc9eb0f6336a9d5
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 3 17:24:21 2019 -0500
+
+    search handler partially implemented
+
+commit ae20969dce884a65daf6db0927bc0950ad78f251
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 3 16:53:00 2019 -0500
+
+    implemented basics of rds search
+
+commit a6e25c25cbc9a402a83a1dbe5fed3bb2cef36700
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 3 13:58:06 2019 -0500
+
+    added searchVidSegs.js
+
+commit a305e205172b03cd76327f69d4d24922c04a754e
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 3 12:06:04 2019 -0500
+
+    created js classes
+
+commit a11ce6e6cd9c1f0b6abd40ddea0a5c5b3c209252
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Dec 3 11:43:31 2019 -0500
+
+    removed extra buttons from webapp
+
+commit fc613e30e8eb8fc996a8173be96e43483d7d6ece
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Dec 2 23:57:43 2019 -0500
+
+    implemented remote site DAO, minor fixes in vid seg DAO
+
+commit a7e3306493c61de88e88c58d95f7e0f7a8b27fec
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Dec 2 23:45:20 2019 -0500
+
+    implemented get remote site, generate remote site
+
+commit c20df93cf6b522b3b37b97e8fe655af96b8031ed
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Dec 2 23:45:05 2019 -0500
+
+    started implementation of remote site functionality
+
+commit b7fb718a4cba8d67edd1b4a5a3afeb202d5a5929
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Dec 2 23:14:51 2019 -0500
+
+    delete video segment implemented, tested, and operational :)
+
+commit c3dd86da97724bb50bab0a2ddd29a733c61681e6
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Dec 2 22:34:52 2019 -0500
+
+    committing cause i forgot to switch branches oops
+
+commit 60b149c18028308c85b0343f63dbcda87bcac022
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Dec 2 22:28:16 2019 -0500
+
+    tested and properly implemented delete vid seg handler
+
+commit b35b4c30c89b51e144288f607a6611f69e312670
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Dec 2 19:01:47 2019 -0500
+
+    implemented delete vid seg handler
+
+commit d58bfdef76c893f1189b160fe6cfeb37ca77d715
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Dec 2 17:47:51 2019 -0500
+
+    removed debug stuff
+
+commit 00b03e1d14957f980678c9dbd3774bc16f216fdf
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Dec 2 17:23:28 2019 -0500
+
+    got upload vid seg working on webapp (it was the dumbest mistake :( )
+
+commit 2b475fd9350bc52f3dc8cf03d12e586adb2189c3
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Dec 2 15:30:28 2019 -0500
+
+    altered upload Lambda (forgot to put in last commit oops lol)
+
+commit a7d82cffffc0404351dbf09de531b6d898104069
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Dec 2 15:29:25 2019 -0500
+
+    uploaded vid segs now automatically public within bucket (not marked)
+
+commit 4084c30f8f6d30e9be990fb7ffefe1e0bcf1a48a
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Dec 2 01:01:14 2019 -0500
+
+    redeployed api, changed url in api.js
+
+commit 4c0f0c48b49d8e3bc47d9d28b5ab7b1db595403c
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Dec 1 23:39:08 2019 -0500
+
+    partially implemented handlers and uploaded to AWS Lambda
+    
+    created response https class for getPublicVidSegs
+
+commit d17749edd8633cbdfb6ddc2076d10c935c3c0734
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Dec 1 23:05:50 2019 -0500
+
+    updated html to remove unnecessary text boxes
+
+commit 895e83a9c240ff8cb6df8a6e4032a2b960add044
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Dec 1 23:02:35 2019 -0500
+
+    updated lambda functions
+
+commit a3f74871e034f3a4cfbe3731b7d614c1dfad2760
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sat Nov 30 16:29:28 2019 -0500
+
+    removed outdated testing suite - added JUnit 4 to path
+
+commit e27f46809d4d9e14d0472961edec6678e61fecfd
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sat Nov 30 16:29:14 2019 -0500
+
+    updated all classes relating to video segments to not use ep/season num
+
+commit 510dd4e7e5de24a338bfc194677467079afd7757
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Tue Nov 26 00:10:23 2019 -0500
+
+    worked on request and response of get vidseg in playlist
+
+commit 1ecf0a135721d1606911a0f6f8f92da95b751b11
+Merge: 8504392 5301d07
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Nov 25 22:40:57 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat.git
+
+commit 850439273fafdde3ea815b8b7368e0b10aa118e0
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Nov 25 22:40:42 2019 -0500
+
+    webapp at deliverable state
+
+commit 5301d076520d3cf9b2d095a85a69a428bde7cf0e
+Merge: 35e1630 be7227f
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Mon Nov 25 20:50:36 2019 -0500
+
+    Merge branch 'ashwin'
+
+commit be7227fcf9be7537363d0e07f27160ae9b06e5a1
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Mon Nov 25 20:49:26 2019 -0500
+
+    Respacing of the code.
+
+commit 35e1630dbe2f50804849aa767674a7c9bb8b0ae3
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Nov 25 20:40:55 2019 -0500
+
+    test commit
+
+commit d4b9d43080dbfc35328f0df2837287840995d749
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Nov 25 20:26:32 2019 -0500
+
+    updated DeletePlaylistHandler to use a String instead of a Playlist
+
+commit f8c4bfd70084f6fd1db6ac9b8807b80b3d971138
+Merge: 0d60f53 ec3adeb
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Nov 25 20:24:41 2019 -0500
+
+    Merge branch 'aaron'
+
+commit ec3adebf16f394453e302260cd1ba971c7cb9982
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Nov 25 20:23:59 2019 -0500
+
+    ASHWIN'S CHANGES: various playlist db related things
+
+commit c3b7a565877f15ca979f088da062bac56c171ae3
+Merge: a5845b4 0d60f53
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Mon Nov 25 19:58:31 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat into Nicole
+
+commit 0d60f53e2a4c7746a189016ad719eeec86638b94
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Mon Nov 25 18:16:50 2019 -0500
+
+    created the GetVidSegPlaylistReponse and request classes
+
+commit 59de1d3b862357d91f9a48f9297f0e572eb81eee
+Merge: 279190e 1b61566
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Nov 25 17:38:46 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat.git
+
+commit 279190e0b93fc63a83bec1e69fa75eb25dafc0c0
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Nov 25 17:37:28 2019 -0500
+
+    updates to admin landing page
+
+commit a5845b42be866bb9ee217fb4155c1764d5604f1d
+Merge: 584bd3d 1b61566
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Mon Nov 25 17:37:22 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat into Nicole
+
+commit 9113ecd75f562801235813e026f528535779fbae
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Nov 25 16:29:54 2019 -0500
+
+    updated webapp to reflect admin usage
+
+commit e6ab8903f2a4d236c15289d8b40c9da917288e1b
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Nov 25 15:36:31 2019 -0500
+
+    got getVidSegs working for deliverable
+
+commit 1b61566176801b8a96eb4145ebed23bbd0759a50
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Mon Nov 25 13:35:31 2019 -0500
+
+    create class for GetPublicVidSegsHandler and GetVidSegInPlaylistHandler
+
+commit cee24801f6f9a4dc299db95fc5c2d0bdb071c024
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Nov 25 11:42:11 2019 -0500
+
+    got mini version of getAllPlaylists.js working. need to add to admin
+
+commit 1a292154ef83ae7bde587d3b39f0173d5ab743b3
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Nov 25 10:47:26 2019 -0500
+
+    created getAllPlaylists and made slight changes to getAllVidSegs
+
+commit 425b90bb83e43ada3ca6f8aece3a73a0b9ee0407
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Nov 25 01:17:36 2019 -0500
+
+    altered admin landing page. updated getAllVidSegs
+    
+    good night streaks
+
+commit 6227ad25ae06fc72fe3e72e490749b616be30323
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Nov 25 00:37:38 2019 -0500
+
+    debugging commit; need to delete all the log statements later
+
+commit 40b119c072ba52b3c07bafff695dbb6097d77d01
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Mon Nov 25 00:37:14 2019 -0500
+
+    created/implemented uploadVidSeg.js
+
+commit f9fb6bce3f5ea4af6ed63011a4b13559bad0ac98
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Nov 24 22:27:42 2019 -0500
+
+    updated getAllVidSegs lambda function
+
+commit 17000d7d3f005c33e5f4d70d76e46b53b5bce772
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Nov 24 22:20:57 2019 -0500
+
+    made updates so vid segs contents can be accessed from list response
+
+commit 2fe78f17c03e47e2f976220ac34570527ec33165
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Sun Nov 24 21:11:21 2019 -0500
+
+    finished ListPlaylistHandler and its response class
+    
+    finished DeletePlaylistHandler and its request and response class
+    
+    todos on PlaylistDAOs with equals method for playlist done
+
+commit 63085bd2e4dd93d6b6fc80fd4ab58db979ca28d7
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Nov 24 20:35:07 2019 -0500
+
+    added a slash to the end of the url :(
+
+commit 37bb2d2bb9e06fcbf477daf4ccba13077c42536c
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Nov 24 20:26:22 2019 -0500
+
+    changed handler and test around
+
+commit b839b51bf7a56711e37bb87ae05a25776105848e
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Nov 24 20:25:42 2019 -0500
+
+    implemented test method
+
+commit 62e1270440c2a352d670841e0f1df7768192c3eb
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Nov 24 20:25:19 2019 -0500
+
+    added new constructor, tostring method
+
+commit 9122ca89283c6c417f90d921a7dbbdeef6e83938
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Nov 24 19:58:57 2019 -0500
+
+    created base of test, altered classes having to do with test
+    
+    made new vidseg constructor
+    
+    got rid of unnecessary response
+
+commit 0b138606cf37ff027f4d72b73ccf0aaef75a4196
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Nov 24 19:58:18 2019 -0500
+
+    updated fields for new api, name, etc.
+
+commit 2429562c95b2d4f0035643e979af579e91541c74
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Nov 24 18:54:11 2019 -0500
+
+    removed unnecessary handlers
+
+commit 584bd3d584985256d4a38a31b45dfa0906514fbd
+Merge: 43f5c82 c09d3f2
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Sun Nov 24 18:37:11 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat into Nicole
+
+commit c09d3f2e9620c9b23e9d5f673da8e2a211d929a6
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Nov 24 18:35:15 2019 -0500
+
+    initial state for javascript in html
+
+commit 43f5c82506825e2bd050b505f4e0f94f36ce080c
+Merge: 436b198 492d269
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Sun Nov 24 18:27:33 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat into Nicole
+
+commit 436b198d201f5d4f6b8458c4458fc5842ce10add
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Sun Nov 24 18:27:23 2019 -0500
+
+    Getting ready for meeting, deleted HTML stuff that Aaron wanted to do
+
+commit 771c1330d4feaa2775486d654deedbeac5c6f506
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Nov 24 16:48:43 2019 -0500
+
+    implemented getAllVidSegs.js
+
+commit 2438ea331770369f94979e5609c5d9d403cc3c87
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Nov 24 16:48:29 2019 -0500
+
+    updated client and admin html to use getAllVidSegs.js
+
+commit f80b06e1c07b0f85083d9956b63f849658034330
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Nov 24 15:43:36 2019 -0500
+
+    changed comments
+
+commit 29f5c02b1fa9a065ad7c52639ec183f998a79739
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Nov 24 15:42:42 2019 -0500
+
+    deployed API and created file to keep track of URL's
+
+commit 022757aba4165ca75e30a0d0201f01c4f4326530
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Nov 24 12:51:12 2019 -0500
+
+    uploaded handlers to lambda functions
+
+commit 492d269d5bf47f6f9393a0e4152cbdaaba3bc5aa
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Sun Nov 24 01:49:48 2019 -0500
+
+    getAllVidSeg from playlist.
+
+commit b764c575551717501278c7c33aff717ea375da0d
+Merge: 7c1cd31 a5b8ead
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Sun Nov 24 01:45:58 2019 -0500
+
+    Merge branch 'apai2'
+    
+    Conflicts:
+            GunboatDiplomat/src/test/java/DatabaseTest/PlaylistTestingDB.java
+            GunboatDiplomat/src/test/java/DatabaseTest/VidSegTestingDB.java
+
+commit a5b8eadd14a364ad377d7aa48f5e6cc5aa65a446
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Sun Nov 24 01:39:43 2019 -0500
+
+    Playlist getAllVidSeg has been tested. Weird Errors man...weird errors.
+
+commit 7c1cd31411f2e5023526c6e76610e3c85253cd5c
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sat Nov 23 17:21:55 2019 -0500
+
+    created base landing page for admin
+
+commit 2ad14044664474e4ca5ea26be38f3ea5d528143f
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sat Nov 23 17:16:56 2019 -0500
+
+    added upload form to video segment section
+
+commit fb0ddcb513a4c5e46fe1868f154125d217c66b41
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sat Nov 23 16:35:03 2019 -0500
+
+    created initial client landing page
+
+commit 0a1674c27a7315d636176625a6e43a6bf7ef1919
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sat Nov 23 13:24:22 2019 -0500
+
+    ignoring ogg files in test folder
+    
+    this is only until we know that it's legal for us to push them onto
+    github. if not then we can just
+
+commit a625b8a5da4dd1c7833ef91fb483ba883afc868f
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Fri Nov 22 22:45:09 2019 -0500
+
+    implemented a test that confirms a vid seg can be uploaded to S3 and RDS
+    
+    also manually confirmed the video was uploaded in base64encoded ogg
+    format0
+
+commit 8727824736512d864792682afefdcff9fe3b6f50
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Fri Nov 22 01:08:05 2019 -0500
+
+    started implementation of test for vid seg handler
+    
+    moved classes around in packages
+
+commit 74377bdf25c80277481961667e43f5cd6c496d10
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Fri Nov 22 01:07:19 2019 -0500
+
+    added classes to assist in Lambda testing
+
+commit cf8ecb2be1bdc3aeaf3e97031c9a5e8d903387f5
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Fri Nov 22 01:07:01 2019 -0500
+
+    moved tests into a general package
+
+commit 07549e83dd3ba51c020f4f37d49ce426b1a61390
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Fri Nov 22 00:51:46 2019 -0500
+
+    created test class for vid seg upload handler
+    
+    created package for handler tests
+
+commit 3544cb59a55109b0a410dd167f8989a13ef97eba
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Fri Nov 22 00:28:59 2019 -0500
+
+    added basic AWS format for handler skeletons
+
+commit d839beb391ca67ca1be6586c34fd57a3c32c6a93
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Fri Nov 22 00:17:08 2019 -0500
+
+    created a missing http response, changed name of a handler
+
+commit 49fcf71b6c64d99729e239f630a976870fdab8d2
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Thu Nov 21 23:57:07 2019 -0500
+
+    created several http classes for handlers
+
+commit 12907b249b64a3582ad24842185b8976cd45edaa
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Thu Nov 21 23:48:23 2019 -0500
+
+    added notes to mark/unmark handlers
+    
+    TODO: check later to see if we need these handlers
+
+commit 516e0f09b89caca721dc6f9001e5ed4740345b75
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Thu Nov 21 23:42:15 2019 -0500
+
+    created handler skeletons for all potential lambda functions
+
+commit fa7ce984e4fbb6c81f7ba36cb3c27d1560e4c0b5
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Thu Nov 21 23:26:38 2019 -0500
+
+    properly implemented uploadVidSegHandler
+
+commit d1141897a49fac552a705272e68f8fc776c34c6c
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Thu Nov 21 22:36:51 2019 -0500
+
+    changed fields in upload request to take an encoded string (for file)
+    
+    changed String to int field for episode and season in same class
+
+commit 8615a060b45f779e6fac04aa55e0751d8a46fcaa
+Merge: ad8b5b2 d0f894f
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Thu Nov 21 19:23:29 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat
+
+commit ad8b5b25572939bb07b6a4a055f23d4f16554986
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Thu Nov 21 19:19:47 2019 -0500
+
+    Created DeleteVidSegHandler
+
+commit d0f894fa039ebacc4dfb650af4448bd851b067d7
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Thu Nov 21 18:25:20 2019 -0500
+
+    Refactored Package
+
+commit 1b512aab5d254eb7db647d1072e6492d44b8f135
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Thu Nov 21 18:24:44 2019 -0500
+
+    Renamed Classes
+
+commit ea9cefd3a1506a5a7ed022a70a3d5f5ae2e8d4e4
+Merge: ed30455 d595130
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Thu Nov 21 18:21:17 2019 -0500
+
+    Updated Test Suite
+
+commit ed30455dce76f72a2df7a7221fe798ca5234889f
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Thu Nov 21 18:17:54 2019 -0500
+
+    Created a PlaylistDAO testPlaylist class
+
+commit f869da4139306a6ab55177df8548bdde95a331cf
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Thu Nov 21 18:16:57 2019 -0500
+
+    Creating PlaylistDAO and TestClass
+
+commit a88f7b1d7adbbfa297428dc20db7bbf76aec3fb7
+Merge: b361437 d595130
+Author: Nicole Conill <nconill@wpi.edu>
+Date:   Thu Nov 21 10:26:35 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat into Nicole
+
+commit d59513016d8a410b983a396034f61b269a5a1a83
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 23:57:54 2019 -0500
+
+    refactored multiple classes to utilize int instead of boolean
+    
+    TODO: fix listvidsegshandler
+
+commit c208e02c73bca4b4c706dd3c3b195509f3d71ba8
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 23:43:29 2019 -0500
+
+    created response for list vidsegs
+
+commit 4de5852de2e2ac00e5afb0679256f7e0d683d7f7
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 23:43:14 2019 -0500
+
+    renamed handler
+
+commit 5db677d3cba4140c7d3c7e85ade6e018a9c99032
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Nov 20 21:58:09 2019 -0500
+
+    Completed testGetAllVideo
+
+commit da1ed7e5880c2cf62ddaf325861b2a3030d8afb9
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Nov 20 19:38:10 2019 -0500
+
+    Comments for TC
+
+commit 8d0b0136642d275be7154fb1c26cc6e344a70ddd
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Nov 20 19:31:39 2019 -0500
+
+    Created test case for deletingVidSeg from DB.
+
+commit fa77e35893843deece8d42d350d4c69e78b84db9
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Nov 20 18:42:57 2019 -0500
+
+    with getAllVidSeg()
+
+commit ff9cc5ef8eb47c89297c7363f47c6665f2ddda62
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Nov 20 18:29:55 2019 -0500
+
+    IDK what happened but it works
+
+commit e11a3ee5e3721fa9d9df31db56b9a9b0ce158d72
+Merge: 7d4f8cc 1a81f6f
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Nov 20 18:29:37 2019 -0500
+
+    Merge remote-tracking branch 'origin/master' into apai2
+
+commit 7d4f8cc785e61481b5afb0f978c67488b7971e18
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Nov 20 18:18:04 2019 -0500
+
+    testedAddVidSeg
+
+commit 1a81f6fb0ea7f2667900fa4fd33ca5631f6bb0ed
+Author: Shannon Truong <Shannon Truong@DESKTOP-NK7OMQK>
+Date:   Wed Nov 20 17:44:18 2019 -0500
+
+    Edit of equals method in video segment model class
+    
+    Create the ListVidSegHandler
+
+commit 946330d2cb3778dc201e6385772804f043cb9cf8
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 17:15:34 2019 -0500
+
+    created getAllVidSegs()
+
+commit ce9f96e3060a1489c479aa25e2158854e0334852
+Merge: 49acbf5 3c8c61e
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 17:06:34 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat.git
+
+commit 49acbf57d8600d37ca0904667e5ad0810244dcb8
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 17:05:57 2019 -0500
+
+    attempted to work through uploadvidseg, need to figure out how ogg works
+
+commit b3614377bfd0e7c64a148503918dc53af9cf281f
+Author: nconi <nconi@DESKTOP-NM7TDA5>
+Date:   Wed Nov 20 17:01:02 2019 -0500
+
+    Did something at the library for a little 11/20
+
+commit 4eeb0111194d359d7b8b21e0892e7d020c2db417
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 16:19:07 2019 -0500
+
+    fixed addVidSeg to not use extra statement
+
+commit 3c8c61e7aedfb8cf0c3305b80e5677c0caee50f5
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Nov 20 16:08:18 2019 -0500
+
+    whoops
+
+commit 8375c1e7b22b75066fe98a92408853e0ead12746
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Nov 20 16:06:22 2019 -0500
+
+    First test case done babyyyyyyyy!
+
+commit 8a1c7f67e56f3d2ad4ce40d0e4cb9a5c0530c6aa
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 15:32:49 2019 -0500
+
+    commit to switch
+
+commit ca9cb7191cb9e33ddf536b79cf8d70dc3166a94d
+Merge: 960c122 a6a4c64
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 13:54:06 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat.git into aaron
+
+commit a6a4c64c5581f7a19d4a18f38f07e79a41540845
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Nov 20 13:53:38 2019 -0500
+
+    database has been connected.
+
+commit 960c12242fcba454fab668e6a149cbcddcf4fc47
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 12:57:52 2019 -0500
+
+    updated upload handler to take in proper fields
+
+commit 08e201dce257d9e51a3ab94a06a1d5184faa7253
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 12:41:44 2019 -0500
+
+    created generateVidSeg, updated getVidSeg
+
+commit 006de27a439c9e1c59115fafe5d89e0f405c7588
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 12:39:03 2019 -0500
+
+    rearranged constructor to reflect rds schema
+
+commit a827118a9ea83958dcb45607dbf273d239b7d4b9
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 12:27:31 2019 -0500
+
+    created addVidSeg
+
+commit 454de06d36aff87e5008d3c8ca780525a3ec58ba
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 11:40:31 2019 -0500
+
+    created library class and constructor
+    
+    changed playlist field name to be more accurate
+
+commit 3ad09ba0a246ab4929654f313205cd36472eb326
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 11:35:39 2019 -0500
+
+    added playlist fields and constructor
+
+commit aada2b3b38cd7866f56539230c818e32118ca194
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 11:29:41 2019 -0500
+
+    created model classes, vidseg constructor
+
+commit b32a113572fd7d3e0c1fc2b453cfbb7b07224075
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 11:15:11 2019 -0500
+
+    adding txt file for source folder visibility
+
+commit dca33e33142b2d0ae7807ba654db08e2b655496b
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 11:06:21 2019 -0500
+
+    removing extraneous txt files
+
+commit e5ff8c1434f524e82a6c63eafb2ce70cdab80bfa
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 10:59:04 2019 -0500
+
+    removing extra packages, merging branches
+    
+    temporarily commenting out upload handler
+
+commit 2d554ae111fde1db86b68b28acaf8c9b5e3d5b7e
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 10:54:26 2019 -0500
+
+    switching packages
+
+commit 17dc935c747212ca4a102cf4794400c4096eee8f
+Merge: 4fe15f2 5b4084c
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 10:50:08 2019 -0500
+
+    Merge branch 'master' of https://github.com/adkrueger/GunboatDiplomat.git into package_making
+
+commit 4fe15f28ffd29719736b6eac5d7d627aaea469d7
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Wed Nov 20 10:35:32 2019 -0500
+
+    committing before switch
+
+commit 5b4084c3c0db1be4375b997d0708f28956ac1dc0
+Author: Ashwin Pai <apai2@wpi.edu>
+Date:   Wed Nov 20 10:35:03 2019 -0500
+
+    This is the first attempt at the DB yet.
+
+commit 7dec6d9592f6bbc75b7d184af36c246489bc5a02
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Tue Nov 19 21:21:06 2019 -0500
+
+    created and implemented upload vid seg request and response
+
+commit 4a664aee5a4465591b7c9aab92b880e5ed28bc61
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Nov 17 18:00:11 2019 -0500
+
+    test file
+
+commit a8ae70f8810611db946149efda68fbf38ab52c94
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Nov 17 17:56:00 2019 -0500
+
+    committing txt files so folders are non-empty
+
+commit 2bcb320e89a1bbee71913e7a99c406fd6346f65c
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Nov 17 16:40:31 2019 -0500
+
+    committing test file
+
+commit daea2babf30e58a5540fec9e0ca4f12fa625a198
+Author: adkrueger <adkrueger@wpi.edu>
+Date:   Sun Nov 17 16:27:54 2019 -0500
+
+    initial commit

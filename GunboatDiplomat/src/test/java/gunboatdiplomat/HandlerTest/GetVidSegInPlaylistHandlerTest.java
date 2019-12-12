@@ -62,4 +62,17 @@ public class GetVidSegInPlaylistHandlerTest extends LambdaTest{
 		vsDAO.deleteVidSeg(vs.id);
 	}
 
+	@Test
+    public void testFalseVidSegInPLaylistHnadler() {
+        
+        List<VidSeg> vs = new ArrayList<>();
+
+        GetVidSegInPlaylistResponse response1 = new GetVidSegInPlaylistResponse(403, "There is an error present!");
+        System.out.println(response1.toString());
+        assertTrue(response1.toString().equals("ErrorResult([], statusCode = 403, error = There is an error present!)"));
+        GetVidSegInPlaylistResponse response2 = new GetVidSegInPlaylistResponse(vs, 403, "There is an error present!");
+        System.out.println(response2.toString());
+        assertTrue(response2.toString().equals("ErrorResult([], statusCode = 403, error = There is an error present!)"));
+        
+    }
 }
