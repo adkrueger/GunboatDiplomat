@@ -16,7 +16,7 @@ public class AppendVidSegResponse {
 		this.errorCode = errorCode;
 	}
 
-	public String toString(String playlistName, int errorCode) {
+	public String toString() {
 		if(errorCode == 200) {
 			return "Successful in appending segment to " + playlistName;
 		}

@@ -1,5 +1,7 @@
 package gunboatdiplomat.HandlerTest;
 
+import static org.junit.Assert.fail;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -33,6 +35,7 @@ public class UnregisterRemoteHandlerTest extends LambdaTest {
 		UnregisterRemoteRequest urr = new UnregisterRemoteRequest("https://www.letTestUnregister.org");
 		UnregisterRemoteResponse unregResponse = new UnregisterRemoteHandler().handleRequest(urr, createContext("unregister"));
 		Assert.assertEquals("https://www.letTestUnregister.org", unregResponse.id);
+		unregResponse.toString();
 		
 		// make sure it's gone
 		unregResponse = new UnregisterRemoteHandler().handleRequest(urr, createContext("unregister"));
@@ -53,6 +56,12 @@ public class UnregisterRemoteHandlerTest extends LambdaTest {
 		req.setUrl("url");
 		Assert.assertEquals(req.getUrl(), "url");
 		
+	}
+	
+	@Test
+	public void testUnregisterFail() {
+		UnregisterRemoteResponse failTest = new UnregisterRemoteResponse("THis should fail", 403, "Testing failsae operation");
+		failTest.toString();
 	}
 	
 }

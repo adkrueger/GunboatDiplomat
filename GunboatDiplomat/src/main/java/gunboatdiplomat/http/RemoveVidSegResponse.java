@@ -17,7 +17,7 @@ public class RemoveVidSegResponse {
 		this.errorCode = errorCode;
 	}
 		
-	public String toString(String playlistName, int errorCode) {
+	public String toString() {
 		if(errorCode == 200) {
 			return "Successful in removing segment from " + playlistName;
 		} else if (errorCode == 403) {

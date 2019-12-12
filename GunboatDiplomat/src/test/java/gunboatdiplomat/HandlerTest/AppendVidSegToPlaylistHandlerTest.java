@@ -63,7 +63,7 @@ public class AppendVidSegToPlaylistHandlerTest extends LambdaTest{
 		
 		AppendVidSegRequest appendReq2 = new AppendVidSegRequest(pl.name, vs3.id);
 		AppendVidSegResponse appendResp2 = new AppendVidSegToPlaylistHandler().handleRequest(appendReq2, createContext("Appended"));
-		
+		appendResp2.toString();
 		
 		List<VidSeg> listRet = playlistDAO.getVideoSegInPlaylist(pl.name);
 		
@@ -82,6 +82,12 @@ public class AppendVidSegToPlaylistHandlerTest extends LambdaTest{
 		vsDAO.deleteVidSeg(vs2.id);
 		vsDAO.deleteVidSeg(vs3.id);
 		
+	}
+	
+	@Test
+	public void inputFailAppendVidSeg() {
+		AppendVidSegResponse apResp = new AppendVidSegResponse("This is a test", 403, "This should fail");
+		apResp.toString();
 	}
 	
 	

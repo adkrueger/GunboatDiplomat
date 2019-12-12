@@ -53,7 +53,7 @@ public class RemoveVidSegFromPlaylistHandlerTest extends LambdaTest{
 		AppendVidSegResponse appendResp2 = new AppendVidSegToPlaylistHandler().handleRequest(new AppendVidSegRequest("testingRemoveVidSeg", vs2.id), createContext("appending"));
 		AppendVidSegResponse appendResp3 = new AppendVidSegToPlaylistHandler().handleRequest(new AppendVidSegRequest("testingRemoveVidSeg", vs3.id), createContext("appending"));
 		AppendVidSegResponse appendResp4 = new AppendVidSegToPlaylistHandler().handleRequest(new AppendVidSegRequest("testingRemoveVidSeg", vs4.id), createContext("appending"));
-
+	
 		
 		assertEquals(appendResp1.playlistName, "testingRemoveVidSeg");		// check that everything was appended properly
 		assertEquals(appendResp2.playlistName, "testingRemoveVidSeg");
@@ -71,6 +71,7 @@ public class RemoveVidSegFromPlaylistHandlerTest extends LambdaTest{
 		assertTrue(currPlaylist.get(2).id.equals("testingRemoveVidSegHandler4"));
 		
 		RemoveVidSegResponse removeResp2 = new RemoveVidSegFromPlaylistHandler().handleRequest(new RemoveVidSegRequest("testingRemoveVidSeg", 1), createContext("removing"));	// testingRemoveVidSegHandler2
+		removeResp2.toString();
 		assertEquals(removeResp2.errorCode, 200);
 		currPlaylist = playlistDAO.getVideoSegInPlaylist("testingRemoveVidSeg");
 		System.out.println(currPlaylist);
@@ -97,6 +98,14 @@ public class RemoveVidSegFromPlaylistHandlerTest extends LambdaTest{
 		vsDAO.deleteVidSeg("testingRemoveVidSegHandler2");
 		vsDAO.deleteVidSeg("testingRemoveVidSegHandler3");
 		vsDAO.deleteVidSeg("testingRemoveVidSegHandler4");
+	
+		
+	}
+	
+	@Test
+	public void testFailInput() {
+		RemoveVidSegResponse respFail = new RemoveVidSegResponse("This playlist doesnt exist",  403);
+		respFail.toString();
 	}
 
 

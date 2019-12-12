@@ -30,6 +30,7 @@ public class DeletePlaylistHandlerTest extends LambdaTest {
 		CreatePlaylistRequest req = new CreatePlaylistRequest("testing delete playlist");
     	CreatePlaylistResponse resp = new CreatePlaylistHandler().handleRequest(req, createContext("create"));
     	Assert.assertEquals(resp.response, "testing delete playlist");
+    	resp.toString();
     	
     	Map<String, List<VidSeg>> retMap = dao.getAllPlaylists();
     	Assert.assertFalse((retMap.keySet().contains(playlist.name)));
@@ -39,6 +40,7 @@ public class DeletePlaylistHandlerTest extends LambdaTest {
     	DeletePlaylistResponse deleteResponse = new DeletePlaylistHandler().handleRequest(dpr, createContext("delete"));
     	System.out.println(deleteResponse.id);
 		Assert.assertEquals(deleteResponse.id, "testing delete playlist");
+		deleteResponse.toString();
 		
 		dao.deletePlaylist("testing delete playlist");
     	retMap = dao.getAllPlaylists();
@@ -46,6 +48,7 @@ public class DeletePlaylistHandlerTest extends LambdaTest {
 		
 		//try again and this should fail
 		deleteResponse = new DeletePlaylistHandler().handleRequest(dpr, createContext("delete"));
+		deleteResponse.toString();
 		Assert.assertEquals(422, deleteResponse.statusCode);
 	}
 	

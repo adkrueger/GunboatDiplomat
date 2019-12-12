@@ -26,6 +26,7 @@ public class CreatePlaylistHandlerTest extends LambdaTest {
     	CreatePlaylistRequest req = new CreatePlaylistRequest("testin' playlist creatin'");
     	CreatePlaylistResponse resp = new CreatePlaylistHandler().handleRequest(req, createContext("create"));
     	Assert.assertEquals(resp.response, "testin' playlist creatin'");
+    	resp.toString();
     	
     	Map<String, List<VidSeg>> retMap = plDAO.getAllPlaylists();
     	Assert.assertTrue(plDAO.checkPlaylistExists(pl.name));
@@ -34,6 +35,12 @@ public class CreatePlaylistHandlerTest extends LambdaTest {
     	retMap = plDAO.getAllPlaylists();
     	Assert.assertFalse((retMap.keySet().contains(pl.name)));
     	
+    }
+    
+    @Test
+    public void testCreatePlaylistHandlerFalse() {
+    	CreatePlaylistResponse response = new CreatePlaylistResponse ("THis is not working", 403, "This a fail safe test. ");
+    	response.toString();
     }
     
 

@@ -26,6 +26,7 @@ public class MarkVidSegHandlerTest extends LambdaTest{
 		
 		MarkVidSegRequest createReq = new MarkVidSegRequest(vsCreated.id);
 		MarkVidSegResponse responseReq = new MarkVidSegHandler().handleRequest(createReq, createContext("Marked"));
+		responseReq.toString();
 		
 		assertEquals(responseReq.errorCode, 200);
 		
@@ -35,5 +36,11 @@ public class MarkVidSegHandlerTest extends LambdaTest{
 		assertTrue(vs.equals(vsSol));
 		vsDAO.deleteVidSeg(vsCreated.id);
 	}
-
+	
+	@Test
+	public void testMarkVidSegHandlerFalse(){
+		MarkVidSegResponse resp = new MarkVidSegResponse("This is a test", 403, "This should fail");
+		resp.toString();
+		
+	}
 }

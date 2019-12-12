@@ -28,8 +28,7 @@ public class UploadVidSegHandlerTest extends LambdaTest {
 		UploadVidSegResponse response = handler.handleRequest(request, createContext("upload"));
 		Assert.assertEquals(200, response.httpCode);
 	}
-	
-	void testInputFailure(String input, int failureCode) throws IOException {
+ void testInputFailure(String input, int failureCode) throws IOException {
 		UploadVidSegHandler handler = new UploadVidSegHandler();
 		UploadVidSegRequest request = new Gson().fromJson(input, UploadVidSegRequest.class);
 		
